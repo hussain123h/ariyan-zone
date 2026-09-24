@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ariyan Zone</title>
+
+<title>Ariyan Zone | Home</title>
 
 <style>
 * {
@@ -19,27 +20,56 @@ body {
 
 header {
     text-align: center;
-    padding: 35px 15px;
-    background: linear-gradient(135deg, #15152e, #32105c);
+    padding: 55px 20px 45px;
+    background: linear-gradient(135deg, #11112a, #351064);
 }
 
-header h1 {
+.logo {
     font-size: 42px;
-    margin: 10px 0;
+    font-weight: bold;
+    margin-bottom: 12px;
 }
 
-header p {
+.tagline {
     color: #c8c8d8;
+    font-size: 16px;
+}
+
+.home {
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.home h1 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.home p {
+    color: #aaaabd;
+    line-height: 1.6;
+}
+
+.start-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 28px;
+    background: #7c3aed;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
 }
 
 .menu {
-    padding: 25px 15px;
+    padding: 10px 18px 40px;
 }
 
 .card {
     background: #171720;
-    margin: 15px 0;
-    padding: 22px;
+    margin: 18px 0;
+    padding: 24px;
     border-radius: 18px;
     text-align: center;
     border: 1px solid #29293a;
@@ -53,13 +83,20 @@ header p {
     color: #aaaabd;
 }
 
-button {
+.card button {
     background: #7c3aed;
     color: white;
     border: none;
-    padding: 12px 22px;
+    padding: 11px 22px;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #77778a;
+    border-top: 1px solid #20202c;
 }
 </style>
 </head>
@@ -67,37 +104,54 @@ button {
 <body>
 
 <header>
-    <h1>🔥 Ariyan Zone</h1>
-    <p>Gaming • Free Fire • Updates</p>
+    <div class="logo">🔥 Ariyan Zone</div>
+    <div class="tagline">Gaming • Free Fire • Updates</div>
 </header>
 
-<div class="menu">
+<section class="home">
+
+    <h1>Welcome to Ariyan Zone</h1>
+
+    <p>
+        Your gaming hub for Free Fire sensitivity,
+        HUD settings, updates and tournament information.
+    </p>
+
+    <a href="#menu" class="start-btn">Explore Now</a>
+
+</section>
+
+<div class="menu" id="menu">
 
     <div class="card">
         <h2>🎯 Sensitivity</h2>
         <p>Free Fire sensitivity settings</p>
-        <button onclick="alert('General: 95\nRed Dot: 90\n2X Scope: 85\n4X Scope: 80\nSniper: 50')">Open</button>
+        <button>Open</button>
     </div>
 
     <div class="card">
         <h2>⚙️ HUD Settings</h2>
         <p>Useful HUD and control settings</p>
-        <button onclick="alert('HUD Settings\nAim Button: 48%\nFire Button: 52%\nJoystick: 45%')">Open</button>
+        <button>Open</button>
     </div>
 
     <div class="card">
         <h2>📰 FF Updates</h2>
         <p>Latest gaming updates</p>
-        <button onclick="alert('Latest Free Fire Updates will be added here!')">Open</button>
+        <button>Open</button>
     </div>
 
     <div class="card">
         <h2>🏆 Tournament</h2>
         <p>Gaming tournament information</p>
-        <button onclick="alert('Tournament Information')">Open</button>
+        <button>Open</button>
     </div>
 
 </div>
+
+<footer>
+    © 2026 Ariyan Zone
+</footer>
 
 </body>
 </html>
