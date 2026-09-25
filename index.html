@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Ariyan Zone | Gaming</title>
 
+
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -18,25 +23,37 @@ body {
     color: white;
 }
 
-/* Header */
+
+/* HEADER */
+
 header {
     text-align: center;
     padding: 45px 20px;
-    background: linear-gradient(135deg, #11112a, #351064);
+
+    background:
+    linear-gradient(135deg, #11112a, #351064);
+
+    border-bottom: 1px solid #29293a;
 }
 
 .profile {
     width: 125px;
     height: 125px;
+
     object-fit: cover;
+
     border-radius: 50%;
+
     border: 4px solid #8b5cf6;
-    box-shadow: 0 0 25px #7c3aed;
+
+    box-shadow:
+    0 0 25px #7c3aed;
 }
 
 .logo {
     font-size: 38px;
     font-weight: bold;
+
     margin-top: 15px;
 }
 
@@ -45,58 +62,110 @@ header {
     margin-top: 8px;
 }
 
-/* Hero */
+
+/* HERO */
+
 .hero {
     text-align: center;
+
     padding: 45px 20px 30px;
 }
 
 .hero h1 {
     font-size: 32px;
+
     margin-bottom: 12px;
 }
 
 .hero p {
     color: #aaaabd;
+
     line-height: 1.7;
+
     max-width: 600px;
+
     margin: auto;
 }
+
+
+/* FACEBOOK */
 
 .facebook {
     display: inline-block;
+
     margin-top: 22px;
+
     padding: 13px 25px;
+
     background: #1877f2;
+
     color: white;
+
     text-decoration: none;
+
     border-radius: 12px;
+
     font-weight: bold;
+
+    box-shadow:
+    0 5px 18px rgba(24,119,242,0.25);
 }
 
-/* Cards */
+
+/* MENU */
+
 .menu {
-    max-width: 800px;
+
+    max-width: 850px;
+
     margin: auto;
+
     padding: 20px;
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns:
+    repeat(2, 1fr);
+
     gap: 18px;
 }
 
+
+/* CARD */
+
 .card {
-    background: linear-gradient(145deg, #171720, #101017);
+
+    background:
+    linear-gradient(145deg,
+    #171720,
+    #101017);
+
     padding: 25px 15px;
+
     border-radius: 20px;
+
     text-align: center;
+
     border: 1px solid #29293a;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+
+    box-shadow:
+    0 8px 25px
+    rgba(0,0,0,0.35);
+
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    border-color: #7c3aed;
+
+    transform:
+    translateY(-5px);
+
+    border-color:
+    #7c3aed;
+
+    box-shadow:
+    0 10px 30px
+    rgba(124,58,237,0.2);
 }
 
 .icon {
@@ -104,64 +173,146 @@ header {
 }
 
 .card h2 {
+
     font-size: 19px;
-    margin: 12px 0 8px;
+
+    margin:
+    12px 0 8px;
 }
 
 .card p {
+
     color: #9999ad;
+
     font-size: 14px;
+
     min-height: 40px;
 }
 
-.card button {
+
+/* BUTTON */
+
+.card a {
+
+    display: inline-block;
+
     background: #7c3aed;
+
     color: white;
-    border: none;
+
+    text-decoration: none;
+
     padding: 10px 20px;
+
     border-radius: 10px;
+
     font-size: 14px;
+
+    font-weight: bold;
+
+    margin-top: 5px;
 }
 
-/* Footer */
+.card a:hover {
+
+    background:
+    #8b5cf6;
+}
+
+
+/* PREMIUM CARD */
+
+.premium {
+
+    border-color:
+    #8b5cf6;
+
+    box-shadow:
+    0 0 20px
+    rgba(124,58,237,0.15);
+}
+
+.premium .icon {
+
+    font-size: 40px;
+}
+
+
+/* FOOTER */
+
 footer {
+
     text-align: center;
+
     padding: 30px 15px;
+
     margin-top: 20px;
+
     color: #77778a;
-    border-top: 1px solid #20202c;
+
+    border-top:
+    1px solid #20202c;
 }
 
-/* Mobile */
+
+/* MOBILE */
+
 @media (max-width: 550px) {
+
     .menu {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+        repeat(2, 1fr);
+
         gap: 12px;
+
         padding: 15px;
     }
 
     .card {
-        padding: 20px 10px;
+
+        padding:
+        20px 10px;
     }
 
     .logo {
+
         font-size: 32px;
     }
 
     .hero h1 {
+
         font-size: 28px;
     }
+
+    .card h2 {
+
+        font-size: 17px;
+    }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- HEADER -->
+
 <header>
 
-    <img src="1704950832800.jpg" class="profile" alt="Ariyan">
+    <img
+        src="1704950832800.jpg"
+        class="profile"
+        alt="Ariyan"
+    >
 
-    <div class="logo">🔥 Ariyan Zone</div>
+    <div class="logo">
+        🔥 Ariyan Zone
+    </div>
 
     <div class="tagline">
         Gaming • Free Fire • Updates
@@ -169,82 +320,223 @@ footer {
 
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero">
 
-    <h1>Welcome to Ariyan Zone</h1>
+    <h1>
+        Welcome to Ariyan Zone
+    </h1>
 
     <p>
-        Your gaming hub for Free Fire sensitivity,
-        HUD settings, updates, videos and gaming tips.
+        Your gaming hub for Free Fire
+        sensitivity, HUD settings,
+        updates, videos and gaming tips.
     </p>
+
 
     <a
         href="https://www.facebook.com/ariyan.love.usha"
         target="_blank"
         class="facebook">
+
         📘 Follow on Facebook
+
     </a>
 
 </section>
 
+
+<!-- MENU -->
+
 <div class="menu">
 
+
+    <!-- SENSITIVITY -->
+
     <div class="card">
-        <div class="icon">🎯</div>
-        <h2>Sensitivity</h2>
-        <p>Free Fire sensitivity settings</p>
-        <a href="sensitivity.html"
-   style="display:inline-block;
-          background:#7c3aed;
-          color:white;
-          text-decoration:none;
-          padding:10px 20px;
-          border-radius:10px;
-          font-size:14px;">
-    Open
+
+        <div class="icon">
+            🎯
+        </div>
+
+        <h2>
+            Sensitivity
+        </h2>
+
+        <p>
+            Free Fire phone sensitivity settings
+        </p>
+
+        <a href="sensitivity.html">
+            Open
         </a>
+
     </div>
 
-    <div class="card">
-        <div class="icon">⚙️</div>
-        <h2>HUD Settings</h2>
-        <p>Useful HUD and control settings</p>
-        <button>Open</button>
-    </div>
+
+    <!-- HUD -->
 
     <div class="card">
-        <div class="icon">📰</div>
-        <h2>FF Updates</h2>
-        <p>Latest gaming updates and news</p>
-        <button>Open</button>
+
+        <div class="icon">
+            ⚙️
+        </div>
+
+        <h2>
+            HUD Settings
+        </h2>
+
+        <p>
+            Useful HUD and control settings
+        </p>
+
+        <a href="#">
+            Open
+        </a>
+
     </div>
 
-    <div class="card">
-        <div class="icon">🎥</div>
-        <h2>Videos</h2>
-        <p>Gaming videos and clips</p>
-        <button>Open</button>
-    </div>
+
+    <!-- UPDATES -->
 
     <div class="card">
-        <div class="icon">🏆</div>
-        <h2>Tournament</h2>
-        <p>Tournament information and results</p>
-        <button>Open</button>
+
+        <div class="icon">
+            📰
+        </div>
+
+        <h2>
+            FF Updates
+        </h2>
+
+        <p>
+            Latest gaming updates and news
+        </p>
+
+        <a href="#">
+            Open
+        </a>
+
     </div>
 
+
+    <!-- VIDEOS -->
+
     <div class="card">
-        <div class="icon">💡</div>
-        <h2>Tips & Tricks</h2>
-        <p>Useful gameplay tips</p>
-        <button>Open</button>
+
+        <div class="icon">
+            🎥
+        </div>
+
+        <h2>
+            Videos
+        </h2>
+
+        <p>
+            Gaming videos and clips
+        </p>
+
+        <a
+            href="https://youtu.be/-ZXVxv9n1Ro"
+            target="_blank">
+
+            ▶️ Islamic Content
+
+        </a>
+
     </div>
+
+
+    <!-- TOURNAMENT -->
+
+    <div class="card">
+
+        <div class="icon">
+            🏆
+        </div>
+
+        <h2>
+            Tournament
+        </h2>
+
+        <p>
+            Tournament information and results
+        </p>
+
+        <a href="#">
+            Open
+        </a>
+
+    </div>
+
+
+    <!-- TIPS -->
+
+    <div class="card">
+
+        <div class="icon">
+            💡
+        </div>
+
+        <h2>
+            Tips & Tricks
+        </h2>
+
+        <p>
+            Useful gameplay tips
+        </p>
+
+        <a href="#">
+            Open
+        </a>
+
+    </div>
+
+
+    <!-- PREMIUM -->
+
+    <div class="card premium">
+
+        <div class="icon">
+            💎
+        </div>
+
+        <h2>
+            Premium Sensitivity
+        </h2>
+
+        <p>
+            Get premium Free Fire
+            sensitivity settings
+        </p>
+
+        <a href="premium.html">
+
+            💎 Open Premium
+
+        </a>
+
+    </div>
+
 
 </div>
 
+
+<!-- FOOTER -->
+
 <footer>
+
     © 2026 Ariyan Zone
+
+    <br>
+
+    Gaming • Free Fire • Updates
+
 </footer>
 
+
 </body>
+
 </html>
