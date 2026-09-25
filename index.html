@@ -9,7 +9,6 @@
 
 <title>Ariyan Zone | Gaming</title>
 
-
 <style>
 
 * {
@@ -23,37 +22,26 @@ body {
     color: white;
 }
 
-
 /* HEADER */
 
 header {
     text-align: center;
-    padding: 45px 20px;
-
-    background:
-    linear-gradient(135deg, #11112a, #351064);
-
-    border-bottom: 1px solid #29293a;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #11112a, #351064);
 }
 
 .profile {
     width: 125px;
     height: 125px;
-
     object-fit: cover;
-
     border-radius: 50%;
-
     border: 4px solid #8b5cf6;
-
-    box-shadow:
-    0 0 25px #7c3aed;
+    box-shadow: 0 0 25px #7c3aed;
 }
 
 .logo {
     font-size: 38px;
     font-weight: bold;
-
     margin-top: 15px;
 }
 
@@ -62,83 +50,85 @@ header {
     margin-top: 8px;
 }
 
+/* ACCOUNT BUTTONS */
+
+.account {
+    text-align: center;
+    padding: 20px 15px 5px;
+}
+
+.account a {
+    display: inline-block;
+    padding: 11px 18px;
+    margin: 5px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+    color: white;
+
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-btn {
+    background: #7c3aed;
+}
+
+.signup-btn {
+    background: #1877f2;
+}
 
 /* HERO */
 
 .hero {
     text-align: center;
-
-    padding: 45px 20px 30px;
+    padding: 35px 20px 25px;
 }
 
 .hero h1 {
     font-size: 32px;
-
     margin-bottom: 12px;
 }
 
 .hero p {
     color: #aaaabd;
-
     line-height: 1.7;
-
     max-width: 600px;
-
     margin: auto;
 }
-
 
 /* FACEBOOK */
 
 .facebook {
     display: inline-block;
-
     margin-top: 22px;
-
     padding: 13px 25px;
 
     background: #1877f2;
-
     color: white;
 
     text-decoration: none;
-
     border-radius: 12px;
-
     font-weight: bold;
-
-    box-shadow:
-    0 5px 18px rgba(24,119,242,0.25);
 }
-
 
 /* MENU */
 
 .menu {
-
     max-width: 850px;
-
     margin: auto;
-
     padding: 20px;
 
     display: grid;
-
-    grid-template-columns:
-    repeat(2, 1fr);
-
+    grid-template-columns: repeat(2, 1fr);
     gap: 18px;
 }
-
 
 /* CARD */
 
 .card {
-
-    background:
-    linear-gradient(145deg,
-    #171720,
-    #101017);
+    background: linear-gradient(145deg, #171720, #101017);
 
     padding: 25px 15px;
 
@@ -148,24 +138,14 @@ header {
 
     border: 1px solid #29293a;
 
-    box-shadow:
-    0 8px 25px
-    rgba(0,0,0,0.35);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
 
     transition: 0.3s;
 }
 
 .card:hover {
-
-    transform:
-    translateY(-5px);
-
-    border-color:
-    #7c3aed;
-
-    box-shadow:
-    0 10px 30px
-    rgba(124,58,237,0.2);
+    transform: translateY(-5px);
+    border-color: #7c3aed;
 }
 
 .icon {
@@ -173,31 +153,20 @@ header {
 }
 
 .card h2 {
-
     font-size: 19px;
-
-    margin:
-    12px 0 8px;
+    margin: 12px 0 8px;
 }
 
 .card p {
-
     color: #9999ad;
-
     font-size: 14px;
-
     min-height: 40px;
 }
 
-
-/* BUTTON */
-
 .card a {
-
     display: inline-block;
 
     background: #7c3aed;
-
     color: white;
 
     text-decoration: none;
@@ -207,86 +176,48 @@ header {
     border-radius: 10px;
 
     font-size: 14px;
-
     font-weight: bold;
-
-    margin-top: 5px;
 }
-
-.card a:hover {
-
-    background:
-    #8b5cf6;
-}
-
-
-/* PREMIUM CARD */
 
 .premium {
-
-    border-color:
-    #8b5cf6;
-
-    box-shadow:
-    0 0 20px
-    rgba(124,58,237,0.15);
+    border-color: #8b5cf6;
 }
-
-.premium .icon {
-
-    font-size: 40px;
-}
-
 
 /* FOOTER */
 
 footer {
-
     text-align: center;
-
     padding: 30px 15px;
-
     margin-top: 20px;
 
     color: #77778a;
 
-    border-top:
-    1px solid #20202c;
+    border-top: 1px solid #20202c;
 }
-
 
 /* MOBILE */
 
 @media (max-width: 550px) {
 
     .menu {
-
-        grid-template-columns:
-        repeat(2, 1fr);
-
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-
         padding: 15px;
     }
 
     .card {
-
-        padding:
-        20px 10px;
+        padding: 20px 10px;
     }
 
     .logo {
-
         font-size: 32px;
     }
 
     .hero h1 {
-
         font-size: 28px;
     }
 
     .card h2 {
-
         font-size: 17px;
     }
 
@@ -295,7 +226,6 @@ footer {
 </style>
 
 </head>
-
 
 <body>
 
@@ -321,6 +251,29 @@ footer {
 </header>
 
 
+<!-- LOGIN / SIGN UP -->
+
+<div class="account">
+
+    <a
+        href="login.html"
+        class="login-btn">
+
+        🔐 Login
+
+    </a>
+
+    <a
+        href="signup.html"
+        class="signup-btn">
+
+        📝 Sign Up
+
+    </a>
+
+</div>
+
+
 <!-- HERO -->
 
 <section class="hero">
@@ -334,7 +287,6 @@ footer {
         sensitivity, HUD settings,
         updates, videos and gaming tips.
     </p>
-
 
     <a
         href="https://www.facebook.com/ariyan.love.usha"
@@ -357,13 +309,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            🎯
-        </div>
+        <div class="icon">🎯</div>
 
-        <h2>
-            Sensitivity
-        </h2>
+        <h2>Sensitivity</h2>
 
         <p>
             Free Fire phone sensitivity settings
@@ -380,13 +328,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            ⚙️
-        </div>
+        <div class="icon">⚙️</div>
 
-        <h2>
-            HUD Settings
-        </h2>
+        <h2>HUD Settings</h2>
 
         <p>
             Useful HUD and control settings
@@ -403,13 +347,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            📰
-        </div>
+        <div class="icon">📰</div>
 
-        <h2>
-            FF Updates
-        </h2>
+        <h2>FF Updates</h2>
 
         <p>
             Latest gaming updates and news
@@ -426,13 +366,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            🎥
-        </div>
+        <div class="icon">🎥</div>
 
-        <h2>
-            Videos
-        </h2>
+        <h2>Videos</h2>
 
         <p>
             Gaming videos and clips
@@ -453,13 +389,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            🏆
-        </div>
+        <div class="icon">🏆</div>
 
-        <h2>
-            Tournament
-        </h2>
+        <h2>Tournament</h2>
 
         <p>
             Tournament information and results
@@ -476,13 +408,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            💡
-        </div>
+        <div class="icon">💡</div>
 
-        <h2>
-            Tips & Tricks
-        </h2>
+        <h2>Tips & Tricks</h2>
 
         <p>
             Useful gameplay tips
@@ -499,13 +427,9 @@ footer {
 
     <div class="card premium">
 
-        <div class="icon">
-            💎
-        </div>
+        <div class="icon">💎</div>
 
-        <h2>
-            Premium Sensitivity
-        </h2>
+        <h2>Premium Sensitivity</h2>
 
         <p>
             Get premium Free Fire
