@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ariyan Zone | Sensitivity</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #07070c;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 35px 15px;
+    background: linear-gradient(135deg, #11112a, #351064);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+header p {
+    color: #c8c8d8;
+}
+
+.search {
+    display: block;
+    width: 90%;
+    max-width: 500px;
+    margin: 25px auto;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: 1px solid #33334a;
+    background: #15151f;
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.phone-list {
+    max-width: 800px;
+    margin: auto;
+    padding: 15px;
+}
+
+.phone {
+    background: linear-gradient(145deg, #171720, #101017);
+    border: 1px solid #29293a;
+    border-radius: 18px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.phone h2 {
+    margin: 0 0 15px;
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.setting {
+    background: #0d0d14;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #29293a;
+}
+
+.setting span {
+    display: block;
+    color: #9999ad;
+    font-size: 13px;
+}
+
+.setting strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 18px;
+    color: #a78bfa;
+}
+
+.back {
+    display: block;
+    width: fit-content;
+    margin: 25px auto 40px;
+    padding: 12px 22px;
+    background: #7c3aed;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+    .settings {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎯 Sensitivity</h1>
+    <p>Free Fire Phone Sensitivity</p>
+</header>
+
+<input
+    type="text"
+    class="search"
+    id="search"
+    placeholder="🔎 Search phone name..."
+>
+
+<div class="phone-list" id="phoneList">
+
+    <div class="phone">
+        <h2>📱 Redmi Smart 7</h2>
+
+        <div class="settings">
+
+            <div class="setting">
+                <span>General</span>
+                <strong>190</strong>
+            </div>
+
+            <div class="setting">
+                <span>Red Dot</span>
+                <strong>185</strong>
+            </div>
+
+            <div class="setting">
+                <span>2× Scope</span>
+                <strong>175</strong>
+            </div>
+
+            <div class="setting">
+                <span>4× Scope</span>
+                <strong>165</strong>
+            </div>
+
+            <div class="setting">
+                <span>Sniper Scope</span>
+                <strong>95</strong>
+            </div>
+
+            <div class="setting">
+                <span>Free Look</span>
+                <strong>180</strong>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<a href="index.html" class="back">⬅ Back to Home</a>
+
+<script>
+const search = document.getElementById("search");
+const phones = document.querySelectorAll(".phone");
+
+search.addEventListener("input", function() {
+
+    const value = search.value.toLowerCase();
+
+    phones.forEach(function(phone) {
+
+        const name = phone.innerText.toLowerCase();
+
+        phone.style.display =
+            name.includes(value) ? "block" : "none";
+
+    });
+
+});
+</script>
+
+</body>
+</html>
