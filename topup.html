@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ariyan Zone | FF Top Up</title>
+
+<meta name="description" content="Ariyan Zone Free Fire manual top up service.">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #07070c;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 35px 20px;
+    background: linear-gradient(135deg, #11112a, #351064);
+}
+
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #c8c8d8;
+    margin-top: 8px;
+}
+
+.container {
+    max-width: 520px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: linear-gradient(145deg, #171720, #101017);
+    border: 1px solid #29293a;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    color: #c8c8d8;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    border: 1px solid #33334a;
+    background: #0d0d14;
+    color: white;
+    outline: none;
+    font-size: 15px;
+}
+
+input:focus,
+select:focus {
+    border-color: #8b5cf6;
+}
+
+.price {
+    text-align: center;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 12px;
+    background: #21133d;
+}
+
+.price span {
+    color: #c4b5fd;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.payment-box {
+    background: #0d0d14;
+    border: 1px solid #33334a;
+    border-radius: 12px;
+    padding: 15px;
+    line-height: 1.8;
+}
+
+.payment-number {
+    color: #c4b5fd;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.order-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #7c3aed;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.order-btn:hover {
+    background: #8b5cf6;
+}
+
+.note {
+    color: #9999ad;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.back {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 11px 20px;
+    background: #29293a;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #77778a;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">🔥 Ariyan Zone</div>
+
+    <div class="subtitle">
+        💎 Free Fire Manual Top Up
+    </div>
+
+</header>
+
+
+<div class="container">
+
+
+    <!-- ORDER -->
+
+    <div class="card">
+
+        <h2>🎮 Top Up Order</h2>
+
+        <label>Free Fire Player ID</label>
+
+        <input
+            type="text"
+            id="playerId"
+            placeholder="Enter Player ID">
+
+
+        <label>Diamond Package</label>
+
+        <select id="package">
+
+            <option value="">Select Package</option>
+
+            <option value="100 Diamonds" data-price="৳ Price">
+                100 Diamonds
+            </option>
+
+            <option value="310 Diamonds" data-price="৳ Price">
+                310 Diamonds
+            </option>
+
+            <option value="520 Diamonds" data-price="৳ Price">
+                520 Diamonds
+            </option>
+
+            <option value="1060 Diamonds" data-price="৳ Price">
+                1060 Diamonds
+            </option>
+
+            <option value="2180 Diamonds" data-price="৳ Price">
+                2180 Diamonds
+            </option>
+
+        </select>
+
+
+        <div class="price">
+
+            Price
+
+            <br>
+
+            <span id="price">
+                Select Package
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- PAYMENT -->
+
+    <div class="card">
+
+        <h2>💳 Payment</h2>
+
+        <div class="payment-box">
+
+            <b>bKash:</b>
+
+            <div class="payment-number">
+                YOUR_BKASH_NUMBER
+            </div>
+
+            <br>
+
+            <b>Nagad:</b>
+
+            <div class="payment-number">
+                YOUR_NAGAD_NUMBER
+            </div>
+
+            <br>
+
+            <b>Payment Type:</b>
+            Send Money
+
+        </div>
+
+
+        <p class="note">
+
+            1. Select your Diamond package.<br>
+            2. Send the exact amount to the payment number.<br>
+            3. Save your Transaction ID.<br>
+            4. Enter the Transaction ID below.<br>
+            5. Payment will be manually verified.
+
+        </p>
+
+
+        <label>Transaction ID</label>
+
+        <input
+            type="text"
+            id="transactionId"
+            placeholder="Enter Transaction ID">
+
+
+        <label>Payment Method</label>
+
+        <select id="paymentMethod">
+
+            <option value="">
+                Select Payment Method
+            </option>
+
+            <option value="bKash">
+                bKash
+            </option>
+
+            <option value="Nagad">
+                Nagad
+            </option>
+
+        </select>
+
+
+        <button
+            class="order-btn"
+            onclick="submitOrder()">
+
+            ✅ Submit Order
+
+        </button>
+
+    </div>
+
+
+    <!-- NOTICE -->
+
+    <div class="card">
+
+        <h2>⚠️ Important</h2>
+
+        <p class="note">
+
+            Please check your Player ID carefully before
+            submitting an order.
+
+            <br><br>
+
+            Manual verification is required before the
+            top-up is completed.
+
+            <br><br>
+
+            Never share your Free Fire password or login
+            information with anyone.
+
+        </p>
+
+    </div>
+
+
+    <a href="index.html" class="back">
+        ⬅ Back to Home
+    </a>
+
+</div>
+
+
+<footer>
+
+    © 2026 Ariyan Zone
+
+    <br>
+
+    Gaming • Free Fire • Top Up
+
+</footer>
+
+
+<script>
+
+const packageSelect =
+    document.getElementById("package");
+
+const price =
+    document.getElementById("price");
+
+
+packageSelect.addEventListener("change", function() {
+
+    const selected =
+        this.options[this.selectedIndex];
+
+    const selectedPrice =
+        selected.getAttribute("data-price");
+
+    price.textContent =
+        selectedPrice || "Select Package";
+
+});
+
+
+function submitOrder() {
+
+    const playerId =
+        document.getElementById("playerId").value.trim();
+
+    const selectedPackage =
+        packageSelect.value;
+
+    const transactionId =
+        document.getElementById("transactionId").value.trim();
+
+    const paymentMethod =
+        document.getElementById("paymentMethod").value;
+
+
+    if (!playerId) {
+
+        alert("Please enter your Player ID.");
+
+        return;
+
+    }
+
+
+    if (!selectedPackage) {
+
+        alert("Please select a Diamond package.");
+
+        return;
+
+    }
+
+
+    if (!paymentMethod) {
+
+        alert("Please select a payment method.");
+
+        return;
+
+    }
+
+
+    if (!transactionId) {
+
+        alert("Please enter your Transaction ID.");
+
+        return;
+
+    }
+
+
+    alert(
+        "Order submitted for manual verification."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+  </html>
