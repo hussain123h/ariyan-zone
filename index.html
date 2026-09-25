@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Ariyan Zone | Free Fire Gaming</title>
 
@@ -16,49 +19,33 @@ content="Ariyan Zone - Free Fire Sensitivity, HUD Settings, Updates, Videos, Tou
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     margin:0;
     font-family:Arial,sans-serif;
     color:white;
-    background:#05070a;
+
+    /* BACKGROUND IMAGE REMOVED */
+    background:
+        radial-gradient(
+            circle at top left,
+            #18213b,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at top right,
+            #32134f,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #05070d,
+            #0b0d18,
+            #05060b
+        );
+
     overflow-x:hidden;
 }
 
-/* BACKGROUND */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-3;
-
-    background:
-    linear-gradient(
-        rgba(2,8,10,.48),
-        rgba(3,5,10,.78)
-    ),
-    url("jungle-bg.png") center/cover no-repeat;
-}
-
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-2;
-
-    background:
-    radial-gradient(
-        circle at 50% 30%,
-        rgba(0,255,220,.12),
-        transparent 35%
-    );
-
-    pointer-events:none;
-}
 
 /* HEADER */
 
@@ -69,53 +56,64 @@ header{
 
 .brand{
     display:inline-block;
+
     padding:12px 22px;
+
     border-radius:20px;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.18),
-        rgba(255,255,255,.04)
-    );
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.04)
+        );
 
     border:1px solid rgba(255,255,255,.22);
 
     box-shadow:
-    0 10px 35px rgba(0,0,0,.45),
-    inset 0 1px 1px rgba(255,255,255,.2);
+        0 10px 35px rgba(0,0,0,.45);
 
     backdrop-filter:blur(12px);
 }
 
 .brand h1{
     margin:0;
+
     font-size:36px;
+
     letter-spacing:3px;
 
     text-shadow:
-    0 0 8px #00ffe1,
-    0 0 25px #00ffe1;
+        0 0 8px #00ffe1,
+        0 0 25px #00ffe1;
 }
 
 .subtitle{
     margin-top:8px;
+
     color:#bceee9;
+
     font-size:13px;
+
     letter-spacing:2px;
 }
+
 
 /* LOGIN */
 
 .account{
     display:flex;
+
     justify-content:center;
+
     gap:12px;
+
     margin:10px 0 25px;
 }
 
 .account a{
     text-decoration:none;
+
     color:white;
 
     padding:10px 18px;
@@ -123,25 +121,28 @@ header{
     border-radius:13px;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.18),
-        rgba(255,255,255,.05)
-    );
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.05)
+        );
 
     border:1px solid rgba(255,255,255,.22);
 
     box-shadow:
-    0 8px 18px rgba(0,0,0,.45);
+        0 8px 18px rgba(0,0,0,.45);
 
     font-weight:bold;
 }
+
 
 /* WELCOME */
 
 .welcome{
     max-width:900px;
+
     margin:0 auto 28px;
+
     padding:18px;
 
     text-align:center;
@@ -149,75 +150,82 @@ header{
     border-radius:20px;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.13),
-        rgba(255,255,255,.035)
-    );
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.13),
+            rgba(255,255,255,.035)
+        );
 
     border:1px solid rgba(255,255,255,.17);
 
     backdrop-filter:blur(10px);
 
     box-shadow:
-    0 15px 40px rgba(0,0,0,.45);
+        0 15px 40px rgba(0,0,0,.45);
 }
 
 .welcome h2{
     margin:0 0 7px;
+
     font-size:23px;
 
     text-shadow:
-    0 0 12px #00ffe1;
+        0 0 12px #00ffe1;
 }
 
 .welcome p{
     margin:0;
+
     color:#c7d8d8;
 }
+
 
 /* MAIN */
 
 .container{
-    max-width:1100px;
+    max-width:1150px;
+
     margin:auto;
+
     padding:10px 18px 40px;
 }
 
-/* 4 CARDS IN ONE ROW */
+
+/* 8 CARD = 4 + 4 */
 
 .features{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:18px;
 }
+
 
 /* CARD */
 
 .card{
-    position:relative;
-
     min-height:200px;
+
     padding:16px;
 
     border-radius:22px;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.17),
-        rgba(255,255,255,.035)
-    );
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.17),
+            rgba(255,255,255,.035)
+        );
 
     border:1px solid rgba(255,255,255,.20);
 
     backdrop-filter:blur(14px);
 
     box-shadow:
-    0 14px 35px rgba(0,0,0,.52),
-    inset 0 1px 1px rgba(255,255,255,.18);
-
-    overflow:hidden;
+        0 14px 35px rgba(0,0,0,.52),
+        inset 0 1px 1px rgba(255,255,255,.18);
 
     transition:.3s;
 }
@@ -226,41 +234,49 @@ header{
     transform:translateY(-6px);
 
     box-shadow:
-    0 20px 45px rgba(0,0,0,.65),
-    0 0 25px rgba(0,255,220,.18);
+        0 20px 45px rgba(0,0,0,.65),
+        0 0 25px rgba(0,255,220,.18);
 }
 
-/* IMAGE */
+
+/* IMAGE BOX */
 
 .card-image{
     width:60px;
+
     height:60px;
 
     margin-bottom:12px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     border-radius:16px;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.20),
-        rgba(255,255,255,.05)
-    );
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.20),
+            rgba(255,255,255,.05)
+        );
 
     border:1px solid rgba(255,255,255,.22);
 
     box-shadow:
-    0 8px 20px rgba(0,0,0,.45);
+        0 8px 20px rgba(0,0,0,.45);
 
     overflow:hidden;
 }
 
+
+/* CARD IMAGE */
+
 .card-image img{
     width:48px;
+
     height:48px;
 
     object-fit:cover;
@@ -270,7 +286,8 @@ header{
     display:block;
 }
 
-/* TEXT */
+
+/* CARD TEXT */
 
 .card h3{
     margin:5px 0 7px;
@@ -278,7 +295,7 @@ header{
     font-size:18px;
 
     text-shadow:
-    0 0 8px rgba(255,255,255,.35);
+        0 0 8px rgba(255,255,255,.35);
 }
 
 .card p{
@@ -290,6 +307,7 @@ header{
 
     line-height:1.5;
 }
+
 
 /* BUTTON */
 
@@ -305,20 +323,22 @@ header{
     color:white;
 
     font-size:12px;
+
     font-weight:bold;
 
     background:
-    linear-gradient(
-        145deg,
-        rgba(0,255,220,.25),
-        rgba(90,50,255,.30)
-    );
+        linear-gradient(
+            145deg,
+            rgba(0,255,220,.25),
+            rgba(90,50,255,.30)
+        );
 
     border:1px solid rgba(255,255,255,.20);
 
     box-shadow:
-    0 6px 14px rgba(0,0,0,.42);
+        0 6px 14px rgba(0,0,0,.42);
 }
+
 
 /* FOOTER */
 
@@ -330,46 +350,43 @@ footer{
     color:#aab7b8;
 
     background:
-    linear-gradient(
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.78)
-    );
+        rgba(0,0,0,.45);
 
     border-top:
-    1px solid rgba(255,255,255,.12);
+        1px solid rgba(255,255,255,.12);
 }
 
 footer strong{
     color:white;
 
     text-shadow:
-    0 0 8px #00ffe1;
+        0 0 8px #00ffe1;
 }
 
 footer p{
     margin:7px 0;
+
     font-size:13px;
 }
 
-/* TABLET + PHONE
-   2 CARDS IN ONE ROW */
+
+/* MOBILE */
 
 @media(max-width:800px){
 
     .features{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
+
         gap:14px;
     }
 
 }
 
+
 /* SMALL PHONE */
 
 @media(max-width:500px){
-
-    header{
-        padding-top:22px;
-    }
 
     .brand h1{
         font-size:27px;
@@ -380,22 +397,27 @@ footer p{
     }
 
     .features{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
+
         gap:12px;
     }
 
     .card{
         min-height:190px;
+
         padding:12px;
     }
 
     .card-image{
         width:52px;
+
         height:52px;
     }
 
     .card-image img{
         width:42px;
+
         height:42px;
     }
 
@@ -409,6 +431,7 @@ footer p{
 
     .card a{
         padding:7px 10px;
+
         font-size:11px;
     }
 
@@ -418,7 +441,9 @@ footer p{
 
 </head>
 
+
 <body>
+
 
 <!-- HEADER -->
 
@@ -467,7 +492,7 @@ Free Fire Gaming • Sensitivity • HUD • Updates • Tips
 </div>
 
 
-<!-- FEATURES -->
+<!-- CARDS -->
 
 <div class="container">
 
@@ -479,7 +504,10 @@ Free Fire Gaming • Sensitivity • HUD • Updates • Tips
 <div class="card">
 
 <div class="card-image">
-<img src="sensitivity.png" alt="Sensitivity">
+
+<img src="sensitivity.png"
+alt="Sensitivity">
+
 </div>
 
 <h3>
@@ -502,7 +530,10 @@ Open →
 <div class="card">
 
 <div class="card-image">
-<img src="hud.png" alt="HUD Settings">
+
+<img src="hud.png"
+alt="HUD Settings">
+
 </div>
 
 <h3>
@@ -525,7 +556,10 @@ Open →
 <div class="card">
 
 <div class="card-image">
-<img src="updates.png" alt="FF Updates">
+
+<img src="updates.png"
+alt="FF Updates">
+
 </div>
 
 <h3>
@@ -548,7 +582,10 @@ Open →
 <div class="card">
 
 <div class="card-image">
-<img src="videos.png" alt="Videos">
+
+<img src="videos.png"
+alt="Videos">
+
 </div>
 
 <h3>
@@ -559,8 +596,11 @@ Videos
 Gaming videos and Free Fire content.
 </p>
 
-<a href="https://youtu.be/-ZXVxv9n1Ro" target="_blank">
+<a href="https://youtu.be/-ZXVxv9n1Ro"
+target="_blank">
+
 Watch →
+
 </a>
 
 </div>
@@ -571,7 +611,10 @@ Watch →
 <div class="card">
 
 <div class="card-image">
-<img src="tournament.png" alt="Tournament">
+
+<img src="tournament.png"
+alt="Tournament">
+
 </div>
 
 <h3>
@@ -594,7 +637,10 @@ Open →
 <div class="card">
 
 <div class="card-image">
-<img src="tips.png" alt="Tips">
+
+<img src="tips.png"
+alt="Tips">
+
 </div>
 
 <h3>
@@ -617,7 +663,10 @@ Open →
 <div class="card">
 
 <div class="card-image">
-<img src="premium.png" alt="Premium">
+
+<img src="premium.png"
+alt="Premium Sensitivity">
+
 </div>
 
 <h3>
@@ -640,7 +689,10 @@ View →
 <div class="card">
 
 <div class="card-image">
-<img src="topup.png" alt="Top Up">
+
+<img src="topup.png"
+alt="FF Top Up">
+
 </div>
 
 <h3>
@@ -680,6 +732,7 @@ Gaming • Free Fire • Updates
 </p>
 
 </footer>
+
 
 </body>
 
