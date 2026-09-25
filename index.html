@@ -14,7 +14,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #08080d;
+    background: #07070c;
     color: white;
 }
 
@@ -48,22 +48,24 @@ header {
 /* Hero */
 .hero {
     text-align: center;
-    padding: 50px 20px;
+    padding: 45px 20px 30px;
 }
 
 .hero h1 {
-    font-size: 34px;
+    font-size: 32px;
     margin-bottom: 12px;
 }
 
 .hero p {
     color: #aaaabd;
     line-height: 1.7;
+    max-width: 600px;
+    margin: auto;
 }
 
 .facebook {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 22px;
     padding: 13px 25px;
     background: #1877f2;
     color: white;
@@ -74,41 +76,81 @@ header {
 
 /* Cards */
 .menu {
-    padding: 10px 18px 40px;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
 }
 
 .card {
-    background: #171720;
-    margin: 18px 0;
-    padding: 25px;
-    border-radius: 18px;
+    background: linear-gradient(145deg, #171720, #101017);
+    padding: 25px 15px;
+    border-radius: 20px;
     text-align: center;
     border: 1px solid #29293a;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #7c3aed;
+}
+
+.icon {
+    font-size: 35px;
 }
 
 .card h2 {
-    margin-top: 5px;
+    font-size: 19px;
+    margin: 12px 0 8px;
 }
 
 .card p {
-    color: #aaaabd;
+    color: #9999ad;
+    font-size: 14px;
+    min-height: 40px;
 }
 
 .card button {
     background: #7c3aed;
     color: white;
     border: none;
-    padding: 11px 24px;
+    padding: 10px 20px;
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 25px;
+    padding: 30px 15px;
+    margin-top: 20px;
     color: #77778a;
     border-top: 1px solid #20202c;
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+    .menu {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .card {
+        padding: 20px 10px;
+    }
+
+    .logo {
+        font-size: 32px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
 }
 </style>
 </head>
@@ -133,14 +175,14 @@ footer {
 
     <p>
         Your gaming hub for Free Fire sensitivity,
-        HUD settings, updates and gaming content.
+        HUD settings, updates, videos and gaming tips.
     </p>
 
     <a
-      href="https://www.facebook.com/ariyan.love.usha"
-      target="_blank"
-      class="facebook">
-      📘 Follow on Facebook
+        href="https://www.facebook.com/ariyan.love.usha"
+        target="_blank"
+        class="facebook">
+        📘 Follow on Facebook
     </a>
 
 </section>
@@ -148,35 +190,45 @@ footer {
 <div class="menu">
 
     <div class="card">
-        <h2>🎯 Sensitivity</h2>
+        <div class="icon">🎯</div>
+        <h2>Sensitivity</h2>
         <p>Free Fire sensitivity settings</p>
-        <button onclick="alert('Sensitivity settings coming soon!')">
-            Open
-        </button>
+        <button>Open</button>
     </div>
 
     <div class="card">
-        <h2>⚙️ HUD Settings</h2>
+        <div class="icon">⚙️</div>
+        <h2>HUD Settings</h2>
         <p>Useful HUD and control settings</p>
-        <button onclick="alert('HUD settings coming soon!')">
-            Open
-        </button>
+        <button>Open</button>
     </div>
 
     <div class="card">
-        <h2>📰 FF Updates</h2>
+        <div class="icon">📰</div>
+        <h2>FF Updates</h2>
         <p>Latest gaming updates and news</p>
-        <button onclick="alert('FF Updates coming soon!')">
-            Open
-        </button>
+        <button>Open</button>
     </div>
 
     <div class="card">
-        <h2>🏆 Tournament</h2>
-        <p>Gaming tournament information</p>
-        <button onclick="alert('Tournament information coming soon!')">
-            Open
-        </button>
+        <div class="icon">🎥</div>
+        <h2>Videos</h2>
+        <p>Gaming videos and clips</p>
+        <button>Open</button>
+    </div>
+
+    <div class="card">
+        <div class="icon">🏆</div>
+        <h2>Tournament</h2>
+        <p>Tournament information and results</p>
+        <button>Open</button>
+    </div>
+
+    <div class="card">
+        <div class="icon">💡</div>
+        <h2>Tips & Tricks</h2>
+        <p>Useful gameplay tips</p>
+        <button>Open</button>
     </div>
 
 </div>
