@@ -8,11 +8,7 @@
 
 <title>Ariyan Zone | Free Fire Gaming</title>
 
-<meta name="description" content="Ariyan Zone - Free Fire gaming, sensitivity, HUD settings, updates, videos, tips and top up.">
-
-<meta name="robots" content="index, follow">
-
-<link rel="canonical" href="https://hussain123h.github.io/ariyan-zone/">
+<meta name="description" content="Ariyan Zone - Free Fire sensitivity, HUD settings, gaming updates, videos, tips and top up.">
 
 <style>
 
@@ -31,32 +27,35 @@ body {
 
     background:
         linear-gradient(
-            rgba(3, 15, 10, 0.72),
-            rgba(5, 5, 15, 0.88)
+            rgba(2, 10, 7, 0.55),
+            rgba(4, 3, 12, 0.82)
         ),
         url("jungle-bg.png");
 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+
+    min-height: 100vh;
 }
 
 
-/* DARK GLASS OVERLAY */
+/* DARK NEON OVERLAY */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+
     background:
         radial-gradient(
-            circle at 20% 20%,
-            rgba(0,255,150,0.12),
+            circle at 15% 20%,
+            rgba(0,255,170,0.14),
             transparent 30%
         ),
         radial-gradient(
-            circle at 80% 70%,
-            rgba(140,0,255,0.14),
+            circle at 85% 75%,
+            rgba(150,0,255,0.18),
             transparent 35%
         );
 
@@ -68,394 +67,489 @@ body::before {
 /* HEADER */
 
 header {
-
     text-align: center;
-
-    padding: 45px 20px 35px;
+    padding: 55px 20px 40px;
 
     background:
         linear-gradient(
-            135deg,
-            rgba(0,255,170,0.12),
-            rgba(90,0,255,0.20)
+            180deg,
+            rgba(0,0,0,0.15),
+            rgba(5,5,15,0.55)
         );
 
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(8px);
 
     border-bottom:
-        1px solid rgba(255,255,255,0.15);
-
-    box-shadow:
-        0 10px 40px rgba(0,0,0,0.5);
-
-}
-
-
-/* AVATAR */
-
-.avatar {
-
-    width: 125px;
-    height: 125px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    border: 4px solid #8b5cf6;
-
-    box-shadow:
-        0 0 15px #7c3aed,
-        0 0 40px rgba(124,58,237,0.7);
-
+        1px solid rgba(255,255,255,0.12);
 }
 
 
 /* LOGO */
 
 .logo {
-
-    font-size: 40px;
-
+    font-size: 46px;
     font-weight: 900;
-
-    margin-top: 15px;
-
-    text-shadow:
-        0 0 8px #a855f7,
-        0 0 20px #7c3aed,
-        0 0 40px #7c3aed;
-
-}
-
-
-.tagline {
-
-    margin-top: 8px;
-
-    color: #d6d6e8;
-
     letter-spacing: 2px;
 
+    color: #ffffff;
+
+    text-shadow:
+        0 0 5px #fff,
+        0 0 15px #9b5cff,
+        0 0 30px #7c3aed,
+        0 0 55px #7c3aed;
+}
+
+.tagline {
+    margin-top: 12px;
+
+    color: #d8d8e8;
+
+    font-size: 14px;
+    letter-spacing: 4px;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.5);
 }
 
 
-/* ACCOUNT BUTTONS */
+/* LOGIN AREA */
 
 .account {
-
     text-align: center;
-
-    padding: 20px;
-
+    padding: 25px 15px 10px;
 }
 
 
-.account a {
+/* 3D BUTTON */
 
+.account a {
     display: inline-block;
 
-    padding: 12px 22px;
+    min-width: 125px;
 
-    margin: 5px;
-
-    border-radius: 12px;
+    padding: 13px 22px;
+    margin: 6px;
 
     color: white;
-
     text-decoration: none;
+
+    border-radius: 14px;
 
     font-weight: bold;
 
-    backdrop-filter: blur(10px);
+    border:
+        1px solid rgba(255,255,255,0.25);
 
-    border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(12px);
 
     box-shadow:
-        0 5px 20px rgba(0,0,0,0.4);
+        inset 0 1px 1px rgba(255,255,255,0.25),
+        0 5px 0 rgba(40,20,80,0.9),
+        0 0 22px rgba(124,58,237,0.45);
 
+    transition: 0.2s;
 }
 
+.account a:active {
+    transform: translateY(4px);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.15),
+        0 1px 0 rgba(40,20,80,0.9);
+}
 
 .login {
-
-    background: rgba(124,58,237,0.75);
-
-    box-shadow:
-        0 0 18px rgba(124,58,237,0.5);
-
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124,58,237,0.85),
+            rgba(70,30,150,0.75)
+        );
 }
 
-
 .signup {
-
-    background: rgba(24,119,242,0.75);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,130,255,0.85),
+            rgba(20,70,180,0.75)
+        );
 
     box-shadow:
-        0 0 18px rgba(24,119,242,0.5);
-
+        inset 0 1px 1px rgba(255,255,255,0.25),
+        0 5px 0 rgba(10,40,100,0.9),
+        0 0 22px rgba(30,120,255,0.5);
 }
 
 
 /* HERO */
 
 .hero {
-
     max-width: 850px;
 
-    margin: 20px auto;
+    margin: 20px auto 30px;
 
-    padding: 35px 20px;
+    padding: 35px 22px;
 
     text-align: center;
 
-    border-radius: 25px;
+    border-radius: 28px;
 
     background:
-        rgba(10,10,20,0.45);
+        linear-gradient(
+            145deg,
+            rgba(25,25,40,0.55),
+            rgba(5,5,15,0.42)
+        );
 
     backdrop-filter: blur(16px);
 
     border:
-        1px solid rgba(255,255,255,0.15);
+        1px solid rgba(255,255,255,0.16);
 
     box-shadow:
-        0 15px 50px rgba(0,0,0,0.45),
-        inset 0 0 25px rgba(255,255,255,0.03);
-
+        inset 0 1px 1px rgba(255,255,255,0.12),
+        0 20px 50px rgba(0,0,0,0.55),
+        0 0 35px rgba(124,58,237,0.12);
 }
 
-
 .hero h1 {
+    margin: 0 0 12px;
 
     font-size: 32px;
 
-    margin: 0 0 12px;
-
     text-shadow:
-        0 0 15px #8b5cf6;
-
+        0 0 12px #a855f7,
+        0 0 25px #7c3aed;
 }
-
 
 .hero p {
-
-    color: #c9c9d5;
-
-    line-height: 1.7;
-
-}
-
-
-/* FACEBOOK */
-
-.facebook {
-
-    display: inline-block;
-
-    margin-top: 15px;
-
-    padding: 13px 25px;
-
-    border-radius: 12px;
-
-    background:
-        rgba(24,119,242,0.75);
-
-    color: white;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    box-shadow:
-        0 0 20px rgba(24,119,242,0.5);
-
-}
-
-
-/* MENU */
-
-.menu {
-
-    max-width: 950px;
+    max-width: 600px;
 
     margin: auto;
 
-    padding: 25px 18px;
+    color: #c6c6d5;
+
+    line-height: 1.7;
+}
+
+
+/* FACEBOOK BUTTON */
+
+.facebook {
+    display: inline-block;
+
+    margin-top: 22px;
+
+    padding: 13px 26px;
+
+    color: white;
+    text-decoration: none;
+
+    border-radius: 14px;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1877f2,
+            #0755c9
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.3);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.35),
+        0 5px 0 #063b8f,
+        0 0 25px rgba(24,119,242,0.55);
+}
+
+
+/* MAIN GRID */
+
+.menu {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 10px 18px 40px;
 
     display: grid;
 
     grid-template-columns:
         repeat(2, 1fr);
 
-    gap: 22px;
-
+    gap: 25px;
 }
 
 
-/* GLASS CARDS */
+/* 3D GLASS CARD */
 
 .card {
 
     position: relative;
 
-    padding: 28px 18px;
+    min-height: 225px;
+
+    padding: 30px 18px;
 
     text-align: center;
 
-    border-radius: 24px;
+    border-radius: 26px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(30,30,45,0.62),
-            rgba(10,10,20,0.48)
+            rgba(30,30,48,0.68),
+            rgba(8,8,18,0.52)
         );
 
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(18px);
 
     border:
-        1px solid rgba(255,255,255,0.14);
+        1px solid rgba(255,255,255,0.16);
 
     box-shadow:
 
-        0 15px 35px rgba(0,0,0,0.45),
-
         inset 0 1px 1px
-        rgba(255,255,255,0.08);
+        rgba(255,255,255,0.16),
+
+        inset 0 -1px 1px
+        rgba(0,0,0,0.7),
+
+        0 12px 0
+        rgba(8,5,20,0.75),
+
+        0 20px 45px
+        rgba(0,0,0,0.55),
+
+        0 0 22px
+        rgba(124,58,237,0.18);
 
     transition:
-        transform 0.3s,
-        box-shadow 0.3s,
-        border-color 0.3s;
-
+        0.25s ease;
 }
 
+
+/* CARD HOVER */
 
 .card:hover {
 
     transform:
-        translateY(-8px)
-        scale(1.02);
+        translateY(-8px);
 
     border-color:
-        #9b5cff;
+        rgba(168,85,247,0.75);
 
     box-shadow:
 
-        0 20px 45px rgba(0,0,0,0.6),
+        inset 0 1px 1px
+        rgba(255,255,255,0.2),
 
-        0 0 25px
-        rgba(124,58,237,0.5);
+        0 15px 0
+        rgba(8,5,20,0.75),
 
+        0 25px 55px
+        rgba(0,0,0,0.65),
+
+        0 0 35px
+        rgba(124,58,237,0.55);
 }
 
 
-/* CARD ICON */
+/* ICON */
 
 .icon {
 
-    font-size: 42px;
+    width: 75px;
+    height: 75px;
 
-    margin-bottom: 8px;
+    margin: 0 auto 15px;
 
-    filter:
-        drop-shadow(
-            0 0 10px
-            rgba(168,85,247,0.8)
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 38px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.13),
+            rgba(255,255,255,0.03)
         );
 
+    border:
+        1px solid rgba(255,255,255,0.16);
+
+    box-shadow:
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.2),
+
+        0 0 22px
+        rgba(168,85,247,0.35);
 }
 
+
+/* TITLE */
 
 .card h2 {
 
-    margin: 10px 0;
+    margin: 8px 0;
 
     font-size: 20px;
 
+    text-shadow:
+        0 0 8px rgba(168,85,247,0.8);
 }
 
+
+/* DESCRIPTION */
 
 .card p {
 
-    color: #a9a9bb;
+    color: #aaaabd;
 
-    font-size: 14px;
-
-    min-height: 38px;
+    font-size: 13px;
 
     line-height: 1.5;
 
+    min-height: 40px;
 }
 
 
-/* CARD BUTTON */
+/* 3D OPEN BUTTON */
 
 .card a {
 
     display: inline-block;
 
-    margin-top: 8px;
+    margin-top: 10px;
 
-    padding: 10px 20px;
-
-    border-radius: 11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7c3aed,
-            #a855f7
-        );
+    padding: 11px 25px;
 
     color: white;
 
     text-decoration: none;
 
+    border-radius: 12px;
+
+    font-size: 14px;
+
     font-weight: bold;
 
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #5b21b6
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.28);
+
     box-shadow:
-        0 0 15px
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.35),
+
+        0 4px 0
+        #35136f,
+
+        0 0 18px
         rgba(124,58,237,0.55);
 
+    transition: 0.15s;
 }
 
 
-/* SPECIAL CARDS */
+.card a:active {
+
+    transform:
+        translateY(4px);
+
+    box-shadow:
+
+        inset 0 1px 1px
+        rgba(255,255,255,0.2),
+
+        0 0 8px
+        rgba(124,58,237,0.5);
+}
+
+
+/* PREMIUM */
 
 .premium {
 
     border-color:
-        rgba(168,85,247,0.5);
+        rgba(190,120,255,0.55);
 
+    background:
+        linear-gradient(
+            145deg,
+            rgba(65,25,95,0.62),
+            rgba(12,8,22,0.55)
+        );
 }
 
+.premium .icon {
+
+    box-shadow:
+        0 0 25px rgba(200,100,255,0.65);
+}
+
+
+/* TOP UP */
 
 .topup {
 
     border-color:
-        rgba(245,158,11,0.5);
+        rgba(255,180,40,0.55);
 
+    background:
+        linear-gradient(
+            145deg,
+            rgba(70,45,15,0.58),
+            rgba(15,10,8,0.55)
+        );
 }
 
+.topup .icon {
+
+    box-shadow:
+        0 0 25px rgba(245,158,11,0.55);
+}
 
 .topup a {
 
     background:
         linear-gradient(
             135deg,
-            #f59e0b,
-            #fbbf24
+            #fbbf24,
+            #d97706
         );
 
     color: #111;
 
     box-shadow:
-        0 0 18px
-        rgba(245,158,11,0.5);
 
+        inset 0 1px 1px
+        rgba(255,255,255,0.4),
+
+        0 4px 0
+        #8a4d00,
+
+        0 0 20px
+        rgba(245,158,11,0.55);
 }
 
 
@@ -463,22 +557,19 @@ header {
 
 footer {
 
-    margin-top: 25px;
-
-    padding: 30px 15px;
-
     text-align: center;
 
-    color: #88889b;
+    padding: 35px 15px;
+
+    color: #8e8ea1;
 
     background:
-        rgba(0,0,0,0.45);
+        rgba(0,0,0,0.5);
 
     backdrop-filter: blur(12px);
 
     border-top:
-        1px solid rgba(255,255,255,0.1);
-
+        1px solid rgba(255,255,255,0.12);
 }
 
 
@@ -487,61 +578,56 @@ footer {
 @media (max-width: 600px) {
 
     .logo {
-
-        font-size: 32px;
-
+        font-size: 34px;
     }
 
-    .avatar {
+    .tagline {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
 
-        width: 110px;
-        height: 110px;
+    .hero {
+        margin: 15px;
+        padding: 28px 17px;
+    }
 
+    .hero h1 {
+        font-size: 26px;
     }
 
     .menu {
-
         grid-template-columns:
             repeat(2, 1fr);
 
-        gap: 12px;
+        gap: 15px;
 
-        padding: 15px;
-
+        padding: 10px 12px 30px;
     }
 
     .card {
-
-        padding: 20px 9px;
-
-        border-radius: 18px;
-
+        min-height: 215px;
+        padding: 22px 9px;
+        border-radius: 20px;
     }
 
     .icon {
-
-        font-size: 32px;
-
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+        border-radius: 16px;
     }
 
     .card h2 {
-
         font-size: 16px;
-
     }
 
     .card p {
-
-        font-size: 12px;
-
+        font-size: 11px;
     }
 
     .card a {
-
         padding: 9px 13px;
-
         font-size: 12px;
-
     }
 
 }
@@ -554,14 +640,7 @@ footer {
 <body>
 
 
-<!-- HEADER -->
-
 <header>
-
-    <img
-        src="jungle-bg.png"
-        class="avatar"
-        alt="Ariyan Zone">
 
     <div class="logo">
         🔥 ARIYAN ZONE
@@ -573,8 +652,6 @@ footer {
 
 </header>
 
-
-<!-- LOGIN -->
 
 <div class="account">
 
@@ -597,8 +674,6 @@ footer {
 </div>
 
 
-<!-- HERO -->
-
 <section class="hero">
 
     <h1>
@@ -606,10 +681,9 @@ footer {
     </h1>
 
     <p>
-        Your Free Fire gaming zone for
+        Your gaming hub for Free Fire
         sensitivity, HUD settings,
-        gaming updates, videos,
-        tips and more.
+        updates, videos, tips and more.
     </p>
 
     <a
@@ -625,24 +699,18 @@ footer {
 </section>
 
 
-<!-- CARDS -->
-
 <div class="menu">
 
 
     <div class="card">
 
-        <div class="icon">
-            🎯
-        </div>
+        <div class="icon">🎯</div>
 
-        <h2>
-            Sensitivity
-        </h2>
+        <h2>Sensitivity</h2>
 
         <p>
-            Find Free Fire sensitivity
-            settings for different phones.
+            Free Fire sensitivity settings
+            for different phones.
         </p>
 
         <a href="sensitivity.html">
@@ -654,13 +722,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            ⚙️
-        </div>
+        <div class="icon">⚙️</div>
 
-        <h2>
-            HUD Settings
-        </h2>
+        <h2>HUD Settings</h2>
 
         <p>
             Useful HUD and control
@@ -676,13 +740,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            📰
-        </div>
+        <div class="icon">📰</div>
 
-        <h2>
-            FF Updates
-        </h2>
+        <h2>FF Updates</h2>
 
         <p>
             Free Fire updates,
@@ -698,13 +758,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            🎥
-        </div>
+        <div class="icon">🎥</div>
 
-        <h2>
-            Videos
-        </h2>
+        <h2>Videos</h2>
 
         <p>
             Watch gaming videos
@@ -725,13 +781,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            🏆
-        </div>
+        <div class="icon">🏆</div>
 
-        <h2>
-            Tournament
-        </h2>
+        <h2>Tournament</h2>
 
         <p>
             Tournament information
@@ -747,13 +799,9 @@ footer {
 
     <div class="card">
 
-        <div class="icon">
-            💡
-        </div>
+        <div class="icon">💡</div>
 
-        <h2>
-            Tips & Tricks
-        </h2>
+        <h2>Tips & Tricks</h2>
 
         <p>
             Useful Free Fire
@@ -769,13 +817,9 @@ footer {
 
     <div class="card premium">
 
-        <div class="icon">
-            💎
-        </div>
+        <div class="icon">💎</div>
 
-        <h2>
-            Premium Sensitivity
-        </h2>
+        <h2>Premium Sensitivity</h2>
 
         <p>
             Get premium Free Fire
@@ -791,13 +835,9 @@ footer {
 
     <div class="card topup">
 
-        <div class="icon">
-            💰
-        </div>
+        <div class="icon">💰</div>
 
-        <h2>
-            FF Top Up
-        </h2>
+        <h2>FF Top Up</h2>
 
         <p>
             Manual Free Fire
@@ -813,8 +853,6 @@ footer {
 
 </div>
 
-
-<!-- FOOTER -->
 
 <footer>
 
