@@ -7,6 +7,7 @@
 <title>Ariyan Zone | Sensitivity</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -18,52 +19,85 @@ body {
     color: white;
 }
 
+/* HEADER */
+
 header {
     text-align: center;
-    padding: 35px 15px;
+    padding: 40px 15px;
     background: linear-gradient(135deg, #11112a, #351064);
+    border-bottom: 1px solid #29293a;
 }
 
 header h1 {
     margin: 0;
-    font-size: 30px;
+    font-size: 32px;
 }
 
 header p {
     color: #c8c8d8;
+    margin-top: 10px;
 }
+
+/* SEARCH */
 
 .search {
     display: block;
     width: 90%;
-    max-width: 500px;
+    max-width: 550px;
     margin: 25px auto;
-    padding: 14px 18px;
-    border-radius: 12px;
-    border: 1px solid #33334a;
+    padding: 15px 18px;
+
+    border-radius: 14px;
+    border: 1px solid #39394f;
+
     background: #15151f;
     color: white;
+
     font-size: 16px;
     outline: none;
 }
 
-.phone-list {
-    max-width: 800px;
-    margin: auto;
-    padding: 15px;
+.search:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 15px rgba(124,58,237,0.4);
 }
+
+/* PHONE LIST */
+
+.phone-list {
+    max-width: 850px;
+    margin: auto;
+    padding: 10px 15px 30px;
+}
+
+/* PHONE CARD */
 
 .phone {
     background: linear-gradient(145deg, #171720, #101017);
+
     border: 1px solid #29293a;
-    border-radius: 18px;
-    padding: 20px;
-    margin-bottom: 15px;
+    border-radius: 20px;
+
+    padding: 22px;
+    margin-bottom: 18px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+
+    transition: 0.3s;
+}
+
+.phone:hover {
+    transform: translateY(-3px);
+    border-color: #7c3aed;
+    box-shadow: 0 10px 30px rgba(124,58,237,0.2);
 }
 
 .phone h2 {
-    margin: 0 0 15px;
+    margin: 0 0 18px;
+    font-size: 21px;
 }
+
+/* SETTINGS */
 
 .settings {
     display: grid;
@@ -73,8 +107,10 @@ header p {
 
 .setting {
     background: #0d0d14;
-    padding: 12px;
-    border-radius: 10px;
+
+    padding: 13px;
+
+    border-radius: 12px;
     border: 1px solid #29293a;
 }
 
@@ -87,46 +123,109 @@ header p {
 .setting strong {
     display: block;
     margin-top: 5px;
-    font-size: 18px;
+
+    font-size: 19px;
     color: #a78bfa;
 }
 
+/* HOME BUTTON */
+
 .back {
     display: block;
+
     width: fit-content;
-    margin: 25px auto 40px;
-    padding: 12px 22px;
+
+    margin: 10px auto 45px;
+
+    padding: 13px 25px;
+
     background: #7c3aed;
     color: white;
+
     text-decoration: none;
-    border-radius: 10px;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+
+    box-shadow: 0 5px 18px rgba(124,58,237,0.3);
 }
 
+.back:hover {
+    background: #8b5cf6;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    padding: 25px 15px;
+
+    border-top: 1px solid #20202c;
+
+    color: #77778a;
+
+    font-size: 13px;
+}
+
+/* MOBILE */
+
 @media (max-width: 500px) {
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .phone {
+        padding: 18px;
+    }
+
     .settings {
         grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .setting {
+        padding: 11px;
+    }
+
+    .setting strong {
+        font-size: 17px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>🎯 Sensitivity</h1>
-    <p>Free Fire Phone Sensitivity</p>
+
+    <h1>🎯 Free Fire Sensitivity</h1>
+
+    <p>
+        Ariyan Zone • Phone Sensitivity Settings
+    </p>
+
 </header>
+
 
 <input
     type="text"
     class="search"
     id="search"
-    placeholder="🔎 Search phone name..."
+    placeholder="🔎 Search your phone..."
 >
+
 
 <div class="phone-list" id="phoneList">
 
+
+    <!-- Redmi Smart 7 -->
+
     <div class="phone">
+
         <h2>📱 Redmi Smart 7</h2>
 
         <div class="settings">
@@ -153,25 +252,382 @@ header p {
 
             <div class="setting">
                 <span>Sniper Scope</span>
-                <strong>95</strong>
+                <strong>105</strong>
             </div>
 
             <div class="setting">
                 <span>Free Look</span>
-                <strong>180</strong>
+                <strong>150</strong>
             </div>
 
         </div>
+
     </div>
+
+
+    <!-- Samsung Galaxy A15 -->
+
+    <div class="phone">
+
+        <h2>📱 Samsung Galaxy A15</h2>
+
+        <div class="settings">
+
+            <div class="setting">
+                <span>General</span>
+                <strong>180</strong>
+            </div>
+
+            <div class="setting">
+                <span>Red Dot</span>
+                <strong>175</strong>
+            </div>
+
+            <div class="setting">
+                <span>2× Scope</span>
+                <strong>165</strong>
+            </div>
+
+            <div class="setting">
+                <span>4× Scope</span>
+                <strong>155</strong>
+            </div>
+
+            <div class="setting">
+                <span>Sniper Scope</span>
+                <strong>100</strong>
+            </div>
+
+            <div class="setting">
+                <span>Free Look</span>
+                <strong>150</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Redmi Note 13 -->
+
+    <div class="phone">
+
+        <h2>📱 Redmi Note 13</h2>
+
+        <div class="settings">
+
+            <div class="setting">
+                <span>General</span>
+                <strong>180</strong>
+            </div>
+
+            <div class="setting">
+                <span>Red Dot</span>
+                <strong>175</strong>
+            </div>
+
+            <div class="setting">
+                <span>2× Scope</span>
+                <strong>165</strong>
+            </div>
+
+            <div class="setting">
+                <span>4× Scope</span>
+                <strong>155</strong>
+            </div>
+
+            <div class="setting">
+                <span>Sniper Scope</span>
+                <strong>100</strong>
+            </div>
+
+            <div class="setting">
+                <span>Free Look</span>
+                <strong>150</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Realme C55 -->
+
+    <div class="phone">
+
+        <h2>📱 Realme C55</h2>
+
+        <div class="settings">
+
+            <div class="setting">
+                <span>General</span>
+                <strong>185</strong>
+            </div>
+
+            <div class="setting">
+                <span>Red Dot</span>
+                <strong>180</strong>
+            </div>
+
+            <div class="setting">
+                <span>2× Scope</span>
+                <strong>170</strong>
+            </div>
+
+            <div class="setting">
+                <span>4× Scope</span>
+                <strong>160</strong>
+            </div>
+
+            <div class="setting">
+                <span>Sniper Scope</span>
+                <strong>105</strong>
+            </div>
+
+            <div class="setting">
+                <span>Free Look</span>
+                <strong>150</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Infinix Hot 40 -->
+
+    <div class="phone">
+
+        <h2>📱 Infinix Hot 40</h2>
+
+        <div class="settings">
+
+            <div class="setting">
+                <span>General</span>
+                <strong>190</strong>
+            </div>
+
+            <div class="setting">
+                <span>Red Dot</span>
+                <strong>185</strong>
+            </div>
+
+            <div class="setting">
+                <span>2× Scope</span>
+                <strong>175</strong>
+            </div>
+
+            <div class="setting">
+                <span>4× Scope</span>
+                <strong>165</strong>
+            </div>
+
+            <div class="setting">
+                <span>Sniper Scope</span>
+                <strong>105</strong>
+            </div>
+
+            <div class="setting">
+                <span>Free Look</span>
+                <strong>150</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Tecno Spark 20 -->
+
+    <div class="phone">
+
+        <h2>📱 Tecno Spark 20</h2>
+
+        <div class="settings">
+
+            <div class="setting">
+                <span>General</span>
+                <strong>190</strong>
+            </div>
+
+            <div class="setting">
+                <span>Red Dot</span>
+                <strong>185</strong>
+            </div>
+
+            <div class="setting">
+                <span>2× Scope</span>
+                <strong>175</strong>
+            </div>
+
+            <div class="setting">
+                <span>4× Scope</span>
+                <strong>165</strong>
+            </div>
+
+            <div class="setting">
+                <span>Sniper Scope</span>
+                <strong>105</strong>
+            </div>
+
+            <div class="setting">
+                <span>Free Look</span>
+                <strong>150</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Vivo Y27 -->
+
+    <div class="phone">
+
+        <h2>📱 Vivo Y27</h2>
+
+        <div class="settings">
+
+            <div class="setting">
+                <span>General</span>
+                <strong>180</strong>
+            </div>
+
+            <div class="setting">
+                <span>Red Dot</span>
+                <strong>175</strong>
+            </div>
+
+            <div class="setting">
+                <span>2× Scope</span>
+                <strong>165</strong>
+            </div>
+
+            <div class="setting">
+                <span>4× Scope</span>
+                <strong>155</strong>
+            </div>
+
+            <div class="setting">
+                <span>Sniper Scope</span>
+                <strong>100</strong>
+            </div>
+
+            <div class="setting">
+                <span>Free Look</span>
+                <strong>150</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- OPPO A58 -->
+
+    <div class="phone">
+
+        <h2>📱 OPPO A58</h2>
+
+        <div class="settings">
+
+            <div class="setting">
+                <span>General</span>
+                <strong>180</strong>
+            </div>
+
+            <div class="setting">
+                <span>Red Dot</span>
+                <strong>175</strong>
+            </div>
+
+            <div class="setting">
+                <span>2× Scope</span>
+                <strong>165</strong>
+            </div>
+
+            <div class="setting">
+                <span>4× Scope</span>
+                <strong>155</strong>
+            </div>
+
+            <div class="setting">
+                <span>Sniper Scope</span>
+                <strong>100</strong>
+            </div>
+
+            <div class="setting">
+                <span>Free Look</span>
+                <strong>150</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- iPhone 13 -->
+
+    <div class="phone">
+
+        <h2>🍎 iPhone 13</h2>
+
+        <div class="settings">
+
+            <div class="setting">
+                <span>General</span>
+                <strong>165</strong>
+            </div>
+
+            <div class="setting">
+                <span>Red Dot</span>
+                <strong>160</strong>
+            </div>
+
+            <div class="setting">
+                <span>2× Scope</span>
+                <strong>150</strong>
+            </div>
+
+            <div class="setting">
+                <span>4× Scope</span>
+                <strong>140</strong>
+            </div>
+
+            <div class="setting">
+                <span>Sniper Scope</span>
+                <strong>90</strong>
+            </div>
+
+            <div class="setting">
+                <span>Free Look</span>
+                <strong>145</strong>
+            </div>
+
+        </div>
+
+    </div>
+
 
 </div>
 
-<a href="index.html" class="back">⬅ Back to Home</a>
+
+<a href="index.html" class="back">
+    ⬅ Back to Home
+</a>
+
+
+<footer>
+    © 2026 Ariyan Zone • Free Fire Gaming
+</footer>
+
 
 <script>
 
 const search = document.getElementById("search");
+
 const phones = document.querySelectorAll(".phone");
+
 
 search.addEventListener("input", function() {
 
@@ -181,14 +637,22 @@ search.addEventListener("input", function() {
 
         const name = phone.innerText.toLowerCase();
 
-        phone.style.display =
-            name.includes(value) ? "block" : "none";
+        if (name.includes(value)) {
+
+            phone.style.display = "block";
+
+        } else {
+
+            phone.style.display = "none";
+
+        }
 
     });
 
 });
 
 </script>
+
 
 </body>
 </html>
