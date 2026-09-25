@@ -9,7 +9,9 @@
 <title>Ariyan Zone | Free Fire Gaming</title>
 
 <meta name="description"
-content="Ariyan Zone - Free Fire sensitivity, HUD settings, updates, videos, tips and top up.">
+content="Ariyan Zone - Free Fire Sensitivity, HUD Settings, Updates, Videos, Tournament, Tips, Premium Sensitivity and Top Up.">
+
+<meta name="robots" content="index, follow">
 
 <style>
 
@@ -23,632 +25,483 @@ html{
 
 body{
     margin:0;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
     color:white;
-
-    background:
-        linear-gradient(
-            rgba(0,8,5,.42),
-            rgba(4,3,15,.78)
-        ),
-        url("jungle-bg.png");
-
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-
-    min-height:100vh;
+    background:#05070a;
+    overflow-x:hidden;
 }
 
+/* JUNGLE BACKGROUND */
 
-/* JUNGLE DARKNESS */
-
-body:after{
+body::before{
     content:"";
     position:fixed;
     inset:0;
-
-    pointer-events:none;
-
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            transparent 0,
-            rgba(0,0,0,.18) 45%,
-            rgba(0,0,0,.65) 100%
-        );
-
-    z-index:-1;
-}
-
-
-/* HEADER */
-
-.header{
-    text-align:center;
-    padding:55px 15px 35px;
-
+    z-index:-3;
     background:
         linear-gradient(
-            180deg,
-            rgba(0,0,0,.05),
-            rgba(0,0,0,.5)
+            rgba(2,8,10,.48),
+            rgba(3,5,10,.78)
+        ),
+        url("jungle-bg.png") center/cover no-repeat;
+    transform:scale(1.03);
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(80,255,220,.12),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(90,30,255,.16),
+            transparent 35%
         );
+    pointer-events:none;
 }
 
 
-/* LOGO */
+/* TOP HEADER */
 
-.logo{
-    font-size:44px;
-    font-weight:900;
-    letter-spacing:2px;
-
-    text-shadow:
-        0 0 6px white,
-        0 0 15px #b56cff,
-        0 0 35px #8b5cf6,
-        0 0 65px #6d28d9;
-}
-
-.subtitle{
-    margin-top:10px;
-
-    color:#d7d7e6;
-
-    font-size:13px;
-    letter-spacing:4px;
-
-    text-shadow:
-        0 0 12px #8b5cf6;
-}
-
-
-/* TOP BUTTONS */
-
-.top-buttons{
+header{
     text-align:center;
-    padding:15px;
+    padding:38px 18px 25px;
 }
 
-.top-btn{
-
+.brand{
     display:inline-block;
-
-    min-width:125px;
-
-    margin:5px;
-
-    padding:13px 22px;
-
-    border-radius:13px;
-
-    text-decoration:none;
-    color:white;
-
-    font-weight:bold;
+    padding:12px 25px;
+    border-radius:20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.16),
+            rgba(255,255,255,.18),
             rgba(255,255,255,.04)
         );
 
-    border:
-        1px solid rgba(255,255,255,.28);
-
-    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,.22);
 
     box-shadow:
+        0 10px 35px rgba(0,0,0,.45),
+        inset 0 1px 1px rgba(255,255,255,.2);
 
-        inset 0 1px 2px
-        rgba(255,255,255,.3),
-
-        0 5px 0
-        rgba(30,10,65,.9),
-
-        0 0 22px
-        rgba(139,92,246,.5);
-
-    transition:.2s;
+    backdrop-filter:blur(12px);
 }
 
-.top-btn:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        inset 0 1px 2px
-        rgba(255,255,255,.35),
-
-        0 8px 0
-        rgba(30,10,65,.8),
-
-        0 0 35px
-        rgba(139,92,246,.8);
-}
-
-.top-btn:active{
-    transform:translateY(4px);
-}
-
-.signup{
-    box-shadow:
-        inset 0 1px 2px
-        rgba(255,255,255,.3),
-
-        0 5px 0
-        #063d80,
-
-        0 0 25px
-        rgba(30,130,255,.5);
-}
-
-
-/* WELCOME GLASS */
-
-.welcome{
-
-    max-width:850px;
-
-    margin:20px auto 30px;
-
-    padding:35px 22px;
-
-    text-align:center;
-
-    border-radius:28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(25,30,38,.48),
-            rgba(5,7,15,.38)
-        );
-
-    backdrop-filter:blur(18px);
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
-    box-shadow:
-
-        inset 0 1px 1px
-        rgba(255,255,255,.15),
-
-        0 20px 55px
-        rgba(0,0,0,.55),
-
-        0 0 35px
-        rgba(95,35,180,.2);
-}
-
-.welcome h1{
-
-    margin:0 0 12px;
-
-    font-size:31px;
+.brand h1{
+    margin:0;
+    font-size:38px;
+    letter-spacing:3px;
 
     text-shadow:
-        0 0 10px #b56cff,
-        0 0 25px #7c3aed;
+        0 0 8px #00ffe1,
+        0 0 25px #00ffe1;
 }
 
-.welcome p{
-
-    max-width:600px;
-
-    margin:auto;
-
-    color:#c9c9d5;
-
-    line-height:1.7;
+.subtitle{
+    margin-top:8px;
+    color:#bceee9;
+    font-size:14px;
+    letter-spacing:2px;
 }
 
 
-/* FACEBOOK */
+/* LOGIN BUTTONS */
 
-.facebook{
+.account{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin:15px 0 25px;
+}
 
-    display:inline-block;
+.account a{
+    text-decoration:none;
+    color:white;
 
-    margin-top:20px;
-
-    padding:13px 25px;
+    padding:11px 20px;
 
     border-radius:13px;
 
-    color:white;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.05)
+        );
 
-    text-decoration:none;
+    border:1px solid rgba(255,255,255,.22);
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.45),
+        inset 0 1px 1px rgba(255,255,255,.2);
+
+    backdrop-filter:blur(10px);
 
     font-weight:bold;
-
-    background:
-        linear-gradient(
-            145deg,
-            #2386ff,
-            #0754bd
-        );
-
-    border:
-        1px solid rgba(255,255,255,.3);
-
-    box-shadow:
-
-        inset 0 1px 2px
-        rgba(255,255,255,.35),
-
-        0 5px 0
-        #043777,
-
-        0 0 25px
-        rgba(24,119,242,.55);
-}
-
-
-/* CARDS AREA */
-
-.cards{
-
-    max-width:1000px;
-
-    margin:auto;
-
-    padding:10px 18px 40px;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:25px;
-}
-
-
-/* 3D GLASS CARD */
-
-.card{
-
-    min-height:225px;
-
-    padding:28px 16px;
-
-    text-align:center;
-
-    border-radius:25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(36,38,50,.62),
-            rgba(7,8,17,.48)
-        );
-
-    backdrop-filter:blur(18px);
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
-    box-shadow:
-
-        inset 0 1px 2px
-        rgba(255,255,255,.16),
-
-        inset 0 -2px 2px
-        rgba(0,0,0,.5),
-
-        0 9px 0
-        rgba(8,4,20,.85),
-
-        0 20px 45px
-        rgba(0,0,0,.55),
-
-        0 0 25px
-        rgba(124,58,237,.18);
-
     transition:.25s;
 }
 
-.card:hover{
-
-    transform:
-        translateY(-8px);
-
-    border-color:
-        rgba(179,116,255,.8);
+.account a:hover{
+    transform:translateY(-3px) scale(1.03);
 
     box-shadow:
-
-        inset 0 1px 2px
-        rgba(255,255,255,.2),
-
-        0 12px 0
-        rgba(8,4,20,.8),
-
-        0 25px 55px
-        rgba(0,0,0,.65),
-
-        0 0 38px
-        rgba(139,92,246,.55);
+        0 12px 25px rgba(0,0,0,.55),
+        0 0 18px rgba(0,255,220,.25);
 }
 
 
-/* ICON BOX */
+/* WELCOME */
 
-.icon{
+.welcome{
+    max-width:900px;
+    margin:0 auto 28px;
+    padding:18px;
 
-    width:72px;
-    height:72px;
+    text-align:center;
 
-    margin:0 auto 14px;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    font-size:36px;
-
-    border-radius:19px;
+    border-radius:20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.15),
+            rgba(255,255,255,.13),
             rgba(255,255,255,.035)
         );
 
-    border:
-        1px solid rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.17);
+
+    backdrop-filter:blur(10px);
 
     box-shadow:
+        0 15px 40px rgba(0,0,0,.45),
+        inset 0 1px 1px rgba(255,255,255,.15);
+}
 
-        inset 0 1px 2px
-        rgba(255,255,255,.25),
+.welcome h2{
+    margin:0 0 7px;
+    font-size:24px;
+    text-shadow:0 0 12px #00ffe1;
+}
 
-        0 0 25px
-        rgba(139,92,246,.4);
+.welcome p{
+    margin:0;
+    color:#c7d8d8;
 }
 
 
-.card h2{
+/* MAIN */
 
-    margin:8px 0;
+.container{
+    max-width:1050px;
+    margin:auto;
+    padding:10px 18px 40px;
+}
+
+
+/* FEATURE GRID */
+
+.features{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+}
+
+
+/* FEATURE CARD */
+
+.card{
+    position:relative;
+    min-height:190px;
+
+    padding:18px;
+
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.17),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(255,255,255,.20);
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+        0 14px 35px rgba(0,0,0,.52),
+        inset 0 1px 1px rgba(255,255,255,.18);
+
+    overflow:hidden;
+
+    transition:
+        transform .3s,
+        box-shadow .3s;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    right:-35px;
+    top:-35px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,255,220,.18),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+.card:hover{
+    transform:
+        translateY(-7px)
+        perspective(600px)
+        rotateX(2deg);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.65),
+        0 0 25px rgba(0,255,220,.18),
+        inset 0 1px 1px rgba(255,255,255,.2);
+}
+
+
+/* SMALL IMAGE / ICON */
+
+.card-image{
+    width:72px;
+    height:72px;
+
+    margin-bottom:13px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.20),
+            rgba(255,255,255,.05)
+        );
+
+    border:1px solid rgba(255,255,255,.22);
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.45),
+        inset 0 1px 1px rgba(255,255,255,.25);
+
+    font-size:38px;
+
+    text-shadow:
+        0 0 12px rgba(0,255,220,.8);
+
+    transition:.3s;
+}
+
+.card:hover .card-image{
+    transform:
+        translateY(-3px)
+        scale(1.06);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.5),
+        0 0 20px rgba(0,255,220,.22);
+}
+
+
+/* TEXT */
+
+.card h3{
+    margin:4px 0 7px;
 
     font-size:19px;
 
     text-shadow:
-        0 0 9px
-        rgba(168,85,247,.85);
+        0 0 8px rgba(255,255,255,.35);
 }
 
 .card p{
+    margin:0 0 14px;
 
-    color:#aaaabd;
+    color:#b9c7c8;
 
     font-size:13px;
 
     line-height:1.5;
-
-    min-height:40px;
 }
 
 
-/* 3D CARD BUTTON */
+/* CARD BUTTON */
 
-.card-btn{
-
+.card a{
     display:inline-block;
 
-    margin-top:9px;
+    padding:9px 15px;
 
-    padding:11px 25px;
-
-    border-radius:12px;
-
-    color:white;
+    border-radius:11px;
 
     text-decoration:none;
 
-    font-size:13px;
+    color:white;
 
+    font-size:13px;
     font-weight:bold;
 
     background:
         linear-gradient(
             145deg,
-            #9b6cff,
-            #5722a8
+            rgba(0,255,220,.25),
+            rgba(90,50,255,.30)
         );
 
-    border:
-        1px solid rgba(255,255,255,.3);
+    border:1px solid rgba(255,255,255,.20);
 
     box-shadow:
+        0 6px 14px rgba(0,0,0,.42),
+        inset 0 1px 1px rgba(255,255,255,.18);
 
-        inset 0 1px 2px
-        rgba(255,255,255,.35),
-
-        0 4px 0
-        #321067,
-
-        0 0 20px
-        rgba(139,92,246,.6);
-
-    transition:.15s;
+    transition:.25s;
 }
 
-.card-btn:hover{
-    filter:brightness(1.18);
-}
-
-.card-btn:active{
-
-    transform:
-        translateY(4px);
+.card a:hover{
+    transform:translateY(-2px);
 
     box-shadow:
-
-        inset 0 1px 1px
-        rgba(255,255,255,.2),
-
-        0 0 10px
-        rgba(139,92,246,.5);
+        0 9px 20px rgba(0,0,0,.55),
+        0 0 15px rgba(0,255,220,.2);
 }
 
 
-/* PREMIUM */
+/* DIFFERENT CARD GLOW */
 
-.premium{
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(75,32,105,.62),
-            rgba(15,7,25,.5)
-        );
-
-    border-color:
-        rgba(190,110,255,.6);
+.sensitivity .card-image{
+    text-shadow:0 0 15px #00eaff;
 }
 
-.premium .icon{
-
-    box-shadow:
-        0 0 30px
-        rgba(202,120,255,.65);
+.hud .card-image{
+    text-shadow:0 0 15px #9b5cff;
 }
 
-
-/* TOP UP */
-
-.topup{
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(75,48,12,.6),
-            rgba(17,10,5,.5)
-        );
-
-    border-color:
-        rgba(255,185,45,.6);
+.updates .card-image{
+    text-shadow:0 0 15px #ffd000;
 }
 
-.topup .icon{
-
-    box-shadow:
-        0 0 30px
-        rgba(245,158,11,.6);
+.videos .card-image{
+    text-shadow:0 0 15px #ff315d;
 }
 
-.topup .card-btn{
+.tournament .card-image{
+    text-shadow:0 0 15px #00ff91;
+}
 
-    color:#171006;
+.tips .card-image{
+    text-shadow:0 0 15px #ff9d00;
+}
 
-    background:
-        linear-gradient(
-            145deg,
-            #ffd34f,
-            #d88700
-        );
+.premium .card-image{
+    text-shadow:0 0 15px #e8a7ff;
+}
 
-    box-shadow:
-
-        inset 0 1px 2px
-        rgba(255,255,255,.45),
-
-        0 4px 0
-        #814600,
-
-        0 0 22px
-        rgba(245,158,11,.65);
+.topup .card-image{
+    text-shadow:0 0 15px #20ff75;
 }
 
 
 /* FOOTER */
 
 footer{
-
-    padding:35px 15px;
-
     text-align:center;
 
-    color:#858598;
+    padding:35px 20px;
+
+    color:#aab7b8;
 
     background:
-        rgba(0,0,0,.55);
-
-    backdrop-filter:blur(12px);
+        linear-gradient(
+            rgba(0,0,0,.55),
+            rgba(0,0,0,.78)
+        );
 
     border-top:
         1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+}
+
+footer strong{
+    color:white;
+
+    text-shadow:
+        0 0 8px #00ffe1;
+}
+
+footer p{
+    margin:7px 0;
+    font-size:13px;
 }
 
 
 /* MOBILE */
 
-@media(max-width:600px){
+@media(max-width:800px){
 
-    .logo{
-        font-size:33px;
-    }
-
-    .subtitle{
-        font-size:10px;
-        letter-spacing:2px;
-    }
-
-    .welcome{
-        margin:15px;
-        padding:28px 17px;
-    }
-
-    .welcome h1{
-        font-size:25px;
-    }
-
-    .cards{
-
+    .features{
         grid-template-columns:
             repeat(2,1fr);
-
-        gap:14px;
-
-        padding:
-            8px 12px 30px;
     }
 
-    .card{
+}
 
-        min-height:215px;
+@media(max-width:500px){
 
-        padding:
-            22px 9px;
-
-        border-radius:20px;
+    header{
+        padding-top:25px;
     }
 
-    .icon{
-
-        width:60px;
-        height:60px;
-
+    .brand h1{
         font-size:29px;
     }
 
-    .card h2{
-        font-size:16px;
-    }
-
-    .card p{
+    .subtitle{
         font-size:11px;
     }
 
-    .card-btn{
-        padding:9px 13px;
-        font-size:11px;
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        min-height:170px;
+    }
+
+    .card-image{
+        width:65px;
+        height:65px;
+        font-size:34px;
+    }
+
+    .account a{
+        padding:10px 15px;
+        font-size:13px;
     }
 
 }
@@ -663,37 +516,31 @@ footer{
 
 <!-- HEADER -->
 
-<header class="header">
+<header>
 
-    <div class="logo">
-        🔥 ARIYAN ZONE
-    </div>
+    <div class="brand">
 
-    <div class="subtitle">
-        GAMING • FREE FIRE • UPDATES
+        <h1>🔥 ARIYAN ZONE</h1>
+
+        <div class="subtitle">
+            GAMING • FREE FIRE • UPDATES
+        </div>
+
     </div>
 
 </header>
 
 
-<!-- LOGIN -->
+<!-- LOGIN / SIGNUP -->
 
-<div class="top-buttons">
+<div class="account">
 
-    <a
-        href="login.html"
-        class="top-btn">
-
-        🔐 LOGIN
-
+    <a href="login.html">
+        🔐 Login
     </a>
 
-    <a
-        href="signup.html"
-        class="top-btn signup">
-
-        📝 SIGN UP
-
+    <a href="signup.html">
+        ✨ Sign Up
     </a>
 
 </div>
@@ -701,242 +548,208 @@ footer{
 
 <!-- WELCOME -->
 
-<section class="welcome">
+<div class="welcome">
 
-    <h1>
-        🌿 Welcome to Ariyan Zone
-    </h1>
+    <h2>
+        ⚡ Welcome to Ariyan Zone
+    </h2>
 
     <p>
-        Your ultimate Free Fire gaming zone
-        for sensitivity, HUD settings,
-        updates, videos, tournaments,
-        tips and more.
+        Free Fire Gaming • Sensitivity • HUD • Updates • Tips
     </p>
 
-    <a
-        href="https://www.facebook.com/ariyan.love.usha"
-        target="_blank"
-        rel="noopener"
-        class="facebook">
-
-        📘 FOLLOW ON FACEBOOK
-
-    </a>
-
-</section>
+</div>
 
 
-<!-- CARDS -->
+<!-- FEATURES -->
 
-<div class="cards">
+<div class="container">
+
+<div class="features">
 
 
-    <div class="card">
+    <!-- SENSITIVITY -->
 
-        <div class="icon">
+    <div class="card sensitivity">
+
+        <div class="card-image">
             🎯
         </div>
 
-        <h2>
+        <h3>
             Sensitivity
-        </h2>
+        </h3>
 
         <p>
-            Free Fire sensitivity settings
-            for different phones.
+            Device-wise Free Fire sensitivity settings.
         </p>
 
-        <a
-            href="sensitivity.html"
-            class="card-btn">
-
-            OPEN
-
+        <a href="sensitivity.html">
+            Open →
         </a>
 
     </div>
 
 
-    <div class="card">
+    <!-- HUD -->
 
-        <div class="icon">
-            ⚙️
+    <div class="card hud">
+
+        <div class="card-image">
+            🎮
         </div>
 
-        <h2>
+        <h3>
             HUD Settings
-        </h2>
+        </h3>
 
         <p>
-            Useful HUD and control
-            settings for gameplay.
+            Useful HUD and control settings for gameplay.
         </p>
 
-        <a
-            href="hud.html"
-            class="card-btn">
-
-            OPEN
-
+        <a href="hud.html">
+            Open →
         </a>
 
     </div>
 
 
-    <div class="card">
+    <!-- UPDATES -->
 
-        <div class="icon">
+    <div class="card updates">
+
+        <div class="card-image">
             📰
         </div>
 
-        <h2>
+        <h3>
             FF Updates
-        </h2>
+        </h3>
 
         <p>
-            Free Fire updates,
-            events and news.
+            Free Fire news, events and update information.
         </p>
 
-        <a
-            href="updates.html"
-            class="card-btn">
-
-            OPEN
-
+        <a href="updates.html">
+            Open →
         </a>
 
     </div>
 
 
-    <div class="card">
+    <!-- VIDEOS -->
 
-        <div class="icon">
-            🎥
+    <div class="card videos">
+
+        <div class="card-image">
+            🎬
         </div>
 
-        <h2>
+        <h3>
             Videos
-        </h2>
+        </h3>
 
         <p>
-            Watch gaming videos
-            and Free Fire clips.
+            Gaming videos and Free Fire content.
         </p>
 
-        <a
-            href="https://youtu.be/-ZXVxv9n1Ro"
-            target="_blank"
-            rel="noopener"
-            class="card-btn">
+        <a href="https://youtu.be/-ZXVxv9n1Ro"
+           target="_blank">
 
-            ▶ WATCH
+            Watch →
 
         </a>
 
     </div>
 
 
-    <div class="card">
+    <!-- TOURNAMENT -->
 
-        <div class="icon">
+    <div class="card tournament">
+
+        <div class="card-image">
             🏆
         </div>
 
-        <h2>
+        <h3>
             Tournament
-        </h2>
+        </h3>
 
         <p>
-            Tournament information
-            and results.
+            Tournament information and gaming events.
         </p>
 
-        <a
-            href="tournament.html"
-            class="card-btn">
-
-            OPEN
-
+        <a href="tournament.html">
+            Open →
         </a>
 
     </div>
 
 
-    <div class="card">
+    <!-- TIPS -->
 
-        <div class="icon">
+    <div class="card tips">
+
+        <div class="card-image">
             💡
         </div>
 
-        <h2>
+        <h3>
             Tips & Tricks
-        </h2>
+        </h3>
 
         <p>
-            Useful Free Fire
-            gameplay tips.
+            Helpful gameplay tips for Free Fire players.
         </p>
 
-        <a
-            href="tips.html"
-            class="card-btn">
-
-            OPEN
-
+        <a href="tips.html">
+            Open →
         </a>
 
     </div>
 
+
+    <!-- PREMIUM -->
 
     <div class="card premium">
 
-        <div class="icon">
+        <div class="card-image">
             💎
         </div>
 
-        <h2>
+        <h3>
             Premium Sensitivity
-        </h2>
+        </h3>
 
         <p>
-            Get premium Free Fire
-            sensitivity settings.
+            Premium sensitivity settings and information.
         </p>
 
-        <a
-            href="premium.html"
-            class="card-btn">
-
-            💎 PREMIUM
-
+        <a href="premium.html">
+            View →
         </a>
 
     </div>
 
 
+    <!-- TOP UP -->
+
     <div class="card topup">
 
-        <div class="icon">
-            💰
+        <div class="card-image">
+            💳
         </div>
 
-        <h2>
+        <h3>
             FF Top Up
-        </h2>
+        </h3>
 
         <p>
-            Manual Free Fire
-            diamond top up service.
+            Free Fire diamond top-up information.
         </p>
 
-        <a
-            href="topup.html"
-            class="card-btn">
-
-            💎 TOP UP
-
+        <a href="topup.html">
+            Top Up →
         </a>
 
     </div>
@@ -944,14 +757,24 @@ footer{
 
 </div>
 
+</div>
+
+
+<!-- FOOTER -->
 
 <footer>
 
-    © 2026 Ariyan Zone
+    <strong>
+        🔥 ARIYAN ZONE
+    </strong>
 
-    <br><br>
+    <p>
+        Gaming • Free Fire • Updates
+    </p>
 
-    🌿 GAMING • FREE FIRE • UPDATES • TOP UP
+    <p>
+        © 2026 Ariyan Zone
+    </p>
 
 </footer>
 
