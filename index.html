@@ -13,10 +13,6 @@ content="Ariyan Zone - Free Fire Gaming, Sensitivity, HUD Settings, Updates, Vid
 
 <style>
 
-/* =========================
-   BASIC
-========================= */
-
 *{
     box-sizing:border-box;
 }
@@ -42,15 +38,9 @@ body{
     overflow-x:hidden;
 }
 
-
-/* =========================
-   COVER
-========================= */
-
 .cover{
     width:100%;
     height:330px;
-
     overflow:hidden;
     position:relative;
 
@@ -63,16 +53,13 @@ body{
 .cover img{
     width:100%;
     height:100%;
-
     object-fit:cover;
     object-position:center;
-
     display:block;
 }
 
 .cover::after{
     content:"";
-
     position:absolute;
     inset:0;
 
@@ -86,16 +73,9 @@ body{
     pointer-events:none;
 }
 
-
-/* =========================
-   PROFILE
-========================= */
-
 .profile{
     text-align:center;
-
     margin-top:-65px;
-
     position:relative;
     z-index:5;
 }
@@ -103,9 +83,7 @@ body{
 .profile img{
     width:125px;
     height:125px;
-
     object-fit:cover;
-
     border-radius:50%;
 
     border:4px solid #00ffe1;
@@ -118,22 +96,14 @@ body{
     background:#080a12;
 }
 
-
-/* =========================
-   BRAND
-========================= */
-
 header{
     text-align:center;
-
     padding:15px 15px 20px;
 }
 
 .brand{
     display:inline-block;
-
     padding:13px 24px;
-
     border-radius:20px;
 
     background:
@@ -143,8 +113,7 @@ header{
             rgba(0,20,25,.35)
         );
 
-    border:
-        1px solid rgba(0,255,225,.35);
+    border:1px solid rgba(0,255,225,.35);
 
     box-shadow:
         0 10px 35px rgba(0,0,0,.65);
@@ -154,9 +123,7 @@ header{
 
 .brand h1{
     margin:0;
-
     font-size:36px;
-
     letter-spacing:3px;
 
     text-shadow:
@@ -166,36 +133,31 @@ header{
 
 .subtitle{
     margin-top:8px;
-
     color:#bceee9;
-
     font-size:13px;
-
     letter-spacing:2px;
 }
 
 
 /* =========================
-   LOGIN / SIGN UP
+   ACCOUNT AREA
 ========================= */
 
 .account{
     display:flex;
-
     justify-content:center;
-
-    gap:12px;
-
-    margin:10px 0 25px;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:10px 12px 25px;
 }
 
-.account a{
+.account button{
+    border:none;
     text-decoration:none;
-
     color:white;
 
     padding:11px 20px;
-
     border-radius:13px;
 
     background:
@@ -205,22 +167,158 @@ header{
             rgba(80,40,180,.25)
         );
 
-    border:
-        1px solid rgba(0,255,225,.35);
+    border:1px solid rgba(0,255,225,.35);
 
     box-shadow:
         0 8px 20px rgba(0,0,0,.55);
 
     font-weight:bold;
-
+    cursor:pointer;
     transition:.3s;
 }
 
-.account a:hover{
+.account button:hover{
     transform:translateY(-3px);
 
     box-shadow:
         0 0 20px rgba(0,255,225,.45);
+}
+
+#userArea{
+    display:none;
+    text-align:center;
+}
+
+#userName{
+    color:#00ffe1;
+    font-weight:bold;
+    margin-right:8px;
+}
+
+
+/* =========================
+   LOGIN BOX
+========================= */
+
+.auth-box{
+    display:none;
+
+    max-width:400px;
+    margin:0 auto 30px;
+    padding:22px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,0,0,.78),
+            rgba(0,30,35,.55)
+        );
+
+    border:1px solid rgba(0,255,225,.35);
+
+    backdrop-filter:blur(10px);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.75);
+
+    position:relative;
+    z-index:20;
+}
+
+.auth-box h2{
+    margin:0 0 15px;
+    color:#00ffe1;
+}
+
+.auth-box input{
+    width:100%;
+    padding:12px;
+    margin:6px 0;
+
+    border:none;
+    outline:none;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.10);
+    color:white;
+
+    border:1px solid rgba(0,255,225,.20);
+}
+
+.auth-box input::placeholder{
+    color:#aebbbb;
+}
+
+.auth-btn{
+    width:100%;
+    padding:11px;
+    margin-top:8px;
+
+    border:none;
+    border-radius:10px;
+
+    color:white;
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            145deg,
+            #00a994,
+            #6130c7
+        );
+
+    cursor:pointer;
+}
+
+.google-btn{
+    width:100%;
+    padding:11px;
+    margin-top:10px;
+
+    border:none;
+    border-radius:10px;
+
+    background:white;
+    color:#222;
+
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.close-btn{
+    position:absolute;
+    right:12px;
+    top:10px;
+
+    border:none;
+    background:none;
+
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.auth-switch{
+    margin-top:12px;
+    color:#b9c7c8;
+    font-size:12px;
+}
+
+.auth-switch span{
+    color:#00ffe1;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#authMessage{
+    font-size:12px;
+    margin-top:10px;
+    color:#ffd166;
 }
 
 
@@ -230,11 +328,8 @@ header{
 
 .welcome{
     max-width:900px;
-
     margin:0 auto 30px;
-
     padding:20px;
-
     text-align:center;
 
     border-radius:20px;
@@ -246,8 +341,7 @@ header{
             rgba(0,30,35,.38)
         );
 
-    border:
-        1px solid rgba(0,255,225,.28);
+    border:1px solid rgba(0,255,225,.28);
 
     backdrop-filter:blur(8px);
 
@@ -257,7 +351,6 @@ header{
 
 .welcome h2{
     margin:0 0 8px;
-
     font-size:24px;
 
     text-shadow:
@@ -266,9 +359,7 @@ header{
 
 .welcome p{
     margin:0;
-
     color:#c7d8d8;
-
     font-size:14px;
 }
 
@@ -279,21 +370,13 @@ header{
 
 .container{
     max-width:1150px;
-
     margin:auto;
-
     padding:10px 18px 50px;
 }
 
-
-/* 4 + 4 CARDS */
-
 .features{
     display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:18px;
 }
 
@@ -304,9 +387,7 @@ header{
 
 .card{
     min-height:205px;
-
     padding:16px;
-
     border-radius:22px;
 
     background:
@@ -316,8 +397,7 @@ header{
             rgba(5,25,30,.48)
         );
 
-    border:
-        1px solid rgba(0,255,225,.22);
+    border:1px solid rgba(0,255,225,.22);
 
     backdrop-filter:blur(8px);
 
@@ -338,27 +418,20 @@ header{
         0 0 25px rgba(0,255,220,.20);
 }
 
-
-/* CARD IMAGE */
-
 .card-image{
     width:60px;
     height:60px;
-
     margin-bottom:12px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     border-radius:16px;
 
-    background:
-        rgba(0,0,0,.45);
+    background:rgba(0,0,0,.45);
 
-    border:
-        1px solid rgba(0,255,225,.25);
+    border:1px solid rgba(0,255,225,.25);
 
     box-shadow:
         0 8px 20px rgba(0,0,0,.55);
@@ -369,22 +442,13 @@ header{
 .card-image img{
     width:48px;
     height:48px;
-
     object-fit:cover;
-
     border-radius:12px;
-
     display:block;
 }
 
-
-/* =========================
-   CARD TEXT
-========================= */
-
 .card h3{
     margin:5px 0 7px;
-
     font-size:18px;
 
     text-shadow:
@@ -393,32 +457,21 @@ header{
 
 .card p{
     margin:0 0 13px;
-
     color:#b9c7c8;
-
     font-size:12px;
-
     line-height:1.5;
 }
-
-
-/* =========================
-   CARD BUTTON
-========================= */
 
 .card a{
     display:inline-block;
 
     padding:8px 13px;
-
     border-radius:10px;
 
     text-decoration:none;
-
     color:white;
 
     font-size:12px;
-
     font-weight:bold;
 
     background:
@@ -428,8 +481,7 @@ header{
             rgba(90,50,255,.30)
         );
 
-    border:
-        1px solid rgba(0,255,225,.28);
+    border:1px solid rgba(0,255,225,.28);
 
     box-shadow:
         0 6px 14px rgba(0,0,0,.50);
@@ -451,13 +503,11 @@ header{
 
 footer{
     text-align:center;
-
     padding:30px 20px;
 
     color:#aab7b8;
 
-    background:
-        rgba(0,0,0,.65);
+    background:rgba(0,0,0,.65);
 
     border-top:
         1px solid rgba(0,255,225,.18);
@@ -465,7 +515,6 @@ footer{
 
 footer strong{
     color:white;
-
     font-size:18px;
 
     text-shadow:
@@ -474,13 +523,12 @@ footer strong{
 
 footer p{
     margin:7px 0;
-
     font-size:13px;
 }
 
 
 /* =========================
-   TABLET / MOBILE
+   TABLET
 ========================= */
 
 @media(max-width:800px){
@@ -490,9 +538,7 @@ footer p{
     }
 
     .features{
-        grid-template-columns:
-            repeat(2,1fr);
-
+        grid-template-columns:repeat(2,1fr);
         gap:14px;
     }
 
@@ -500,7 +546,7 @@ footer p{
 
 
 /* =========================
-   SMALL PHONE
+   MOBILE
 ========================= */
 
 @media(max-width:500px){
@@ -534,16 +580,14 @@ footer p{
         gap:8px;
     }
 
-    .account a{
+    .account button{
         padding:9px 14px;
-
         font-size:12px;
     }
 
     .welcome{
         margin-left:12px;
         margin-right:12px;
-
         padding:16px;
     }
 
@@ -552,15 +596,12 @@ footer p{
     }
 
     .features{
-        grid-template-columns:
-            repeat(2,1fr);
-
+        grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
 
     .card{
         min-height:190px;
-
         padding:12px;
     }
 
@@ -584,7 +625,6 @@ footer p{
 
     .card a{
         padding:7px 10px;
-
         font-size:11px;
     }
 
@@ -598,9 +638,7 @@ footer p{
 <body>
 
 
-<!-- =========================
-     COVER PHOTO
-========================= -->
+<!-- COVER -->
 
 <div class="cover">
 
@@ -611,9 +649,7 @@ footer p{
 </div>
 
 
-<!-- =========================
-     PROFILE PHOTO
-========================= -->
+<!-- PROFILE -->
 
 <div class="profile">
 
@@ -624,9 +660,7 @@ footer p{
 </div>
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header>
 
@@ -643,26 +677,94 @@ footer p{
 </header>
 
 
-<!-- =========================
-     LOGIN
-========================= -->
+<!-- ACCOUNT -->
 
-<div class="account">
+<div class="account" id="accountButtons">
 
-    <a href="login.html">
+    <button onclick="openAuth('login')">
         🔐 Login
-    </a>
+    </button>
 
-    <a href="signup.html">
+    <button onclick="openAuth('signup')">
         ✨ Sign Up
-    </a>
+    </button>
 
 </div>
 
 
-<!-- =========================
-     WELCOME
-========================= -->
+<!-- USER AREA -->
+
+<div class="account" id="userArea">
+
+    <span id="userName"></span>
+
+    <button onclick="logoutUser()">
+        🚪 Logout
+    </button>
+
+</div>
+
+
+<!-- AUTH BOX -->
+
+<div class="auth-box" id="authBox">
+
+    <button class="close-btn" onclick="closeAuth()">
+        ×
+    </button>
+
+    <h2 id="authTitle">
+        🔐 Login
+    </h2>
+
+    <input
+        type="text"
+        id="nameInput"
+        placeholder="Your Name"
+        style="display:none;">
+
+    <input
+        type="email"
+        id="emailInput"
+        placeholder="Email">
+
+    <input
+        type="password"
+        id="passwordInput"
+        placeholder="Password">
+
+    <button
+        class="auth-btn"
+        onclick="emailAuth()"
+        id="authButton">
+
+        Login
+
+    </button>
+
+    <button
+        class="google-btn"
+        onclick="googleLogin()">
+
+        🔵 Continue with Google
+
+    </button>
+
+    <div id="authMessage"></div>
+
+    <div class="auth-switch" id="authSwitch">
+
+        Don't have an account?
+        <span onclick="switchAuth('signup')">
+            Sign Up
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- WELCOME -->
 
 <div class="welcome">
 
@@ -677,9 +779,7 @@ footer p{
 </div>
 
 
-<!-- =========================
-     FEATURES
-========================= -->
+<!-- FEATURES -->
 
 <div class="container">
 
@@ -895,9 +995,7 @@ footer p{
 </div>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -916,6 +1014,271 @@ footer p{
 </footer>
 
 
-</body>
+<!-- =========================
+     FIREBASE
+========================= -->
 
-</html>
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    updateProfile,
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+import {
+    getAnalytics
+}
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
+
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyAp3MuF_kH8508_hb61n4i",
+
+    authDomain: "ariyan-zone.firebaseapp.com",
+
+    projectId: "ariyan-zone",
+
+    storageBucket: "ariyan-zone.firebasestorage.app",
+
+    messagingSenderId: "546027217878",
+
+    appId: "1:546027217878:web:20715e9f3",
+
+    measurementId: "G-LHZQQTYG88"
+
+};
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+const analytics = getAnalytics(app);
+
+const googleProvider = new GoogleAuthProvider();
+
+
+/* =========================
+   AUTH MODE
+========================= */
+
+let authMode = "login";
+
+
+window.openAuth = function(mode){
+
+    authMode = mode;
+
+    document.getElementById("authBox").style.display = "block";
+
+    updateAuthBox();
+
+    document
+        .getElementById("authBox")
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+};
+
+
+window.closeAuth = function(){
+
+    document.getElementById("authBox").style.display = "none";
+
+    document.getElementById("authMessage").textContent = "";
+};
+
+
+window.switchAuth = function(mode){
+
+    authMode = mode;
+
+    updateAuthBox();
+
+};
+
+
+function updateAuthBox(){
+
+    const title =
+        document.getElementById("authTitle");
+
+    const button =
+        document.getElementById("authButton");
+
+    const nameInput =
+        document.getElementById("nameInput");
+
+    const switchText =
+        document.getElementById("authSwitch");
+
+
+    document.getElementById("authMessage").textContent = "";
+
+
+    if(authMode === "signup"){
+
+        title.textContent = "✨ Create Account";
+
+        button.textContent = "Sign Up";
+
+        nameInput.style.display = "block";
+
+        switchText.innerHTML =
+            'Already have an account? <span onclick="switchAuth(\'login\')">Login</span>';
+
+    }else{
+
+        title.textContent = "🔐 Login";
+
+        button.textContent = "Login";
+
+        nameInput.style.display = "none";
+
+        switchText.innerHTML =
+            'Don\'t have an account? <span onclick="switchAuth(\'signup\')">Sign Up</span>';
+
+    }
+
+}
+
+
+/* =========================
+   EMAIL LOGIN / SIGNUP
+========================= */
+
+window.emailAuth = async function(){
+
+    const email =
+        document.getElementById("emailInput")
+        .value
+        .trim();
+
+    const password =
+        document.getElementById("passwordInput")
+        .value;
+
+    const name =
+        document.getElementById("nameInput")
+        .value
+        .trim();
+
+    const message =
+        document.getElementById("authMessage");
+
+
+    if(!email || !password){
+
+        message.textContent =
+            "Please enter email and password.";
+
+        return;
+    }
+
+
+    try{
+
+        if(authMode === "signup"){
+
+            if(!name){
+
+                message.textContent =
+                    "Please enter your name.";
+
+                return;
+            }
+
+
+            const result =
+                await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+            await updateProfile(
+                result.user,
+                {
+                    displayName:name
+                }
+            );
+
+
+            await saveUser(result.user);
+
+
+            message.textContent =
+                "Account created successfully!";
+
+            closeAuth();
+
+
+        }else{
+
+            const result =
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+            await saveUser(result.user);
+
+
+            message.textContent =
+                "Login successful!";
+
+            closeAuth();
+
+        }
+
+
+    }catch(error){
+
+        console.error(error);
+
+        message.textContent =
+            getFriendlyError(error.code);
+
+    }
+
+};
+
+
+/* =========================
+   GOOGLE LOGIN
+========================= */
+
+window.googleL
