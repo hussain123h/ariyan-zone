@@ -13,6 +13,10 @@ content="Ariyan Zone - Free Fire Gaming, Sensitivity, HUD Settings, Updates, Vid
 
 <style>
 
+/* =========================
+   BASIC
+========================= */
+
 *{
     box-sizing:border-box;
 }
@@ -25,27 +29,35 @@ body{
     margin:0;
     font-family:Arial,sans-serif;
     color:white;
+
     background:
-        radial-gradient(circle at top left,#18213b,transparent 35%),
-        radial-gradient(circle at top right,#32134f,transparent 35%),
-        linear-gradient(135deg,#05070d,#0b0d18,#05060b);
+        linear-gradient(
+            rgba(2,5,12,.48),
+            rgba(2,5,12,.70)
+        ),
+        url("background.png")
+        center top / cover
+        fixed no-repeat;
+
     overflow-x:hidden;
 }
 
 
-/* COVER PHOTO */
+/* =========================
+   COVER
+========================= */
 
 .cover{
     width:100%;
     height:330px;
+
     overflow:hidden;
     position:relative;
 
-    border-bottom:
-        2px solid rgba(0,255,225,.45);
+    border-bottom:2px solid rgba(0,255,225,.45);
 
     box-shadow:
-        0 10px 35px rgba(0,0,0,.65);
+        0 10px 35px rgba(0,0,0,.75);
 }
 
 .cover img{
@@ -58,28 +70,26 @@ body{
     display:block;
 }
 
-
-/* DARK EFFECT ON COVER */
-
 .cover::after{
     content:"";
 
     position:absolute;
-
     inset:0;
 
     background:
         linear-gradient(
             to bottom,
             rgba(0,0,0,.05),
-            rgba(0,0,0,.55)
+            rgba(0,0,0,.60)
         );
 
     pointer-events:none;
 }
 
 
-/* PROFILE */
+/* =========================
+   PROFILE
+========================= */
 
 .profile{
     text-align:center;
@@ -87,8 +97,7 @@ body{
     margin-top:-65px;
 
     position:relative;
-
-    z-index:2;
+    z-index:5;
 }
 
 .profile img{
@@ -110,7 +119,9 @@ body{
 }
 
 
-/* HEADER */
+/* =========================
+   BRAND
+========================= */
 
 header{
     text-align:center;
@@ -121,24 +132,24 @@ header{
 .brand{
     display:inline-block;
 
-    padding:12px 22px;
+    padding:13px 24px;
 
     border-radius:20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.04)
+            rgba(0,0,0,.60),
+            rgba(0,20,25,.35)
         );
 
     border:
-        1px solid rgba(255,255,255,.22);
+        1px solid rgba(0,255,225,.35);
 
     box-shadow:
-        0 10px 35px rgba(0,0,0,.45);
+        0 10px 35px rgba(0,0,0,.65);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(8px);
 }
 
 .brand h1{
@@ -164,7 +175,9 @@ header{
 }
 
 
-/* LOGIN */
+/* =========================
+   LOGIN / SIGN UP
+========================= */
 
 .account{
     display:flex;
@@ -181,35 +194,46 @@ header{
 
     color:white;
 
-    padding:10px 18px;
+    padding:11px 20px;
 
     border-radius:13px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.05)
+            rgba(0,255,225,.20),
+            rgba(80,40,180,.25)
         );
 
     border:
-        1px solid rgba(255,255,255,.22);
+        1px solid rgba(0,255,225,.35);
 
     box-shadow:
-        0 8px 18px rgba(0,0,0,.45);
+        0 8px 20px rgba(0,0,0,.55);
 
     font-weight:bold;
+
+    transition:.3s;
+}
+
+.account a:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 20px rgba(0,255,225,.45);
 }
 
 
-/* WELCOME */
+/* =========================
+   WELCOME
+========================= */
 
 .welcome{
     max-width:900px;
 
-    margin:0 auto 28px;
+    margin:0 auto 30px;
 
-    padding:18px;
+    padding:20px;
 
     text-align:center;
 
@@ -218,23 +242,23 @@ header{
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.13),
-            rgba(255,255,255,.035)
+            rgba(0,0,0,.62),
+            rgba(0,30,35,.38)
         );
 
     border:
-        1px solid rgba(255,255,255,.17);
+        1px solid rgba(0,255,225,.28);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(8px);
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,.45);
+        0 15px 40px rgba(0,0,0,.65);
 }
 
 .welcome h2{
-    margin:0 0 7px;
+    margin:0 0 8px;
 
-    font-size:23px;
+    font-size:24px;
 
     text-shadow:
         0 0 12px #00ffe1;
@@ -244,21 +268,25 @@ header{
     margin:0;
 
     color:#c7d8d8;
+
+    font-size:14px;
 }
 
 
-/* MAIN */
+/* =========================
+   MAIN
+========================= */
 
 .container{
     max-width:1150px;
 
     margin:auto;
 
-    padding:10px 18px 40px;
+    padding:10px 18px 50px;
 }
 
 
-/* 4 + 4 */
+/* 4 + 4 CARDS */
 
 .features{
     display:grid;
@@ -270,10 +298,12 @@ header{
 }
 
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .card{
-    min-height:200px;
+    min-height:205px;
 
     padding:16px;
 
@@ -282,18 +312,18 @@ header{
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.17),
-            rgba(255,255,255,.035)
+            rgba(0,5,10,.78),
+            rgba(5,25,30,.48)
         );
 
     border:
-        1px solid rgba(255,255,255,.20);
+        1px solid rgba(0,255,225,.22);
 
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(8px);
 
     box-shadow:
-        0 14px 35px rgba(0,0,0,.52),
-        inset 0 1px 1px rgba(255,255,255,.18);
+        0 14px 35px rgba(0,0,0,.65),
+        inset 0 1px 1px rgba(255,255,255,.10);
 
     transition:.3s;
 }
@@ -301,9 +331,11 @@ header{
 .card:hover{
     transform:translateY(-6px);
 
+    border-color:rgba(0,255,225,.55);
+
     box-shadow:
-        0 20px 45px rgba(0,0,0,.65),
-        0 0 25px rgba(0,255,220,.18);
+        0 20px 45px rgba(0,0,0,.75),
+        0 0 25px rgba(0,255,220,.20);
 }
 
 
@@ -323,17 +355,13 @@ header{
     border-radius:16px;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.20),
-            rgba(255,255,255,.05)
-        );
+        rgba(0,0,0,.45);
 
     border:
-        1px solid rgba(255,255,255,.22);
+        1px solid rgba(0,255,225,.25);
 
     box-shadow:
-        0 8px 20px rgba(0,0,0,.45);
+        0 8px 20px rgba(0,0,0,.55);
 
     overflow:hidden;
 }
@@ -350,7 +378,9 @@ header{
 }
 
 
-/* TEXT */
+/* =========================
+   CARD TEXT
+========================= */
 
 .card h3{
     margin:5px 0 7px;
@@ -372,7 +402,9 @@ header{
 }
 
 
-/* BUTTON */
+/* =========================
+   CARD BUTTON
+========================= */
 
 .card a{
     display:inline-block;
@@ -397,14 +429,25 @@ header{
         );
 
     border:
-        1px solid rgba(255,255,255,.20);
+        1px solid rgba(0,255,225,.28);
 
     box-shadow:
-        0 6px 14px rgba(0,0,0,.42);
+        0 6px 14px rgba(0,0,0,.50);
+
+    transition:.3s;
+}
+
+.card a:hover{
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 18px rgba(0,255,225,.35);
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
     text-align:center;
@@ -413,14 +456,17 @@ footer{
 
     color:#aab7b8;
 
-    background:rgba(0,0,0,.45);
+    background:
+        rgba(0,0,0,.65);
 
     border-top:
-        1px solid rgba(255,255,255,.12);
+        1px solid rgba(0,255,225,.18);
 }
 
 footer strong{
     color:white;
+
+    font-size:18px;
 
     text-shadow:
         0 0 8px #00ffe1;
@@ -433,7 +479,9 @@ footer p{
 }
 
 
-/* PHONE */
+/* =========================
+   TABLET / MOBILE
+========================= */
 
 @media(max-width:800px){
 
@@ -451,12 +499,14 @@ footer p{
 }
 
 
-/* SMALL PHONE */
+/* =========================
+   SMALL PHONE
+========================= */
 
 @media(max-width:500px){
 
     .cover{
-        height:210px;
+        height:220px;
     }
 
     .profile{
@@ -468,12 +518,37 @@ footer p{
         height:95px;
     }
 
+    .brand{
+        padding:11px 16px;
+    }
+
     .brand h1{
-        font-size:27px;
+        font-size:26px;
     }
 
     .subtitle{
         font-size:10px;
+    }
+
+    .account{
+        gap:8px;
+    }
+
+    .account a{
+        padding:9px 14px;
+
+        font-size:12px;
+    }
+
+    .welcome{
+        margin-left:12px;
+        margin-right:12px;
+
+        padding:16px;
+    }
+
+    .welcome h2{
+        font-size:20px;
     }
 
     .features{
@@ -523,267 +598,320 @@ footer p{
 <body>
 
 
-<!-- COVER PHOTO -->
+<!-- =========================
+     COVER PHOTO
+========================= -->
 
 <div class="cover">
 
-<img src="cover.png" alt="Ariyan Zone Cover">
+    <img
+        src="cover.png"
+        alt="Ariyan Zone Cover">
 
 </div>
 
 
-<!-- PROFILE PHOTO -->
+<!-- =========================
+     PROFILE PHOTO
+========================= -->
 
 <div class="profile">
 
-<img src="profile.png" alt="Ariyan Zone Profile">
+    <img
+        src="profile.png"
+        alt="Ariyan Zone Profile">
 
 </div>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
-<div class="brand">
+    <div class="brand">
 
-<h1>🔥 ARIYAN ZONE</h1>
+        <h1>🔥 ARIYAN ZONE</h1>
 
-<div class="subtitle">
-GAMING • FREE FIRE • UPDATES
-</div>
+        <div class="subtitle">
+            GAMING • FREE FIRE • UPDATES
+        </div>
 
-</div>
+    </div>
 
 </header>
 
 
-<!-- LOGIN -->
+<!-- =========================
+     LOGIN
+========================= -->
 
 <div class="account">
 
-<a href="login.html">
-🔐 Login
-</a>
+    <a href="login.html">
+        🔐 Login
+    </a>
 
-<a href="signup.html">
-✨ Sign Up
-</a>
+    <a href="signup.html">
+        ✨ Sign Up
+    </a>
 
 </div>
 
 
-<!-- WELCOME -->
+<!-- =========================
+     WELCOME
+========================= -->
 
 <div class="welcome">
 
-<h2>
-⚡ Welcome to Ariyan Zone
-</h2>
+    <h2>
+        ⚡ Welcome to Ariyan Zone
+    </h2>
 
-<p>
-Free Fire Gaming • Sensitivity • HUD • Updates • Tips
-</p>
+    <p>
+        Free Fire Gaming • Sensitivity • HUD • Updates • Tips
+    </p>
 
 </div>
 
 
-<!-- CARDS -->
+<!-- =========================
+     FEATURES
+========================= -->
 
 <div class="container">
 
-<div class="features">
+    <div class="features">
 
 
-<!-- 1 -->
+        <!-- 1 -->
 
-<div class="card">
+        <div class="card">
 
-<div class="card-image">
-<img src="sensitivity.png" alt="Sensitivity">
+            <div class="card-image">
+                <img
+                    src="sensitivity.png"
+                    alt="Sensitivity">
+            </div>
+
+            <h3>
+                Sensitivity
+            </h3>
+
+            <p>
+                Device-wise Free Fire sensitivity settings.
+            </p>
+
+            <a href="sensitivity.html">
+                Open →
+            </a>
+
+        </div>
+
+
+        <!-- 2 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                <img
+                    src="hud.png"
+                    alt="HUD Settings">
+            </div>
+
+            <h3>
+                HUD Settings
+            </h3>
+
+            <p>
+                Useful HUD and control settings for gameplay.
+            </p>
+
+            <a href="hud.html">
+                Open →
+            </a>
+
+        </div>
+
+
+        <!-- 3 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                <img
+                    src="updates.png"
+                    alt="FF Updates">
+            </div>
+
+            <h3>
+                FF Updates
+            </h3>
+
+            <p>
+                Free Fire news, events and update information.
+            </p>
+
+            <a href="updates.html">
+                Open →
+            </a>
+
+        </div>
+
+
+        <!-- 4 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                <img
+                    src="videos.png"
+                    alt="Videos">
+            </div>
+
+            <h3>
+                Videos
+            </h3>
+
+            <p>
+                Gaming videos and Free Fire content.
+            </p>
+
+            <a
+                href="https://youtu.be/-ZXVxv9n1Ro"
+                target="_blank">
+
+                Watch →
+
+            </a>
+
+        </div>
+
+
+        <!-- 5 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                <img
+                    src="tournament.png"
+                    alt="Tournament">
+            </div>
+
+            <h3>
+                Tournament
+            </h3>
+
+            <p>
+                Tournament information and gaming events.
+            </p>
+
+            <a href="tournament.html">
+                Open →
+            </a>
+
+        </div>
+
+
+        <!-- 6 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                <img
+                    src="tips.png"
+                    alt="Tips">
+            </div>
+
+            <h3>
+                Tips & Tricks
+            </h3>
+
+            <p>
+                Helpful gameplay tips for Free Fire players.
+            </p>
+
+            <a href="tips.html">
+                Open →
+            </a>
+
+        </div>
+
+
+        <!-- 7 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                <img
+                    src="premium.png"
+                    alt="Premium Sensitivity">
+            </div>
+
+            <h3>
+                Premium Sensitivity
+            </h3>
+
+            <p>
+                Premium sensitivity settings and information.
+            </p>
+
+            <a href="premium.html">
+                View →
+            </a>
+
+        </div>
+
+
+        <!-- 8 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                <img
+                    src="topup.png"
+                    alt="FF Top Up">
+            </div>
+
+            <h3>
+                FF Top Up
+            </h3>
+
+            <p>
+                Free Fire diamond top-up information.
+            </p>
+
+            <a href="topup.html">
+                Top Up →
+            </a>
+
+        </div>
+
+
+    </div>
+
 </div>
 
-<h3>Sensitivity</h3>
 
-<p>
-Device-wise Free Fire sensitivity settings.
-</p>
-
-<a href="sensitivity.html">
-Open →
-</a>
-
-</div>
-
-
-<!-- 2 -->
-
-<div class="card">
-
-<div class="card-image">
-<img src="hud.png" alt="HUD Settings">
-</div>
-
-<h3>HUD Settings</h3>
-
-<p>
-Useful HUD and control settings for gameplay.
-</p>
-
-<a href="hud.html">
-Open →
-</a>
-
-</div>
-
-
-<!-- 3 -->
-
-<div class="card">
-
-<div class="card-image">
-<img src="updates.png" alt="FF Updates">
-</div>
-
-<h3>FF Updates</h3>
-
-<p>
-Free Fire news, events and update information.
-</p>
-
-<a href="updates.html">
-Open →
-</a>
-
-</div>
-
-
-<!-- 4 -->
-
-<div class="card">
-
-<div class="card-image">
-<img src="videos.png" alt="Videos">
-</div>
-
-<h3>Videos</h3>
-
-<p>
-Gaming videos and Free Fire content.
-</p>
-
-<a href="https://youtu.be/-ZXVxv9n1Ro"
-target="_blank">
-Watch →
-</a>
-
-</div>
-
-
-<!-- 5 -->
-
-<div class="card">
-
-<div class="card-image">
-<img src="tournament.png" alt="Tournament">
-</div>
-
-<h3>Tournament</h3>
-
-<p>
-Tournament information and gaming events.
-</p>
-
-<a href="tournament.html">
-Open →
-</a>
-
-</div>
-
-
-<!-- 6 -->
-
-<div class="card">
-
-<div class="card-image">
-<img src="tips.png" alt="Tips">
-</div>
-
-<h3>Tips & Tricks</h3>
-
-<p>
-Helpful gameplay tips for Free Fire players.
-</p>
-
-<a href="tips.html">
-Open →
-</a>
-
-</div>
-
-
-<!-- 7 -->
-
-<div class="card">
-
-<div class="card-image">
-<img src="premium.png" alt="Premium Sensitivity">
-</div>
-
-<h3>Premium Sensitivity</h3>
-
-<p>
-Premium sensitivity settings and information.
-</p>
-
-<a href="premium.html">
-View →
-</a>
-
-</div>
-
-
-<!-- 8 -->
-
-<div class="card">
-
-<div class="card-image">
-<img src="topup.png" alt="FF Top Up">
-</div>
-
-<h3>FF Top Up</h3>
-
-<p>
-Free Fire diamond top-up information.
-</p>
-
-<a href="topup.html">
-Top Up →
-</a>
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-<strong>
-🔥 ARIYAN ZONE
-</strong>
+    <strong>
+        🔥 ARIYAN ZONE
+    </strong>
 
-<p>
-Gaming • Free Fire • Updates
-</p>
+    <p>
+        Gaming • Free Fire • Updates
+    </p>
 
-<p>
-© 2026 Ariyan Zone
-</p>
+    <p>
+        © 2026 Ariyan Zone
+    </p>
 
 </footer>
 
