@@ -131,121 +131,124 @@ button:hover{
 
 <div class="container">
 
-    <div class="header">
-        <h1>🔥 ARIYAN ZONE</h1>
-        <p>Admin Control Panel</p>
-    </div>
+<div class="header">
+    <h1>🔥 ARIYAN ZONE</h1>
+    <p>Admin Control Panel</p>
+</div>
 
-    <!-- LOGIN -->
-    <div id="loginSection" class="card login-box">
 
-        <h2>Admin Login</h2>
+<!-- LOGIN -->
 
+<div id="loginSection" class="card login-box">
+
+    <h2>Admin Login</h2>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Admin Email"
+    >
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Password"
+    >
+
+    <button onclick="login()">
+        Login
+    </button>
+
+    <p id="loginMessage"></p>
+
+</div>
+
+
+<!-- ADMIN -->
+
+<div id="adminSection" class="hidden">
+
+<div class="card">
+
+    <h2>✅ Admin Access Granted</h2>
+
+    <p>
+        Logged in as:
+        <strong id="adminEmail"></strong>
+    </p>
+
+    <button class="logout" onclick="logout()">
+        Logout
+    </button>
+
+</div>
+
+
+<!-- ADD UPDATE -->
+
+<div class="card">
+
+    <h2>📰 FF Updates</h2>
+
+    <input
+        type="text"
+        id="title"
+        placeholder="Update Title"
+    >
+
+    <textarea
+        id="content"
+        placeholder="Update Content"
+    ></textarea>
+
+    <input
+        type="text"
+        id="image"
+        placeholder="Image URL (optional)"
+    >
+
+    <label>
         <input
-            type="email"
-            id="email"
-            placeholder="Admin Email"
+            type="checkbox"
+            id="published"
+            checked
+            style="width:auto"
         >
+        Published
+    </label>
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Password"
-        >
+    <br><br>
 
-        <button onclick="login()">
-            Login
-        </button>
+    <button onclick="saveUpdate()">
+        Add Update
+    </button>
 
-        <p id="loginMessage"></p>
+    <button
+        onclick="cancelEdit()"
+        id="cancelButton"
+        class="hidden"
+    >
+        Cancel Edit
+    </button>
 
+    <p id="saveMessage"></p>
+
+</div>
+
+
+<!-- UPDATE LIST -->
+
+<div class="card">
+
+    <h2>📋 Existing Updates</h2>
+
+    <div id="updatesList">
+        Loading...
     </div>
 
+</div>
 
-    <!-- ADMIN -->
-    <div id="adminSection" class="hidden">
-
-        <div class="card">
-
-            <h2>✅ Admin Access Granted</h2>
-
-            <p>
-                Logged in as:
-                <strong id="adminEmail"></strong>
-            </p>
-
-            <button class="logout" onclick="logout()">
-                Logout
-            </button>
-
-        </div>
-
-
-        <!-- ADD UPDATE -->
-
-        <div class="card">
-
-            <h2>📰 FF Updates</h2>
-
-            <input
-                type="text"
-                id="title"
-                placeholder="Update Title"
-            >
-
-            <textarea
-                id="content"
-                placeholder="Update Content"
-            ></textarea>
-
-            <input
-                type="text"
-                id="image"
-                placeholder="Image URL (optional)"
-            >
-
-            <label>
-                <input
-                    type="checkbox"
-                    id="published"
-                    checked
-                    style="width:auto"
-                >
-                Published
-            </label>
-
-            <br><br>
-
-            <button onclick="saveUpdate()">
-                Add Update
-            </button>
-
-            <button
-                onclick="cancelEdit()"
-                id="cancelButton"
-                class="hidden"
-            >
-                Cancel Edit
-            </button>
-
-            <p id="saveMessage"></p>
-
-        </div>
-
-
-        <!-- UPDATE LIST -->
-
-        <div class="card">
-
-            <h2>📋 Existing Updates</h2>
-
-            <div id="updatesList">
-                Loading...
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </div>
 
@@ -284,25 +287,18 @@ import {
 ========================= */
 
 const firebaseConfig = {
-
-    apiKey: "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj-fT0",
-
+    apiKey: "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj0-fT0",
     authDomain: "ariyan-zone.firebaseapp.com",
-
     projectId: "ariyan-zone",
-
     storageBucket: "ariyan-zone.firebasestorage.app",
-
     messagingSenderId: "546027217878",
-
     appId: "1:546027217878:web:20715e9f32fc074fe5ba77",
-
     measurementId: "G-LHZQQTYG88"
 };
 
 
 /* =========================
-   INITIALIZE
+   INITIALIZE FIREBASE
 ========================= */
 
 const app = initializeApp(firebaseConfig);
@@ -321,16 +317,6 @@ const ADMIN_EMAIL =
 
 
 let editingId = null;
-
-
-/* =========================
-   PERSISTENCE
-========================= */
-
-await setPersistence(
-    auth,
-    browserLocalPersistence
-);
 
 
 /* =========================
@@ -354,6 +340,21 @@ const saveMessage =
 
 const updatesList =
     document.getElementById("updatesList");
+
+
+/* =========================
+   PERSISTENCE
+========================= */
+
+setPersistence(
+    auth,
+    browserLocalPersistence
+).catch((error)=>{
+    console.error(
+        "Persistence error:",
+        error
+    );
+});
 
 
 /* =========================
@@ -399,10 +400,14 @@ window.login = async function(){
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Login error:",
+            error
+        );
 
         loginMessage.textContent =
-            "Login failed: " + error.message;
+            "Login failed: " +
+            error.message;
 
         loginMessage.className =
             "error";
@@ -415,7 +420,9 @@ window.login = async function(){
    AUTH STATE
 ========================= */
 
-onAuthStateChanged(auth, async (user)=>{
+onAuthStateChanged(
+    auth,
+    async (user)=>{
 
     if(user){
 
@@ -426,6 +433,7 @@ onAuthStateChanged(auth, async (user)=>{
 
 
         if(
+            user.email &&
             user.email.toLowerCase()
             === ADMIN_EMAIL.toLowerCase()
         ){
@@ -482,9 +490,17 @@ onAuthStateChanged(auth, async (user)=>{
 
 window.logout = async function(){
 
-    await signOut(auth);
+    try{
 
-    location.reload();
+        await signOut(auth);
+
+        location.reload();
+
+    }catch(error){
+
+        console.error(error);
+
+    }
 
 };
 
@@ -547,11 +563,12 @@ window.saveUpdate = async function(){
             await updateDoc(
                 updateRef,
                 {
-                    title:title,
-                    content:content,
-                    image:image,
-                    published:published,
-                    updatedAt:serverTimestamp()
+                    title: title,
+                    content: content,
+                    image: image,
+                    published: published,
+                    updatedAt:
+                        serverTimestamp()
                 }
             );
 
@@ -563,11 +580,12 @@ window.saveUpdate = async function(){
             await addDoc(
                 collection(db,"updates"),
                 {
-                    title:title,
-                    content:content,
-                    image:image,
-                    published:published,
-                    createdAt:serverTimestamp()
+                    title: title,
+                    content: content,
+                    image: image,
+                    published: published,
+                    createdAt:
+                        serverTimestamp()
                 }
             );
 
@@ -586,7 +604,10 @@ window.saveUpdate = async function(){
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Firestore error:",
+            error
+        );
 
         saveMessage.textContent =
             "Firestore error: " +
@@ -653,18 +674,25 @@ async function loadUpdates(){
             div.innerHTML = `
 
                 <h3>
-                    ${escapeHTML(data.title || "")}
+                    ${escapeHTML(
+                        data.title || ""
+                    )}
                 </h3>
 
                 <p>
-                    ${escapeHTML(data.content || "")}
+                    ${escapeHTML(
+                        data.content || ""
+                    )}
                 </p>
 
                 ${
                     data.image
                     ?
                     `<p class="small">
-                        Image: ${escapeHTML(data.image)}
+                        Image:
+                        ${escapeHTML(
+                            data.image
+                        )}
                     </p>`
                     :
                     ""
@@ -672,7 +700,11 @@ async function loadUpdates(){
 
                 <p class="small">
                     Published:
-                    ${data.published ? "Yes" : "No"}
+                    ${
+                        data.published
+                        ? "Yes"
+                        : "No"
+                    }
                 </p>
 
                 <button
@@ -698,12 +730,17 @@ async function loadUpdates(){
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Load error:",
+            error
+        );
 
         updatesList.innerHTML =
             `<p class="error">
                 Could not load updates.<br>
-                ${escapeHTML(error.message)}
+                ${escapeHTML(
+                    error.message
+                )}
             </p>`;
     }
 
@@ -711,7 +748,7 @@ async function loadUpdates(){
 
 
 /* =========================
-   EDIT
+   EDIT UPDATE
 ========================= */
 
 window.editUpdate = async function(id){
@@ -732,7 +769,7 @@ window.editUpdate = async function(id){
             if(item.id === id){
 
                 found = {
-                    id:item.id,
+                    id: item.id,
                     ...item.data()
                 };
 
@@ -743,29 +780,35 @@ window.editUpdate = async function(id){
 
         if(!found){
 
-            alert("Update not found.");
+            alert(
+                "Update not found."
+            );
 
             return;
         }
 
 
-        document.getElementById("title")
-            .value =
+        document.getElementById(
+            "title"
+        ).value =
             found.title || "";
 
 
-        document.getElementById("content")
-            .value =
+        document.getElementById(
+            "content"
+        ).value =
             found.content || "";
 
 
-        document.getElementById("image")
-            .value =
+        document.getElementById(
+            "image"
+        ).value =
             found.image || "";
 
 
-        document.getElementById("published")
-            .checked =
+        document.getElementById(
+            "published"
+        ).checked =
             found.published === true;
 
 
@@ -774,7 +817,9 @@ window.editUpdate = async function(id){
 
         document.getElementById(
             "cancelButton"
-        ).classList.remove("hidden");
+        ).classList.remove(
+            "hidden"
+        );
 
 
         document.getElementById(
@@ -796,7 +841,7 @@ window.editUpdate = async function(id){
 
 
 /* =========================
-   DELETE
+   DELETE UPDATE
 ========================= */
 
 window.deleteUpdate = async function(id){
@@ -850,7 +895,9 @@ window.cancelEdit = function(){
 
     document.getElementById(
         "cancelButton"
-    ).classList.add("hidden");
+    ).classList.add(
+        "hidden"
+    );
 
     saveMessage.textContent = "";
 
@@ -883,7 +930,9 @@ function clearForm(){
 
     document.getElementById(
         "cancelButton"
-    ).classList.add("hidden");
+    ).classList.add(
+        "hidden"
+    );
 
 }
 
@@ -896,15 +945,30 @@ function escapeHTML(value){
 
     return String(value)
 
-        .replaceAll("&","&amp;")
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
 
-        .replaceAll("<","&lt;")
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
 
-        .replaceAll(">","&gt;")
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
 
-        .replaceAll('"',"&quot;")
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
 
-        .replaceAll("'","&#039;");
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 }
 
 </script>
