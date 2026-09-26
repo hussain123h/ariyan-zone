@@ -3,254 +3,192 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ariyan Zone | Admin Panel</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Ariyan Zone - Admin Panel</title>
 
 <style>
 
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-    margin:0;
-    min-height:100vh;
-    font-family:Arial,sans-serif;
+    font-family:Arial, sans-serif;
+    background:#08080d;
     color:white;
+    min-height:100vh;
+}
 
-    background:
-        linear-gradient(
-            rgba(2,5,12,.78),
-            rgba(2,5,12,.94)
-        ),
-        url("background.png")
-        center/cover fixed no-repeat;
+header{
+    background:linear-gradient(135deg,#15152e,#32105c);
+    padding:25px 15px;
+    text-align:center;
+    border-bottom:1px solid #333;
+}
+
+header h1{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+header p{
+    color:#bbb;
 }
 
 .container{
-    width:100%;
-    max-width:1000px;
+    max-width:900px;
     margin:auto;
-    padding:25px 18px 50px;
-}
-
-.header{
-    text-align:center;
-    padding:20px 15px 25px;
-}
-
-.header h1{
-    margin:0;
-    font-size:32px;
-    color:#00ffe1;
-    text-shadow:0 0 15px #00ffe1;
-}
-
-.header p{
-    color:#b8cccc;
-}
-
-.admin-box{
-    background:rgba(5,15,20,.86);
-    border:1px solid rgba(0,255,225,.28);
-    border-radius:22px;
-    padding:25px;
-    margin-bottom:20px;
-    box-shadow:0 15px 40px rgba(0,0,0,.65);
-    backdrop-filter:blur(10px);
-}
-
-.status{
-    text-align:center;
-    padding:15px;
-    border-radius:14px;
-    background:rgba(0,255,225,.08);
-    border:1px solid rgba(0,255,225,.20);
-    margin-bottom:20px;
-}
-
-.status strong{
-    color:#00ffe1;
-}
-
-.card-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
+    padding:20px;
 }
 
 .card{
+    background:#171720;
+    border:1px solid #292936;
+    border-radius:15px;
     padding:20px;
-    border-radius:17px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(0,255,225,.15);
+    margin-bottom:20px;
 }
 
-.card h3{
-    margin-top:0;
+.card h2{
+    margin-bottom:15px;
+    color:#c084fc;
 }
 
-.card p{
-    color:#b9c7c8;
-    font-size:13px;
-    line-height:1.5;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border:0;
-    border-radius:11px;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    background:linear-gradient(135deg,#00bfae,#6637d9);
-}
-
-button:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-.logout{
-    background:linear-gradient(135deg,#b82e4b,#612c86);
-}
-
-.home{
-    background:rgba(255,255,255,.08);
-}
-
-.delete{
-    background:linear-gradient(135deg,#b82e4b,#8b1e3f);
-}
-
-.edit{
-    background:linear-gradient(135deg,#6d5dfc,#00a8a8);
-}
-
-.message{
-    text-align:center;
-    padding:30px 15px;
-}
-
-.hidden{
-    display:none;
+.status{
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    background:#11111a;
 }
 
 input,
 textarea{
     width:100%;
     padding:13px;
-    margin-top:8px;
-    margin-bottom:14px;
-
-    border-radius:10px;
-    border:1px solid rgba(0,255,225,.20);
-
-    background:rgba(255,255,255,.06);
+    margin:7px 0 12px;
+    border:none;
+    border-radius:9px;
+    background:#252532;
     color:white;
-
     outline:none;
 }
 
-input:focus,
-textarea:focus{
-    border-color:#00ffe1;
-}
-
 textarea{
-    min-height:130px;
+    min-height:120px;
     resize:vertical;
 }
 
 label{
-    display:block;
-    color:#00ffe1;
-    font-weight:bold;
+    color:#ccc;
     font-size:14px;
 }
 
-.form-title{
-    margin-top:0;
-    color:#00ffe1;
+button{
+    border:none;
+    border-radius:9px;
+    padding:12px 18px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:5px;
 }
 
-.update-item{
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(0,255,225,.13);
-    border-radius:15px;
-    padding:17px;
-    margin-top:14px;
+.primary{
+    background:#7c3aed;
+    color:white;
 }
 
-.update-item h3{
-    margin:0 0 8px;
+.primary:hover{
+    background:#8b5cf6;
 }
 
-.update-item p{
-    color:#c4d0d0;
+.danger{
+    background:#dc2626;
+    color:white;
+}
+
+.secondary{
+    background:#33333f;
+    color:white;
+}
+
+.update{
+    background:#11111a;
+    border:1px solid #292936;
+    border-radius:12px;
+    padding:15px;
+    margin-top:15px;
+}
+
+.update h3{
+    color:#c084fc;
+    margin-bottom:8px;
+}
+
+.update p{
+    color:#ccc;
     line-height:1.6;
     white-space:pre-wrap;
 }
 
-.date{
-    color:#7e9999;
-    font-size:12px;
+.update img{
+    width:100%;
+    max-height:300px;
+    object-fit:cover;
+    border-radius:10px;
+    margin:10px 0;
 }
 
 .badge{
     display:inline-block;
     padding:5px 9px;
     border-radius:20px;
-    background:rgba(0,255,225,.10);
-    color:#00ffe1;
-    font-size:11px;
+    background:#22c55e;
+    color:white;
+    font-size:12px;
     margin-bottom:8px;
 }
 
-.actions{
-    display:flex;
-    gap:8px;
+.hidden{
+    display:none;
 }
 
-.actions button{
-    flex:1;
-}
-
-.empty{
+.loading{
     text-align:center;
-    color:#91a3a3;
-    padding:25px;
-}
-
-.success{
-    color:#00ffe1;
-    text-align:center;
-    margin-top:10px;
+    padding:50px 20px;
+    color:#bbb;
 }
 
 .error{
-    color:#ff718b;
-    text-align:center;
+    background:#3f1111;
+    border:1px solid #ef4444;
+    color:#fecaca;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.success{
+    background:#102f1b;
+    border:1px solid #22c55e;
+    color:#bbf7d0;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.actions{
     margin-top:10px;
 }
 
-@media(max-width:600px){
-
-    .card-grid{
-        grid-template-columns:1fr;
-    }
-
-    .header h1{
-        font-size:26px;
-    }
-
-    .actions{
-        flex-direction:column;
-    }
-
+hr{
+    border:0;
+    border-top:1px solid #292936;
+    margin:20px 0;
 }
 
 </style>
@@ -259,283 +197,193 @@ label{
 
 <body>
 
-<div class="container">
+<header>
 
-    <div class="header">
+<h1>🔥 ARIYAN ZONE</h1>
 
-        <h1>🔥 ARIYAN ZONE</h1>
+<p>Admin Control Panel</p>
 
-        <p>Admin Control Panel</p>
+</header>
 
-    </div>
 
+<div id="loadingBox" class="loading">
 
-    <!-- LOADING -->
+<h2>Checking admin access...</h2>
 
-    <div class="admin-box" id="loadingBox">
+<p>Please wait...</p>
 
-        <div class="message">
-            Checking admin access...
-        </div>
+</div>
 
-    </div>
 
+<div id="deniedBox" class="container hidden">
 
-    <!-- ACCESS DENIED -->
+<div class="card">
 
-    <div class="admin-box hidden" id="deniedBox">
+<h2>❌ Access Denied</h2>
 
-        <div class="message">
+<p>
+You do not have permission to access this page.
+</p>
 
-            <h2>🚫 Access Denied</h2>
+</div>
 
-            <p>
-                This account is not authorized to access the Admin Panel.
-            </p>
+</div>
 
-            <button onclick="goHome()">
-                🏠 Back to Home
-            </button>
 
-        </div>
+<div id="adminPanel" class="container hidden">
 
-    </div>
+<div class="card">
 
+<h2>✅ Admin Access Granted</h2>
 
-    <!-- ADMIN PANEL -->
+<div id="userInfo" class="status">
+Logged in as: Loading...
+</div>
 
-    <div class="hidden" id="adminPanel">
+<button id="logoutBtn" class="danger">
+Logout
+</button>
 
+</div>
 
-        <div class="admin-box">
 
-            <div class="status">
+<!-- FF UPDATES -->
 
-                <div>
-                    ✅ <strong>Admin Access Granted</strong>
-                </div>
+<div class="card">
 
-                <p id="adminEmail"></p>
+<h2>📰 FF Updates</h2>
 
-            </div>
+<p style="color:#aaa;margin-bottom:15px;">
+Add new Free Fire updates to your website.
+</p>
 
 
-            <div class="card-grid">
+<form id="updateForm">
 
+<input
+    type="text"
+    id="title"
+    placeholder="Update title"
+    required
+>
 
-                <div class="card">
 
-                    <h3>📰 FF Updates</h3>
+<textarea
+    id="content"
+    placeholder="Write your FF update here..."
+    required
+></textarea>
 
-                    <p>
-                        Add and manage Free Fire news and updates.
-                    </p>
 
-                    <button onclick="showUpdates()">
-                        Manage Updates
-                    </button>
+<input
+    type="url"
+    id="imageUrl"
+    placeholder="Image URL (optional)"
+>
 
-                </div>
 
+<label>
 
-                <div class="card">
+<input
+    type="checkbox"
+    id="published"
+    checked
+    style="width:auto;margin-right:5px;"
+>
 
-                    <h3>🎯 Sensitivity</h3>
+Publish this update
 
-                    <p>
-                        Device-wise sensitivity settings.
-                    </p>
+</label>
 
-                    <button onclick="comingSoon('Sensitivity')">
-                        Manage Sensitivity
-                    </button>
 
-                </div>
+<div style="margin-top:15px;">
 
+<button
+    type="submit"
+    class="primary"
+    id="saveBtn"
+>
+    Add Update
+</button>
 
-                <div class="card">
 
-                    <h3>🎮 HUD Settings</h3>
+<button
+    type="button"
+    class="secondary hidden"
+    id="cancelBtn"
+>
+    Cancel Edit
+</button>
 
-                    <p>
-                        Manage HUD settings and gameplay guides.
-                    </p>
+</div>
 
-                    <button onclick="comingSoon('HUD')">
-                        Manage HUD
-                    </button>
+</form>
 
-                </div>
 
+<div id="message"></div>
 
-                <div class="card">
+</div>
 
-                    <h3>👥 Users</h3>
 
-                    <p>
-                        User management will be added later.
-                    </p>
+<!-- UPDATE LIST -->
 
-                    <button onclick="comingSoon('Users')">
-                        Manage Users
-                    </button>
+<div class="card">
 
-                </div>
+<h2>📋 Saved Updates</h2>
 
+<div id="updatesList">
 
-            </div>
+Loading updates...
 
-        </div>
+</div>
 
+</div>
 
-        <!-- UPDATE MANAGER -->
 
-        <div class="admin-box" id="updateManager">
+<!-- OTHER SECTIONS -->
 
+<div class="card">
 
-            <h2 class="form-title">
-                📰 FF Updates Manager
-            </h2>
+<h2>🎯 Sensitivity</h2>
 
+<p style="color:#aaa;">
+Sensitivity management will be added next.
+</p>
 
-            <form id="updateForm">
+</div>
 
 
-                <label>
-                    Update Title
-                </label>
+<div class="card">
 
-                <input
-                    id="updateTitle"
-                    type="text"
-                    placeholder="Example: New Free Fire Update"
-                    required
-                >
+<h2>🎮 HUD Settings</h2>
 
+<p style="color:#aaa;">
+HUD management will be added next.
+</p>
 
-                <label>
-                    Update Content
-                </label>
+</div>
 
-                <textarea
-                    id="updateContent"
-                    placeholder="Write your Free Fire update here..."
-                    required
-                ></textarea>
 
+<div class="card">
 
-                <label>
-                    Update Image URL (optional)
-                </label>
+<h2>👥 Users</h2>
 
-                <input
-                    id="updateImage"
-                    type="url"
-                    placeholder="https://example.com/image.jpg"
-                >
+<p style="color:#aaa;">
+User management will be added later.
+</p>
 
-
-                <label>
-                    Published
-                </label>
-
-                <select
-                    id="updatePublished"
-                    style="
-                        width:100%;
-                        padding:13px;
-                        margin-top:8px;
-                        margin-bottom:14px;
-                        border-radius:10px;
-                        background:#101820;
-                        color:white;
-                        border:1px solid rgba(0,255,225,.20);
-                    "
-                >
-
-                    <option value="true">
-                        Yes - Show on website
-                    </option>
-
-                    <option value="false">
-                        No - Keep hidden
-                    </option>
-
-                </select>
-
-
-                <button
-                    type="submit"
-                    id="saveButton"
-                >
-                    💾 Save Update
-                </button>
-
-
-                <button
-                    type="button"
-                    class="home"
-                    onclick="clearForm()"
-                >
-                    ✨ Clear Form
-                </button>
-
-
-                <div id="formMessage"></div>
-
-            </form>
-
-        </div>
-
-
-        <!-- SAVED UPDATES -->
-
-        <div class="admin-box">
-
-            <h2 class="form-title">
-                📋 Saved Updates
-            </h2>
-
-            <div id="updatesList">
-
-                <div class="empty">
-                    Loading updates...
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="admin-box">
-
-            <button
-                class="home"
-                onclick="goHome()"
-            >
-                🏠 Back to Home
-            </button>
-
-
-            <button
-                class="logout"
-                onclick="logout()"
-            >
-                🚪 Logout
-            </button>
-
-        </div>
-
-
-    </div>
+</div>
 
 </div>
 
 
 <script type="module">
 
-import { initializeApp }
+import {
+    initializeApp
+}
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
 
 import {
     getAuth,
@@ -543,6 +391,7 @@ import {
     signOut
 }
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
 
 import {
     getFirestore,
@@ -552,265 +401,220 @@ import {
     doc,
     updateDoc,
     deleteDoc,
+    serverTimestamp,
     query,
     orderBy
 }
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
+
+/* =========================
+   FIREBASE CONFIG
+========================= */
 
 const firebaseConfig = {
 
     apiKey:
-        "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj0-fT0",
+    "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj-fT0",
 
     authDomain:
-        "ariyan-zone.firebaseapp.com",
+    "ariyan-zone.firebaseapp.com",
 
     projectId:
-        "ariyan-zone",
+    "ariyan-zone",
 
     storageBucket:
-        "ariyan-zone.firebasestorage.app",
+    "ariyan-zone.firebasestorage.app",
 
     messagingSenderId:
-        "546027217878",
+    "546027217878",
 
     appId:
-        "1:546027217878:web:20715e9f32fc074fe5ba77",
+    "1:546027217878:web:20715e9f32fc074fe5ba77",
 
     measurementId:
-        "G-LHZQQTYG88"
+    "G-LHZQQTYG88"
 
 };
 
 
-/* INITIALIZE */
 
-const app =
-    initializeApp(firebaseConfig);
-
-const auth =
-    getAuth(app);
-
-const db =
-    getFirestore(app);
-
-
-/* ADMIN EMAIL */
+/* =========================
+   ADMIN EMAIL
+========================= */
 
 const ADMIN_EMAIL =
     "mdhussainpk01799@gmail.com";
 
 
-let currentUser = null;
 
-let editingId = null;
+/* =========================
+   FIREBASE START
+========================= */
+
+const app =
+    initializeApp(firebaseConfig);
 
 
-/* ELEMENTS */
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+
+/* =========================
+   HTML ELEMENTS
+========================= */
 
 const loadingBox =
     document.getElementById("loadingBox");
 
-const adminPanel =
-    document.getElementById("adminPanel");
-
 const deniedBox =
     document.getElementById("deniedBox");
 
-const adminEmail =
-    document.getElementById("adminEmail");
+const adminPanel =
+    document.getElementById("adminPanel");
 
-const updateManager =
-    document.getElementById("updateManager");
+const userInfo =
+    document.getElementById("userInfo");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
 
 const updateForm =
     document.getElementById("updateForm");
 
+const titleInput =
+    document.getElementById("title");
+
+const contentInput =
+    document.getElementById("content");
+
+const imageInput =
+    document.getElementById("imageUrl");
+
+const publishedInput =
+    document.getElementById("published");
+
+const saveBtn =
+    document.getElementById("saveBtn");
+
+const cancelBtn =
+    document.getElementById("cancelBtn");
+
 const updatesList =
     document.getElementById("updatesList");
 
-const formMessage =
-    document.getElementById("formMessage");
-
-const saveButton =
-    document.getElementById("saveButton");
+const messageBox =
+    document.getElementById("message");
 
 
-/* AUTH CHECK */
 
-onAuthStateChanged(
-    auth,
-    async (user) => {
+/* =========================
+   EDIT ID
+========================= */
 
-        loadingBox.classList.add("hidden");
+let editingId = null;
 
-        if(!user){
 
-            deniedBox.classList.remove("hidden");
 
-            return;
+/* =========================
+   AUTH CHECK
+========================= */
+
+onAuthStateChanged(auth, async (user) => {
+
+    loadingBox.classList.add("hidden");
+
+
+    if (!user) {
+
+        deniedBox.classList.remove("hidden");
+
+        return;
+
+    }
+
+
+    if (user.email !== ADMIN_EMAIL) {
+
+        deniedBox.classList.remove("hidden");
+
+        return;
+
+    }
+
+
+    adminPanel.classList.remove("hidden");
+
+
+    userInfo.innerHTML =
+        "Logged in as: <b>" +
+        user.email +
+        "</b>";
+
+
+    await loadUpdates();
+
+});
+
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+logoutBtn.addEventListener(
+    "click",
+    async () => {
+
+        try {
+
+            await signOut(auth);
+
+            window.location.reload();
+
         }
 
+        catch(error){
 
-        if(
-            !user.email ||
-            user.email.toLowerCase()
-            !== ADMIN_EMAIL.toLowerCase()
-        ){
+            showMessage(
+                "Logout failed: " +
+                error.message,
+                true
+            );
 
-            deniedBox.classList.remove("hidden");
-
-            return;
         }
-
-
-        currentUser = user;
-
-        adminPanel.classList.remove("hidden");
-
-        adminEmail.textContent =
-            "Logged in as: " + user.email;
-
-
-        await loadUpdates();
 
     }
 );
 
 
-/* LOAD UPDATES */
 
-async function loadUpdates(){
+/* =========================
+   SHOW MESSAGE
+========================= */
 
-    updatesList.innerHTML = `
-        <div class="empty">
-            Loading updates...
-        </div>
-    `;
+function showMessage(text, error = false){
 
+    messageBox.className =
+        error
+        ? "error"
+        : "success";
 
-    try{
-
-        const updatesRef =
-            collection(db,"updates");
-
-        const q =
-            query(
-                updatesRef,
-                orderBy("createdAt","desc")
-            );
-
-        const snapshot =
-            await getDocs(q);
-
-
-        if(snapshot.empty){
-
-            updatesList.innerHTML = `
-                <div class="empty">
-                    No updates added yet.
-                </div>
-            `;
-
-            return;
-        }
-
-
-        updatesList.innerHTML = "";
-
-
-        snapshot.forEach(
-            (item) => {
-
-                const data =
-                    item.data();
-
-                const div =
-                    document.createElement("div");
-
-                div.className =
-                    "update-item";
-
-
-                const published =
-                    data.published === true;
-
-
-                div.innerHTML = `
-
-                    <span class="badge">
-                        ${published ? "PUBLISHED" : "HIDDEN"}
-                    </span>
-
-                    <h3>
-                        ${escapeHtml(data.title || "Untitled")}
-                    </h3>
-
-                    <p>
-                        ${escapeHtml(data.content || "")}
-                    </p>
-
-                    ${
-                        data.image
-                        ?
-                        `<p>
-                            🖼️ Image added
-                        </p>`
-                        :
-                        ""
-                    }
-
-                    <div class="date">
-                        ${formatDate(data.createdAt)}
-                    </div>
-
-                    <div class="actions">
-
-                        <button
-                            class="edit"
-                            onclick="editUpdate('${item.id}')"
-                        >
-                            ✏️ Edit
-                        </button>
-
-                        <button
-                            class="delete"
-                            onclick="deleteUpdate('${item.id}')"
-                        >
-                            🗑️ Delete
-                        </button>
-
-                    </div>
-
-                `;
-
-
-                updatesList.appendChild(div);
-
-            }
-        );
-
-    }catch(error){
-
-        console.error(error);
-
-        updatesList.innerHTML = `
-            <div class="error">
-                Could not load updates.
-                <br>
-                ${escapeHtml(error.message)}
-            </div>
-        `;
-
-    }
+    messageBox.textContent = text;
 
 }
 
 
-/* SAVE UPDATE */
+
+/* =========================
+   ADD / EDIT UPDATE
+========================= */
 
 updateForm.addEventListener(
     "submit",
@@ -819,63 +623,40 @@ updateForm.addEventListener(
         event.preventDefault();
 
 
-        if(!currentUser){
-
-            showMessage(
-                "Please login first.",
-                true
-            );
-
-            return;
-        }
-
-
         const title =
-            document.getElementById(
-                "updateTitle"
-            ).value.trim();
-
+            titleInput.value.trim();
 
         const content =
-            document.getElementById(
-                "updateContent"
-            ).value.trim();
+            contentInput.value.trim();
 
-
-        const image =
-            document.getElementById(
-                "updateImage"
-            ).value.trim();
-
+        const imageUrl =
+            imageInput.value.trim();
 
         const published =
-            document.getElementById(
-                "updatePublished"
-            ).value === "true";
+            publishedInput.checked;
 
 
-        if(!title || !content){
+        if (!title || !content){
 
             showMessage(
-                "Title and content are required.",
+                "Please enter title and content.",
                 true
             );
 
             return;
+
         }
 
 
-        saveButton.disabled = true;
-
-        saveButton.textContent =
-            editingId
-            ? "Updating..."
-            : "Saving...";
+        saveBtn.disabled = true;
 
 
-        try{
+        try {
 
-            if(editingId){
+
+            /* EDIT */
+
+            if (editingId){
 
                 const updateRef =
                     doc(
@@ -889,31 +670,31 @@ updateForm.addEventListener(
                     updateRef,
                     {
 
-                        title:
-                            title,
+                        title: title,
 
-                        content:
-                            content,
+                        content: content,
 
-                        image:
-                            image,
+                        imageUrl: imageUrl,
 
-                        published:
-                            published,
+                        published: published,
 
                         updatedAt:
-                            new Date()
+                            serverTimestamp()
 
                     }
                 );
 
 
                 showMessage(
-                    "✅ Update successfully edited."
+                    "Update successfully edited!"
                 );
 
+            }
 
-            }else{
+
+            /* ADD */
+
+            else{
 
                 await addDoc(
                     collection(
@@ -922,46 +703,43 @@ updateForm.addEventListener(
                     ),
                     {
 
-                        title:
-                            title,
+                        title: title,
 
-                        content:
-                            content,
+                        content: content,
 
-                        image:
-                            image,
+                        imageUrl: imageUrl,
 
-                        published:
-                            published,
+                        published: published,
 
                         createdAt:
-                            new Date(),
+                            serverTimestamp(),
 
                         updatedAt:
-                            new Date()
+                            serverTimestamp()
 
                     }
                 );
 
 
                 showMessage(
-                    "✅ Update successfully saved."
+                    "New update successfully added!"
                 );
 
             }
 
 
-            clearForm();
+            resetForm();
 
             await loadUpdates();
 
+        }
 
-        }catch(error){
+        catch(error){
 
             console.error(error);
 
             showMessage(
-                "❌ Save failed: " +
+                "Firestore Error: " +
                 error.message,
                 true
             );
@@ -969,112 +747,297 @@ updateForm.addEventListener(
         }
 
 
-        saveButton.disabled = false;
+        finally{
 
-        saveButton.textContent =
-            editingId
-            ? "💾 Update Changes"
-            : "💾 Save Update";
+            saveBtn.disabled = false;
+
+        }
 
     }
 );
 
 
-/* EDIT */
 
-window.editUpdate =
-async function(id){
+/* =========================
+   LOAD UPDATES
+========================= */
 
-    try{
+async function loadUpdates(){
 
-        const snapshot =
-            await getDocs(
-                collection(db,"updates")
+    updatesList.innerHTML =
+        "Loading updates...";
+
+
+    try {
+
+
+        const updatesQuery =
+            query(
+                collection(
+                    db,
+                    "updates"
+                ),
+                orderBy(
+                    "createdAt",
+                    "desc"
+                )
             );
 
 
-        let found = null;
+        const snapshot =
+            await getDocs(
+                updatesQuery
+            );
+
+
+        if (snapshot.empty){
+
+            updatesList.innerHTML =
+                "<p style='color:#aaa;'>No updates found.</p>";
+
+            return;
+
+        }
+
+
+        updatesList.innerHTML = "";
 
 
         snapshot.forEach(
-            (item) => {
+            (documentSnapshot) => {
 
-                if(item.id === id){
+                const data =
+                    documentSnapshot.data();
 
-                    found = {
-                        id:item.id,
-                        ...item.data()
-                    };
+
+                const id =
+                    documentSnapshot.id;
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "update";
+
+
+                let imageHTML = "";
+
+
+                if (data.imageUrl){
+
+                    imageHTML =
+                        `
+                        <img
+                            src="${escapeHtml(data.imageUrl)}"
+                            alt="Update image"
+                            onerror="this.style.display='none'"
+                        >
+                        `;
 
                 }
+
+
+                const publishedText =
+                    data.published
+                    ? "Published"
+                    : "Draft";
+
+
+                item.innerHTML = `
+
+                    <span class="badge">
+                        ${publishedText}
+                    </span>
+
+                    <h3>
+                        ${escapeHtml(data.title || "")}
+                    </h3>
+
+                    ${imageHTML}
+
+                    <p>
+                        ${escapeHtml(data.content || "")}
+                    </p>
+
+                    <p style="color:#777;font-size:12px;margin-top:10px;">
+                        ${formatDate(data.createdAt)}
+                    </p>
+
+                    <div class="actions">
+
+                        <button
+                            class="primary edit-btn"
+                            data-id="${id}"
+                        >
+                            Edit
+                        </button>
+
+                        <button
+                            class="danger delete-btn"
+                            data-id="${id}"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                updatesList.appendChild(item);
 
             }
         );
 
 
-        if(!found){
+        /* EDIT BUTTONS */
 
-            alert("Update not found.");
+        document
+        .querySelectorAll(".edit-btn")
+        .forEach(
+            (button) => {
 
-            return;
-        }
+                button.addEventListener(
+                    "click",
+                    () => {
 
+                        editUpdate(
+                            button.dataset.id,
+                            snapshot
+                        );
 
-        editingId =
-            found.id;
+                    }
+                );
 
-
-        document.getElementById(
-            "updateTitle"
-        ).value =
-            found.title || "";
-
-
-        document.getElementById(
-            "updateContent"
-        ).value =
-            found.content || "";
-
-
-        document.getElementById(
-            "updateImage"
-        ).value =
-            found.image || "";
-
-
-        document.getElementById(
-            "updatePublished"
-        ).value =
-            found.published === true
-            ? "true"
-            : "false";
-
-
-        saveButton.textContent =
-            "💾 Update Changes";
-
-
-        updateManager.scrollIntoView({
-            behavior:"smooth"
-        });
-
-
-    }catch(error){
-
-        alert(
-            "Could not open update: " +
-            error.message
+            }
         );
+
+
+        /* DELETE BUTTONS */
+
+        document
+        .querySelectorAll(".delete-btn")
+        .forEach(
+            (button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        deleteUpdate(
+                            button.dataset.id
+                        );
+
+                    }
+                );
+
+            }
+        );
+
 
     }
 
-};
+    catch(error){
+
+        console.error(error);
 
 
-/* DELETE */
+        updatesList.innerHTML = `
 
-window.deleteUpdate =
-async function(id){
+            <div class="error">
+
+                Failed to load updates.
+
+                <br><br>
+
+                ${escapeHtml(error.message)}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =========================
+   EDIT UPDATE
+========================= */
+
+function editUpdate(
+    id,
+    snapshot
+){
+
+    const selected =
+        snapshot.docs.find(
+            (item) =>
+                item.id === id
+        );
+
+
+    if (!selected){
+
+        return;
+
+    }
+
+
+    const data =
+        selected.data();
+
+
+    editingId = id;
+
+
+    titleInput.value =
+        data.title || "";
+
+
+    contentInput.value =
+        data.content || "";
+
+
+    imageInput.value =
+        data.imageUrl || "";
+
+
+    publishedInput.checked =
+        data.published !== false;
+
+
+    saveBtn.textContent =
+        "Save Changes";
+
+
+    cancelBtn.classList.remove(
+        "hidden"
+    );
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+
+/* =========================
+   DELETE UPDATE
+========================= */
+
+async function deleteUpdate(id){
 
     const confirmDelete =
         confirm(
@@ -1082,7 +1045,7 @@ async function(id){
         );
 
 
-    if(!confirmDelete){
+    if (!confirmDelete){
 
         return;
 
@@ -1100,72 +1063,82 @@ async function(id){
         );
 
 
-        alert(
-            "✅ Update deleted."
+        showMessage(
+            "Update deleted successfully!"
         );
 
 
         await loadUpdates();
 
+    }
 
-    }catch(error){
+    catch(error){
 
-        alert(
-            "❌ Delete failed: " +
-            error.message
+        console.error(error);
+
+
+        showMessage(
+            "Delete failed: " +
+            error.message,
+            true
         );
 
     }
 
-};
+}
 
 
-/* CLEAR FORM */
 
-window.clearForm =
-function(){
+/* =========================
+   CANCEL EDIT
+========================= */
+
+cancelBtn.addEventListener(
+    "click",
+    () => {
+
+        resetForm();
+
+    }
+);
+
+
+
+/* =========================
+   RESET FORM
+========================= */
+
+function resetForm(){
 
     editingId = null;
 
+
     updateForm.reset();
 
-    document.getElementById(
-        "updatePublished"
-    ).value = "true";
+
+    publishedInput.checked =
+        true;
 
 
-    saveButton.textContent =
-        "💾 Save Update";
+    saveBtn.textContent =
+        "Add Update";
 
 
-    formMessage.innerHTML = "";
-
-};
-
-
-/* MESSAGE */
-
-function showMessage(
-    message,
-    isError = false
-){
-
-    formMessage.className =
-        isError
-        ? "error"
-        : "success";
-
-    formMessage.textContent =
-        message;
+    cancelBtn.classList.add(
+        "hidden"
+    );
 
 }
 
 
-/* DATE */
+
+/* =========================
+   DATE FORMAT
+========================= */
 
 function formatDate(timestamp){
 
-    if(!timestamp){
+    if (!timestamp){
 
         return "";
 
@@ -1177,4 +1150,45 @@ function formatDate(timestamp){
         const date =
             timestamp.toDate
             ? timestamp.toDate()
-        
+            : new Date(timestamp);
+
+
+        return date.toLocaleString();
+
+    }
+
+    catch(error){
+
+        return "";
+
+    }
+
+}
+
+
+
+/* =========================
+   HTML SECURITY
+========================= */
+
+function escapeHtml(value){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        value;
+
+
+    return div.innerHTML;
+
+}
+
+</script>
+
+</body>
+
+</html>
