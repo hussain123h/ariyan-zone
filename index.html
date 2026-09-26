@@ -1,1109 +1,849 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Ariyan Zone | Free Fire Gaming</title>
 
-<meta name="description"
-content="Ariyan Zone - Free Fire Gaming, Sensitivity, HUD Settings, Updates, Videos, Tournament, Tips and Top Up.">
-
 <style>
-
 *{
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
+    background:#070a12;
     color:white;
-
-    background:
-    linear-gradient(
-        rgba(2,5,12,.48),
-        rgba(2,5,12,.70)
-    ),
-    url("background.png")
-    center top / cover fixed no-repeat;
-
+    min-height:100vh;
     overflow-x:hidden;
 }
 
-
-/* COVER */
-
-.cover{
-    width:100%;
-    height:330px;
-    overflow:hidden;
-    position:relative;
-
-    border-bottom:2px solid rgba(0,255,225,.45);
-
-    box-shadow:
-    0 10px 35px rgba(0,0,0,.75);
+/* Background */
+.bg{
+    position:fixed;
+    inset:0;
+    background:
+        linear-gradient(rgba(5,8,18,.72),rgba(5,8,18,.92)),
+        url("background.png") center/cover no-repeat;
+    z-index:-2;
 }
 
-.cover img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-}
-
-.cover::after{
+.bg::after{
     content:"";
     position:absolute;
     inset:0;
-
-    background:
-    linear-gradient(
-        to bottom,
-        rgba(0,0,0,.05),
-        rgba(0,0,0,.60)
+    background:linear-gradient(
+        135deg,
+        rgba(0,255,255,.08),
+        rgba(110,0,255,.12),
+        rgba(0,0,0,.3)
     );
-
-    pointer-events:none;
 }
 
+/* Header */
+header{
+    width:100%;
+    padding:28px 15px 22px;
+    text-align:center;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(10,18,40,.94),
+            rgba(42,8,70,.94)
+        );
+    border-bottom:1px solid rgba(0,255,255,.25);
+    box-shadow:0 8px 30px rgba(0,0,0,.35);
+}
 
-/* PROFILE */
+.cover{
+    width:100%;
+    max-width:1050px;
+    height:210px;
+    margin:auto;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid rgba(0,255,255,.22);
+    background:
+        linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),
+        url("cover.png") center/cover no-repeat;
+    box-shadow:0 0 35px rgba(0,220,255,.12);
+}
 
 .profile{
-    text-align:center;
-    margin-top:-65px;
+    width:105px;
+    height:105px;
+    margin:-52px auto 12px;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid #0df;
+    background:#111;
+    box-shadow:
+        0 0 12px rgba(0,255,255,.7),
+        0 0 35px rgba(130,0,255,.4);
     position:relative;
-    z-index:5;
+    z-index:2;
 }
 
 .profile img{
-    width:125px;
-    height:125px;
-
+    width:100%;
+    height:100%;
     object-fit:cover;
-    border-radius:50%;
-
-    border:4px solid #00ffe1;
-
-    box-shadow:
-    0 0 15px #00ffe1,
-    0 0 35px #7c3aed,
-    0 0 60px rgba(0,255,225,.35);
 }
 
-
-/* HEADER */
-
-header{
-    text-align:center;
-    padding:15px 15px 20px;
-}
-
-.brand{
-    display:inline-block;
-
-    padding:13px 24px;
-    border-radius:20px;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(0,0,0,.60),
-        rgba(0,20,25,.35)
-    );
-
-    border:1px solid rgba(0,255,225,.35);
-
-    box-shadow:
-    0 10px 35px rgba(0,0,0,.65);
-
-    backdrop-filter:blur(8px);
-}
-
-.brand h1{
-    margin:0;
-
-    font-size:36px;
-    letter-spacing:3px;
-
-    text-shadow:
-    0 0 8px #00ffe1,
-    0 0 25px #00ffe1;
-}
-
-.subtitle{
-    margin-top:8px;
-
-    color:#bceee9;
-
-    font-size:13px;
+.logo{
+    font-size:32px;
+    font-weight:900;
     letter-spacing:2px;
+    text-shadow:0 0 12px rgba(0,255,255,.55);
 }
 
+.tagline{
+    margin-top:7px;
+    color:#9defff;
+    font-size:13px;
+    letter-spacing:3px;
+}
 
-/* ACCOUNT */
-
+/* Account */
 .account{
     display:flex;
-
     justify-content:center;
-    gap:12px;
-
-    margin:10px 0 25px;
+    gap:10px;
+    margin-top:18px;
+    flex-wrap:wrap;
 }
 
-.account button{
+.account button,
+.open-btn,
+.logout-btn{
+    border:none;
+    border-radius:12px;
+    padding:11px 19px;
     color:white;
-
-    padding:11px 20px;
-
-    border-radius:13px;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(0,255,225,.20),
-        rgba(80,40,180,.25)
-    );
-
-    border:1px solid rgba(0,255,225,.35);
-
-    box-shadow:
-    0 8px 20px rgba(0,0,0,.55);
-
     font-weight:bold;
-
     cursor:pointer;
-
-    transition:.25s;
+    background:linear-gradient(135deg,#008cff,#762cff);
+    box-shadow:0 5px 18px rgba(65,80,255,.25);
+    transition:.2s;
 }
 
-.account button:hover{
-    transform:translateY(-3px);
+.account button:hover,
+.open-btn:hover,
+.logout-btn:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.12);
 }
 
-
-/* USER */
-
+/* User area */
 .user-area{
     display:none;
-
     text-align:center;
-
-    margin:0 auto 25px;
+    margin-top:18px;
 }
 
-.user-area span{
-    color:#9fffee;
-    font-size:14px;
+.user-email{
+    color:#8ffaff;
+    font-size:13px;
+    margin-bottom:9px;
 }
 
 .logout-btn{
-    margin-left:8px;
-
-    padding:7px 12px;
-
-    border:1px solid rgba(255,80,100,.4);
-
-    border-radius:9px;
-
-    background:rgba(255,50,70,.15);
-
-    color:white;
-
-    cursor:pointer;
+    background:linear-gradient(135deg,#ff315c,#9b19ff);
 }
 
-
-/* WELCOME */
+/* Main */
+main{
+    width:100%;
+    max-width:1100px;
+    margin:auto;
+    padding:35px 15px 50px;
+}
 
 .welcome{
-    max-width:900px;
-
-    margin:0 auto 30px;
-
-    padding:20px;
-
     text-align:center;
-
-    border-radius:20px;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(0,0,0,.62),
-        rgba(0,30,35,.38)
-    );
-
-    border:1px solid rgba(0,255,225,.28);
-
-    backdrop-filter:blur(8px);
-
-    box-shadow:
-    0 15px 40px rgba(0,0,0,.65);
+    margin-bottom:28px;
 }
 
-.welcome h2{
-    margin:0 0 8px;
-
-    font-size:24px;
-
-    text-shadow:
-    0 0 12px #00ffe1;
+.welcome h1{
+    font-size:28px;
+    margin-bottom:9px;
 }
 
 .welcome p{
-    margin:0;
-
-    color:#c7d8d8;
-
+    color:#b7c2d9;
     font-size:14px;
 }
 
-
-/* MAIN */
-
-.container{
-    max-width:1150px;
-
-    margin:auto;
-
-    padding:10px 18px 50px;
-}
-
+/* Features */
 .features{
     display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
+    grid-template-columns:repeat(4,1fr);
     gap:18px;
 }
 
-
-/* CARD */
-
 .card{
-    min-height:205px;
-
-    padding:16px;
-
-    border-radius:22px;
-
-    background:
-    linear-gradient(
+    background:linear-gradient(
         145deg,
-        rgba(0,5,10,.78),
-        rgba(5,25,30,.48)
+        rgba(20,25,42,.88),
+        rgba(13,16,30,.94)
     );
-
-    border:1px solid rgba(0,255,225,.22);
-
-    backdrop-filter:blur(8px);
-
-    box-shadow:
-    0 14px 35px rgba(0,0,0,.65);
-
-    transition:.3s;
+    border:1px solid rgba(0,220,255,.15);
+    border-radius:20px;
+    padding:15px;
+    min-height:285px;
+    box-shadow:0 12px 30px rgba(0,0,0,.28);
+    transition:.25s;
+    overflow:hidden;
 }
 
 .card:hover{
-    transform:translateY(-6px);
-
-    border-color:
-    rgba(0,255,225,.55);
+    transform:translateY(-5px);
+    border-color:rgba(0,255,255,.5);
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.4),
+        0 0 25px rgba(0,220,255,.08);
 }
 
-
-/* CARD IMAGE */
-
-.card-image{
-    width:60px;
-    height:60px;
-
-    margin-bottom:12px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:16px;
-
-    background:
-    rgba(0,0,0,.45);
-
-    border:
-    1px solid rgba(0,255,225,.25);
-
-    overflow:hidden;
-}
-
-.card-image img{
-    width:48px;
-    height:48px;
-
+.card img{
+    width:100%;
+    height:145px;
     object-fit:cover;
-
-    border-radius:12px;
+    border-radius:14px;
+    margin-bottom:13px;
+    background:#111827;
 }
-
-
-/* CARD TEXT */
 
 .card h3{
-    margin:5px 0 7px;
-
     font-size:18px;
+    margin-bottom:7px;
 }
 
 .card p{
-    margin:0 0 13px;
-
-    color:#b9c7c8;
-
-    font-size:12px;
-
+    color:#aab5ca;
+    font-size:13px;
     line-height:1.5;
+    min-height:40px;
 }
 
-
-/* CARD BUTTON */
-
-.card a{
-    display:inline-block;
-
-    padding:8px 13px;
-
-    border-radius:10px;
-
-    text-decoration:none;
-
-    color:white;
-
-    font-size:12px;
-
-    font-weight:bold;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(0,255,220,.25),
-        rgba(90,50,255,.30)
-    );
-
-    border:
-    1px solid rgba(0,255,225,.28);
-}
-
-
-/* LIVE UPDATES */
-
-.live-updates{
-    max-width:1150px;
-    margin:10px auto 45px;
-    padding:0 18px;
-}
-
-.live-title{
-    text-align:center;
-    margin-bottom:18px;
-}
-
-.live-title h2{
-    margin:0 0 6px;
-    font-size:25px;
-    text-shadow:0 0 12px #00ffe1;
-}
-
-.live-title p{
-    margin:0;
-    color:#aebfc0;
-    font-size:13px;
-}
-
-.update-list{
-    display:grid;
-    grid-template-columns:
-    repeat(2,1fr);
-    gap:18px;
-}
-
-.update-box{
-    padding:18px;
-    border-radius:18px;
-
-    background:
-    linear-gradient(
-        145deg,
-        rgba(0,5,10,.82),
-        rgba(5,25,30,.50)
-    );
-
-    border:1px solid rgba(0,255,225,.22);
-
-    box-shadow:
-    0 14px 35px rgba(0,0,0,.60);
-
-    overflow:hidden;
-}
-
-.update-box img{
+.open-btn{
     width:100%;
-    max-height:230px;
-    object-fit:cover;
-    border-radius:13px;
-    margin-bottom:13px;
+    margin-top:13px;
+    background:linear-gradient(135deg,#00a8ff,#743cff);
 }
 
-.update-box h3{
-    margin:0 0 8px;
-    font-size:18px;
+/* Updates */
+.updates-section{
+    margin-top:42px;
 }
 
-.update-box p{
-    margin:0;
-    color:#c0cecf;
+.section-title{
+    text-align:center;
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+.updates{
+    display:grid;
+    gap:15px;
+}
+
+.update{
+    background:rgba(16,20,35,.9);
+    border:1px solid rgba(0,255,255,.15);
+    border-radius:18px;
+    padding:17px;
+}
+
+.update h3{
+    color:#7fefff;
+    margin-bottom:8px;
+}
+
+.update p{
+    color:#c0c8d8;
     line-height:1.6;
-    font-size:13px;
     white-space:pre-wrap;
 }
 
+.update img{
+    width:100%;
+    max-height:300px;
+    object-fit:cover;
+    border-radius:13px;
+    margin-bottom:12px;
+}
+
 .update-date{
-    display:block;
-    margin-top:12px;
-    color:#79dcd2;
+    color:#7d8aa5;
     font-size:11px;
+    margin-top:10px;
 }
 
-.no-updates{
+.empty{
     text-align:center;
+    color:#8290a8;
     padding:25px;
-    color:#9eacad;
-    border:1px solid rgba(0,255,225,.15);
-    border-radius:16px;
-    background:rgba(0,0,0,.30);
+    border:1px dashed rgba(255,255,255,.12);
+    border-radius:15px;
 }
 
-
-/* FOOTER */
-
+/* Footer */
 footer{
     text-align:center;
-
-    padding:30px 20px;
-
-    color:#aab7b8;
-
-    background:
-    rgba(0,0,0,.65);
-
-    border-top:
-    1px solid rgba(0,255,225,.18);
+    padding:25px 15px;
+    color:#71809a;
+    font-size:12px;
+    border-top:1px solid rgba(255,255,255,.06);
 }
 
-footer strong{
+/* Modal */
+.modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(8px);
+    z-index:9999;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:390px;
+    background:linear-gradient(145deg,#12182a,#211233);
+    border:1px solid rgba(0,255,255,.3);
+    border-radius:22px;
+    padding:25px;
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.6),
+        0 0 35px rgba(0,180,255,.1);
+}
+
+.modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.modal-head h2{
+    font-size:23px;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border:none;
+    border-radius:50%;
     color:white;
+    background:#252b3e;
+    cursor:pointer;
     font-size:18px;
 }
 
-
-/* AUTH MODAL */
-
-.modal{
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:100;
-
-    background:
-    rgba(0,0,0,.80);
-
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-}
-
-.auth-box{
+.input{
     width:100%;
-    max-width:390px;
-
-    padding:25px;
-
-    border-radius:22px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #071116,
-        #15102b
-    );
-
-    border:
-    1px solid rgba(0,255,225,.35);
-
-    box-shadow:
-    0 0 40px rgba(0,255,225,.18);
-}
-
-.auth-box h2{
-    text-align:center;
-    margin-top:0;
-}
-
-.auth-box input{
-    width:100%;
-
     padding:13px;
-
-    margin:7px 0;
-
+    margin-bottom:12px;
     border-radius:11px;
-
-    border:
-    1px solid rgba(0,255,225,.25);
-
-    background:#080d13;
-
-    color:white;
-
+    border:1px solid rgba(255,255,255,.12);
     outline:none;
+    color:white;
+    background:#090d18;
 }
 
-.auth-box button{
+.input:focus{
+    border-color:#00d9ff;
+}
+
+.auth-btn{
     width:100%;
-
-    padding:12px;
-
-    margin-top:9px;
-
-    border:0;
-
+    padding:13px;
+    border:none;
     border-radius:11px;
-
     color:white;
-
     font-weight:bold;
-
     cursor:pointer;
-
-    background:
-    linear-gradient(
-        135deg,
-        #00bfae,
-        #6637d9
-    );
+    background:linear-gradient(135deg,#00a8ff,#803cff);
+    margin-top:3px;
 }
 
 .google-btn{
-    background:
-    linear-gradient(
-        135deg,
-        #4285f4,
-        #7b61ff
-    ) !important;
-}
-
-.close-btn{
-    background:
-    rgba(255,255,255,.08) !important;
-}
-
-.auth-message{
-    min-height:20px;
-
-    text-align:center;
-
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:11px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    background:#242a3b;
     margin-top:10px;
+}
 
-    color:#9fffee;
-
+.switch{
+    text-align:center;
+    margin-top:15px;
+    color:#99a6bc;
     font-size:13px;
 }
 
+.switch span{
+    color:#5eeaff;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-/* MOBILE */
+.auth-msg{
+    min-height:20px;
+    margin-top:10px;
+    text-align:center;
+    font-size:13px;
+}
 
-@media(max-width:800px){
+/* Mobile */
+@media(max-width:850px){
+    .features{
+        grid-template-columns:repeat(2,1fr);
+    }
 
     .cover{
-        height:250px;
+        height:180px;
     }
+}
 
+@media(max-width:520px){
     .features{
-        grid-template-columns:
-        repeat(2,1fr);
-
-        gap:14px;
-    }
-
-    .update-list{
         grid-template-columns:1fr;
     }
 
-}
-
-@media(max-width:500px){
+    .logo{
+        font-size:27px;
+    }
 
     .cover{
-        height:220px;
+        height:150px;
     }
 
     .profile{
-        margin-top:-50px;
+        width:90px;
+        height:90px;
+        margin-top:-45px;
     }
 
-    .profile img{
-        width:95px;
-        height:95px;
+    main{
+        padding-top:25px;
     }
-
-    .brand{
-        padding:11px 16px;
-    }
-
-    .brand h1{
-        font-size:26px;
-    }
-
-    .subtitle{
-        font-size:10px;
-    }
-
-    .account button{
-        padding:9px 14px;
-        font-size:12px;
-    }
-
-    .welcome{
-        margin-left:12px;
-        margin-right:12px;
-
-        padding:16px;
-    }
-
-    .welcome h2{
-        font-size:20px;
-    }
-
-    .features{
-        grid-template-columns:
-        repeat(2,1fr);
-
-        gap:12px;
-    }
-
-    .card{
-        min-height:190px;
-        padding:12px;
-    }
-
-    .card-image{
-        width:52px;
-        height:52px;
-    }
-
-    .card-image img{
-        width:42px;
-        height:42px;
-    }
-
-    .card h3{
-        font-size:15px;
-    }
-
-    .card p{
-        font-size:11px;
-    }
-
-    .live-updates{
-        padding:0 12px;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- COVER -->
-
-<div class="cover">
-
-    <img
-        src="cover.png"
-        alt="Ariyan Zone Cover">
-
-</div>
-
-
-<!-- PROFILE -->
-
-<div class="profile">
-
-    <img
-        src="profile.png"
-        alt="Ariyan Zone Profile">
-
-</div>
-
-
-<!-- HEADER -->
+<div class="bg"></div>
 
 <header>
 
-    <div class="brand">
+    <div class="cover"></div>
 
-        <h1>🔥 ARIYAN ZONE</h1>
+    <div class="profile">
+        <img src="profile.png" alt="Ariyan Zone">
+    </div>
 
-        <div class="subtitle">
-            GAMING • FREE FIRE • UPDATES
-        </div>
+    <div class="logo">🔥 ARIYAN ZONE</div>
+
+    <div class="tagline">
+        GAMING • FREE FIRE • UPDATES
+    </div>
+
+    <!-- IMPORTANT: These buttons work independently -->
+    <div class="account" id="accountButtons">
+
+        <button id="loginBtn" type="button">
+            🔐 Login
+        </button>
+
+        <button id="signupBtn" type="button">
+            ✨ Sign Up
+        </button>
+
+    </div>
+
+    <div class="user-area" id="userArea">
+
+        <div class="user-email" id="userEmail"></div>
+
+        <button class="logout-btn" id="logoutBtn" type="button">
+            🚪 Logout
+        </button>
 
     </div>
 
 </header>
 
 
-<!-- LOGIN BUTTONS -->
+<main>
 
-<div class="account" id="accountButtons">
+    <section class="welcome">
 
-    <button onclick="openLogin()">
-        🔐 Login
-    </button>
-
-    <button onclick="openSignup()">
-        ✨ Sign Up
-    </button>
-
-</div>
-
-
-<!-- LOGGED USER -->
-
-<div class="user-area" id="userArea">
-
-    <span id="userText"></span>
-
-    <button
-        class="logout-btn"
-        onclick="logout()">
-
-        Logout
-
-    </button>
-
-</div>
-
-
-<!-- WELCOME -->
-
-<div class="welcome">
-
-    <h2>
-        ⚡ Welcome to Ariyan Zone
-    </h2>
-
-    <p>
-        Free Fire Gaming • Sensitivity • HUD • Updates • Tips
-    </p>
-
-</div>
-
-
-<!-- FEATURES -->
-
-<div class="container">
-
-<div class="features">
-
-
-<div class="card">
-
-    <div class="card-image">
-        <img src="sensitivity.png" alt="Sensitivity">
-    </div>
-
-    <h3>Sensitivity</h3>
-
-    <p>
-        Device-wise Free Fire sensitivity settings.
-    </p>
-
-    <a href="sensitivity.html">
-        Open →
-    </a>
-
-</div>
-
-
-<div class="card">
-
-    <div class="card-image">
-        <img src="hud.png" alt="HUD Settings">
-    </div>
-
-    <h3>HUD Settings</h3>
-
-    <p>
-        Useful HUD and control settings for gameplay.
-    </p>
-
-    <a href="hud.html">
-        Open →
-    </a>
-
-</div>
-
-
-<div class="card">
-
-    <div class="card-image">
-        <img src="updates.png" alt="FF Updates">
-    </div>
-
-    <h3>FF Updates</h3>
-
-    <p>
-        Free Fire news, events and update information.
-    </p>
-
-    <a href="updates.html">
-        Open →
-    </a>
-
-</div>
-
-
-<div class="card">
-
-    <div class="card-image">
-        <img src="videos.png" alt="Videos">
-    </div>
-
-    <h3>Videos</h3>
-
-    <p>
-        Gaming videos and Free Fire content.
-    </p>
-
-    <a
-        href="https://youtu.be/-ZXVxv9n1Ro"
-        target="_blank"
-        rel="noopener">
-
-        Watch →
-
-    </a>
-
-</div>
-
-
-<div class="card">
-
-    <div class="card-image">
-        <img src="tournament.png" alt="Tournament">
-    </div>
-
-    <h3>Tournament</h3>
-
-    <p>
-        Tournament information and gaming events.
-    </p>
-
-    <a href="tournament.html">
-        Open →
-    </a>
-
-</div>
-
-
-<div class="card">
-
-    <div class="card-image">
-        <img src="tips.png" alt="Tips and Tricks">
-    </div>
-
-    <h3>Tips & Tricks</h3>
-
-    <p>
-        Helpful gameplay tips for Free Fire players.
-    </p>
-
-    <a href="tips.html">
-        Open →
-    </a>
-
-</div>
-
-
-<div class="card">
-
-    <div class="card-image">
-        <img src="premium.png" alt="Premium Sensitivity">
-    </div>
-
-    <h3>Premium Sensitivity</h3>
-
-    <p>
-        Premium sensitivity settings and information.
-    </p>
-
-    <a href="premium.html">
-        View →
-    </a>
-
-</div>
-
-
-<div class="card">
-
-    <div class="card-image">
-        <img src="topup.png" alt="FF Top Up">
-    </div>
-
-    <h3>FF Top Up</h3>
-
-    <p>
-        Free Fire diamond top-up information.
-    </p>
-
-    <a href="topup.html">
-        Top Up →
-    </a>
-
-</div>
-
-
-</div>
-</div>
-
-
-<!-- LIVE FIREBASE UPDATES -->
-
-<section class="live-updates">
-
-    <div class="live-title">
-
-        <h2>
-            📰 Latest FF Updates
-        </h2>
+        <h1>Welcome to Ariyan Zone</h1>
 
         <p>
-            Latest updates published from Ariyan Zone
+            Free Fire Gaming • Sensitivity • HUD • Updates • Tips
         </p>
 
-    </div>
+    </section>
 
-    <div
-        id="updateList"
-        class="update-list">
 
-        <div class="no-updates">
-            Loading updates...
+    <section class="features">
+
+        <div class="card">
+            <img src="sensitivity.png" alt="Sensitivity">
+            <h3>🎯 Sensitivity</h3>
+            <p>Device-wise Free Fire sensitivity settings.</p>
+            <button class="open-btn" onclick="featureMessage('Sensitivity')">
+                Open
+            </button>
+        </div>
+
+
+        <div class="card">
+            <img src="hud.png" alt="HUD Settings">
+            <h3>🎮 HUD Settings</h3>
+            <p>Useful HUD and control settings for gameplay.</p>
+            <button class="open-btn" onclick="featureMessage('HUD Settings')">
+                Open
+            </button>
+        </div>
+
+
+        <div class="card">
+            <img src="updates.png" alt="FF Updates">
+            <h3>📰 FF Updates</h3>
+            <p>Latest Free Fire events, news and updates.</p>
+            <button class="open-btn" onclick="scrollToUpdates()">
+                Open
+            </button>
+        </div>
+
+
+        <div class="card">
+            <img src="videos.png" alt="Videos">
+            <h3>🎬 Videos</h3>
+            <p>Free Fire gameplay, clips and useful videos.</p>
+            <button class="open-btn" onclick="featureMessage('Videos')">
+                Open
+            </button>
+        </div>
+
+
+        <div class="card">
+            <img src="tournament.png" alt="Tournament">
+            <h3>🏆 Tournament</h3>
+            <p>Free Fire tournament information and events.</p>
+            <button class="open-btn" onclick="featureMessage('Tournament')">
+                Open
+            </button>
+        </div>
+
+
+        <div class="card">
+            <img src="tips.png" alt="Tips and Tricks">
+            <h3>💡 Tips & Tricks</h3>
+            <p>Helpful gameplay tips and tricks.</p>
+            <button class="open-btn" onclick="featureMessage('Tips & Tricks')">
+                Open
+            </button>
+        </div>
+
+
+        <div class="card">
+            <img src="premium.png" alt="Premium Sensitivity">
+            <h3>💎 Premium Sensitivity</h3>
+            <p>Special sensitivity settings and guides.</p>
+            <button class="open-btn" onclick="featureMessage('Premium Sensitivity')">
+                Open
+            </button>
+        </div>
+
+
+        <div class="card">
+            <img src="topup.png" alt="FF Top Up">
+            <h3>💳 FF Top Up</h3>
+            <p>Free Fire top-up information and offers.</p>
+            <button class="open-btn" onclick="featureMessage('FF Top Up')">
+                Open
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- FIREBASE UPDATES -->
+
+    <section class="updates-section" id="updatesSection">
+
+        <div class="section-title">
+            📰 Latest FF Updates
+        </div>
+
+        <div class="updates" id="updatesList">
+
+            <div class="empty">
+                Loading latest updates...
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    © 2026 Ariyan Zone • Free Fire Gaming Website
+</footer>
+
+
+<!-- LOGIN / SIGN UP MODAL -->
+
+<div class="modal" id="authModal">
+
+    <div class="modal-box">
+
+        <div class="modal-head">
+
+            <h2 id="authTitle">🔐 Login</h2>
+
+            <button class="close" id="closeBtn" type="button">
+                ×
+            </button>
+
+        </div>
+
+
+        <input
+            class="input"
+            id="email"
+            type="email"
+            placeholder="Email address"
+            autocomplete="email"
+        >
+
+
+        <input
+            class="input"
+            id="password"
+            type="password"
+            placeholder="Password"
+            autocomplete="current-password"
+        >
+
+
+        <button
+            class="auth-btn"
+            id="emailAuthBtn"
+            type="button"
+        >
+            Login
+        </button>
+
+
+        <button
+            class="google-btn"
+            id="googleBtn"
+            type="button"
+        >
+            🔵 Continue with Google
+        </button>
+
+
+        <div class="auth-msg" id="authMsg"></div>
+
+
+        <div class="switch">
+
+            <span id="switchText">
+                Don't have an account?
+            </span>
+
+            <span id="switchBtn">
+                Sign Up
+            </span>
+
         </div>
 
     </div>
 
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <strong>
-        🔥 ARIYAN ZONE
-    </strong>
-
-    <p>
-        Gaming • Free Fire • Updates
-    </p>
-
-    <p>
-        © 2026 Ariyan Zone
-    </p>
-
-</footer>
-
-
-<!-- AUTH MODAL -->
-
-<div class="modal" id="authModal">
-
-<div class="auth-box">
-
-    <h2 id="authTitle">
-        🔐 Login
-    </h2>
-
-    <input
-        type="email"
-        id="email"
-        placeholder="Email address"
-        autocomplete="email">
-
-    <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        autocomplete="current-password">
-
-    <button
-        id="emailButton"
-        onclick="emailAuth()">
-
-        Login
-
-    </button>
-
-    <button
-        class="google-btn"
-        onclick="googleLogin()">
-
-        🔵 Continue with Google
-
-    </button>
-
-    <button
-        class="close-btn"
-        onclick="closeAuth()">
-
-        Close
-
-    </button>
-
-    <div
-        class="auth-message"
-        id="authMessage">
-    </div>
-
 </div>
 
-</div>
+
+<!--
+====================================================
+UI SCRIPT
+This script is NOT a module.
+So Login/Sign Up will still open even if Firebase
+has another problem.
+====================================================
+-->
+
+<script>
+
+let authMode = "login";
+
+const authModal = document.getElementById("authModal");
+const authTitle = document.getElementById("authTitle");
+const emailAuthBtn = document.getElementById("emailAuthBtn");
+const switchText = document.getElementById("switchText");
+const switchBtn = document.getElementById("switchBtn");
+const authMsg = document.getElementById("authMsg");
+
+
+function openLogin(){
+
+    authMode = "login";
+
+    authTitle.textContent = "🔐 Login";
+
+    emailAuthBtn.textContent = "Login";
+
+    switchText.textContent = "Don't have an account?";
+
+    switchBtn.textContent = "Sign Up";
+
+    authMsg.textContent = "";
+
+    authModal.classList.add("show");
+}
+
+
+function openSignup(){
+
+    authMode = "signup";
+
+    authTitle.textContent = "✨ Create Account";
+
+    emailAuthBtn.textContent = "Sign Up";
+
+    switchText.textContent = "Already have an account?";
+
+    switchBtn.textContent = "Login";
+
+    authMsg.textContent = "";
+
+    authModal.classList.add("show");
+}
+
+
+function closeAuth(){
+
+    authModal.classList.remove("show");
+
+    authMsg.textContent = "";
+}
+
+
+document
+.getElementById("loginBtn")
+.addEventListener("click", function(){
+
+    openLogin();
+
+});
+
+
+document
+.getElementById("signupBtn")
+.addEventListener("click", function(){
+
+    openSignup();
+
+});
+
+
+document
+.getElementById("closeBtn")
+.addEventListener("click", function(){
+
+    closeAuth();
+
+});
+
+
+switchBtn.addEventListener("click", function(){
+
+    if(authMode === "login"){
+
+        openSignup();
+
+    }else{
+
+        openLogin();
+
+    }
+
+});
+
+
+authModal.addEventListener("click", function(e){
+
+    if(e.target === authModal){
+
+        closeAuth();
+
+    }
+
+});
+
+
+function featureMessage(name){
+
+    alert(
+        name +
+        " section is coming soon! 🔥"
+    );
+
+}
+
+
+function scrollToUpdates(){
+
+    document
+    .getElementById("updatesSection")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* Make functions available if needed */
+
+window.openLogin = openLogin;
+window.openSignup = openSignup;
+window.closeAuth = closeAuth;
+window.featureMessage = featureMessage;
+window.scrollToUpdates = scrollToUpdates;
+
+</script>
 
 
 <!-- FIREBASE -->
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
 
 import {
     getAuth,
@@ -1113,8 +853,8 @@ import {
     signInWithPopup,
     onAuthStateChanged,
     signOut
-}
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
 
 import {
     getFirestore,
@@ -1124,147 +864,101 @@ import {
     orderBy,
     limit,
     getDocs
-}
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
+/* YOUR FIREBASE CONFIG */
 
 const firebaseConfig = {
 
     apiKey:
-    "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj-fT0",
+        "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj-fT0",
 
     authDomain:
-    "ariyan-zone.firebaseapp.com",
+        "ariyan-zone.firebaseapp.com",
 
     projectId:
-    "ariyan-zone",
+        "ariyan-zone",
 
     storageBucket:
-    "ariyan-zone.firebasestorage.app",
+        "ariyan-zone.firebasestorage.app",
 
     messagingSenderId:
-    "546027217878",
+        "546027217878",
 
     appId:
-    "1:546027217878:web:20715e9f32fc074fe5ba77",
+        "1:546027217878:web:20715e9f32fc074fe5ba77",
 
     measurementId:
-    "G-LHZQQTYG88"
+        "G-LHZQQTYG88"
+
 };
 
 
-/* START FIREBASE */
+const app = initializeApp(firebaseConfig);
 
-const app =
-    initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-const auth =
-    getAuth(app);
+const db = getFirestore(app);
 
-const db =
-    getFirestore(app);
 
-const provider =
+/* Google */
+
+const googleProvider =
     new GoogleAuthProvider();
 
-let signupMode = false;
 
+/* EMAIL LOGIN / SIGNUP */
 
-/* LOGIN */
-
-window.openLogin = function(){
-
-    signupMode = false;
-
-    document.getElementById("authTitle")
-        .textContent = "🔐 Login";
-
-    document.getElementById("emailButton")
-        .textContent = "Login";
-
-    document.getElementById("authMessage")
-        .textContent = "";
-
-    document.getElementById("email")
-        .value = "";
-
-    document.getElementById("password")
-        .value = "";
-
-    document.getElementById("authModal")
-        .style.display = "flex";
-};
-
-
-/* SIGN UP */
-
-window.openSignup = function(){
-
-    signupMode = true;
-
-    document.getElementById("authTitle")
-        .textContent = "✨ Sign Up";
-
-    document.getElementById("emailButton")
-        .textContent = "Create Account";
-
-    document.getElementById("authMessage")
-        .textContent = "";
-
-    document.getElementById("email")
-        .value = "";
-
-    document.getElementById("password")
-        .value = "";
-
-    document.getElementById("authModal")
-        .style.display = "flex";
-};
-
-
-/* CLOSE */
-
-window.closeAuth = function(){
-
-    document.getElementById("authModal")
-        .style.display = "none";
-};
-
-
-/* EMAIL AUTH */
-
-window.emailAuth = async function(){
+document
+.getElementById("emailAuthBtn")
+.addEventListener("click", async function(){
 
     const email =
         document.getElementById("email")
-        .value.trim();
+        .value
+        .trim();
 
     const password =
         document.getElementById("password")
         .value;
 
-    const message =
-        document.getElementById("authMessage");
+
+    const msg =
+        document.getElementById("authMsg");
 
 
     if(!email || !password){
 
-        message.textContent =
+        msg.style.color = "#ff7b91";
+
+        msg.textContent =
             "Please enter email and password.";
 
         return;
     }
 
 
-    message.textContent =
-        "Please wait...";
+    if(password.length < 6){
+
+        msg.style.color = "#ff7b91";
+
+        msg.textContent =
+            "Password must be at least 6 characters.";
+
+        return;
+    }
 
 
     try{
 
-        if(signupMode){
+        msg.style.color = "#8ffaff";
+
+        msg.textContent =
+            "Please wait...";
+
+
+        if(window.authMode === "signup"){
 
             await createUserWithEmailAndPassword(
                 auth,
@@ -1272,8 +966,38 @@ window.emailAuth = async function(){
                 password
             );
 
-            message.textContent =
-                "✅ Account created successfully!";
+        }
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+
+    try{
+
+        if(document
+            .getElementById("authTitle")
+            .textContent
+            .includes("Create")){
+
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            msg.style.color = "#7dffb2";
+
+            msg.textContent =
+                "Account created successfully!";
+
+            setTimeout(() => {
+
+                closeAuth();
+
+            },1200);
 
         }else{
 
@@ -1283,142 +1007,124 @@ window.emailAuth = async function(){
                 password
             );
 
-            message.textContent =
-                "✅ Login successful!";
+            msg.style.color = "#7dffb2";
 
-            setTimeout(
-                closeAuth,
-                800
-            );
+            msg.textContent =
+                "Login successful!";
+
+            setTimeout(() => {
+
+                closeAuth();
+
+            },700);
+
         }
-
 
     }catch(error){
 
-        console.log(
-            "Firebase Auth Error:",
-            error
-        );
+        console.log(error);
 
+        msg.style.color = "#ff7b91";
 
-        if(
-            error.code ===
-            "auth/email-already-in-use"
-        ){
+        let message =
+            "Something went wrong.";
 
-            message.textContent =
-                "❌ This email is already registered.";
+        if(error.code ===
+            "auth/invalid-credential"){
 
-        }
-
-        else if(
-            error.code ===
-            "auth/invalid-credential" ||
-            error.code ===
-            "auth/wrong-password" ||
-            error.code ===
-            "auth/user-not-found"
-        ){
-
-            message.textContent =
-                "❌ Email or password is incorrect.";
+            message =
+                "Email or password is incorrect.";
 
         }
 
-        else if(
-            error.code ===
-            "auth/weak-password"
-        ){
+        else if(error.code ===
+            "auth/user-not-found"){
 
-            message.textContent =
-                "❌ Password must be at least 6 characters.";
+            message =
+                "No account found with this email.";
 
         }
 
-        else if(
-            error.code ===
-            "auth/invalid-email"
-        ){
+        else if(error.code ===
+            "auth/email-already-in-use"){
 
-            message.textContent =
-                "❌ Please enter a valid email.";
+            message =
+                "This email is already registered.";
 
         }
 
-        else{
+        else if(error.code ===
+            "auth/weak-password"){
 
-            message.textContent =
-                "❌ " + error.message;
+            message =
+                "Password is too weak.";
 
         }
+
+        else if(error.code ===
+            "auth/invalid-email"){
+
+            message =
+                "Please enter a valid email.";
+
+        }
+
+        msg.textContent = message;
 
     }
 
-};
+});
 
 
 /* GOOGLE LOGIN */
 
-window.googleLogin = async function(){
+document
+.getElementById("googleBtn")
+.addEventListener("click", async function(){
 
-    const message =
-        document.getElementById(
-            "authMessage"
-        );
-
-    message.textContent =
-        "Opening Google Login...";
+    const msg =
+        document.getElementById("authMsg");
 
 
     try{
+
+        msg.style.color = "#8ffaff";
+
+        msg.textContent =
+            "Opening Google login...";
+
 
         await signInWithPopup(
             auth,
-            provider
+            googleProvider
         );
 
-        message.textContent =
-            "✅ Google login successful!";
 
-        setTimeout(
-            closeAuth,
-            800
-        );
+        msg.style.color = "#7dffb2";
+
+        msg.textContent =
+            "Google login successful!";
+
+
+        setTimeout(() => {
+
+            closeAuth();
+
+        },700);
 
 
     }catch(error){
 
-        console.log(
-            "Google Login Error:",
-            error
-        );
+        console.log(error);
 
-        message.textContent =
-            "❌ " + error.message;
+        msg.style.color = "#ff7b91";
 
-    }
-
-};
-
-
-/* LOGOUT */
-
-window.logout = async function(){
-
-    try{
-
-        await signOut(auth);
-
-    }catch(error){
-
-        console.log(
-            "Logout Error:",
-            error
-        );
+        msg.textContent =
+            "Google login was cancelled or failed.";
 
     }
 
-};
+});
 
 
 /* AUTH STATE */
@@ -1437,25 +1143,6 @@ onAuthStateChanged(
                 "userArea"
             );
 
-        const userText =
+        const userEmail =
             document.getElementById(
-                "userText"
-            );
-
-
-        if(user){
-
-            buttons.style.display =
-                "none";
-
-            userArea.style.display =
-                "block";
-
-            userText.textContent =
-                "👤 Logged in: " +
-                (
-                    user.displayName ||
-                    user.email
-                );
-
-    
+                "userEmail"
