@@ -1426,4 +1426,173 @@ document.getElementById("emailButton")
                 await createUserWithEmailAndPassword(
                     auth,
                     email,
-                  
+                  password
+);
+
+message.textContent = "✅ Account created successfully!";
+setTimeout(closeAuth, 800);
+
+}else{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+message.textContent = "✅ Login successful!";
+setTimeout(closeAuth, 700);}catch(error){
+
+console.error("Email Auth Error:", error);
+
+if(error.code === "auth/email-already-in-use"){
+message.textContent = "❌ এই email দিয়ে account আগে থেকেই আছে.";
+}else if(error.code === "auth/invalid-email"){
+message.textContent = "❌ Email address সঠিক নয়.";
+}else if(
+error.code === "auth/invalid-credential" ||
+error.code === "auth/wrong-password" ||
+error.code === "auth/user-not-found"
+){
+message.textContent = "❌ Email অথবা password ভুল.";
+}else if(error.code === "auth/too-many-requests"){
+message.textContent = "❌ অনেকবার চেষ্টা হয়েছে। কিছুক্ষণ পরে আবার চেষ্টা করো.";
+}else{
+message.textContent = "❌ Login failed: " + error.code;
+}
+
+}
+
+});
+
+document.getElementById("logoutBtn").addEventListener("click", async function(){
+
+try{
+await signOut(auth);
+}catch(error){
+console.error("Logout Error:",error);
+}
+
+});
+onAuthStateChanged(auth, function(user){
+
+const accountButtons = document.getElementById("accountButtons");
+const userArea = document.getElementById("userArea");
+const userText = document.getElementById("userText");
+
+if(user){
+
+accountButtons.style.display = "none";
+userArea.style.display = "block";
+userText.textContent =
+"👤 " + (user.displayName || user.email || "User");
+
+}else{
+
+accountButtons.style.display = "flex";
+userArea.style.display = "none";
+userText.textContent = "";
+
+}
+
+});
+
+async function loadUpdates(){
+
+const updateList = document.getElementById("updateList");
+
+try{
+
+const updatesQuery = query(
+collection(db,"updates"),
+where("published","==",true),
+orderBy("createdAt","desc")
+);
+
+const snapshot = await getDocs(updatesQuery);
+
+if(snapshot.empty){
+
+updateList.innerHTML =
+'<div class="no-updates">No updates published yet.</div>';
+
+return;
+
+}
+
+updateList.innerHTML = "";
+
+snapshot.forEach(function(docSnap){
+
+const data = docSnap.data();
+
+const box = document.createElement("div");
+box.className = "update-box";
+
+if(data.image){
+
+const image = document.createElement("img");
+image.src = data.image;
+image.alt = data.title || "FF Update";
+box.appendChild(image);
+
+}
+
+const title = document.createElement("h3");
+title.textContent = data.title || "FF Update";
+box.appendChild(title);
+
+const content = document.createElement("p");
+content.textContent = data.content || "";
+box.appendChild(content);
+
+const date = document.createElement("span");
+date.className = "update-date";
+
+if(data.createdAt){
+
+try{
+
+const d = data.createdAt.toDate();
+
+date.textContent =
+d.toLocaleDateString("en-BD",{
+year:"numeric",
+month:"short",
+day:"numeric"
+});
+
+}catch(e){
+
+date.textContent = "Ariyan Zone";
+
+}
+
+}else{
+
+date.textContent = "Ariyan Zone";
+
+}
+
+box.appendChild(date);
+updateList.appendChild(box);
+
+});
+
+}catch(error){
+
+console.error("Updates Error:",error);
+
+updateList.innerHTML =
+'<div class="no-updates">Updates could not be loaded right now.</div>';
+
+}
+
+}
+
+loadUpdates();
+
+</script>
+
+</body>
+</html>
