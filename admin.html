@@ -1,53 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Ariyan Zone - Admin Test</title>
+<title>Ariyan Zone | Admin Panel</title>
 
 <style>
 
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
-    padding:20px;
+    font-family:Arial,sans-serif;
     background:#08080d;
     color:white;
-    font-family:Arial,sans-serif;
+}
+
+header{
+    text-align:center;
+    padding:30px 15px;
+    background:linear-gradient(135deg,#15152e,#32105c);
+}
+
+header h1{
+    margin:0 0 8px;
+}
+
+header p{
+    margin:0;
+    color:#bbb;
 }
 
 .container{
-    max-width:600px;
-    margin:40px auto;
+    max-width:900px;
+    margin:auto;
+    padding:20px;
 }
 
 .card{
     background:#171720;
-    border:1px solid #333;
+    border:1px solid #292936;
     border-radius:15px;
-    padding:25px;
+    padding:20px;
+    margin-bottom:20px;
 }
 
-h1{
-    text-align:center;
-    color:#c084fc;
-}
-
-h2{
-    color:#a78bfa;
-}
-
-.info{
-    background:#101018;
+.status{
     padding:15px;
     border-radius:10px;
+    background:#101018;
     margin:12px 0;
-    line-height:1.8;
-    word-break:break-word;
 }
 
 .success{
@@ -58,57 +64,304 @@ h2{
     color:#f87171;
 }
 
-.warning{
-    color:#facc15;
+input,
+textarea{
+    width:100%;
+    padding:13px;
+    margin:7px 0 12px;
+    border:1px solid #333;
+    border-radius:9px;
+    background:#252532;
+    color:white;
+    outline:none;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
 }
 
 button{
-    width:100%;
-    padding:13px;
-    margin-top:15px;
+    padding:12px 18px;
     border:0;
     border-radius:9px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:5px;
+}
+
+.primary{
     background:#7c3aed;
     color:white;
-    font-size:16px;
-    font-weight:bold;
+}
+
+.danger{
+    background:#dc2626;
+    color:white;
+}
+
+.secondary{
+    background:#33333f;
+    color:white;
+}
+
+.update{
+    background:#101018;
+    border:1px solid #292936;
+    border-radius:12px;
+    padding:15px;
+    margin-top:15px;
+}
+
+.update h3{
+    color:#c084fc;
+}
+
+.update p{
+    color:#ccc;
+    line-height:1.6;
+    white-space:pre-wrap;
+}
+
+.update img{
+    width:100%;
+    max-height:300px;
+    object-fit:cover;
+    border-radius:10px;
+    margin:10px 0;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    background:#22c55e;
+    font-size:12px;
+}
+
+.hidden{
+    display:none;
+}
+
+.message{
+    padding:12px;
+    border-radius:9px;
+    margin-top:12px;
+}
+
+.success-box{
+    background:#102f1b;
+    border:1px solid #22c55e;
+}
+
+.error-box{
+    background:#3f1111;
+    border:1px solid #ef4444;
+}
+
+.loading{
+    text-align:center;
+    padding:50px 20px;
+    color:#bbb;
 }
 
 </style>
 
 </head>
 
-
 <body>
 
-<div class="container">
 
-<div class="card">
+<header>
 
 <h1>🔥 ARIYAN ZONE</h1>
 
-<h2>Admin Login Test</h2>
+<p>Admin Control Panel</p>
 
-<div id="status" class="info">
-Checking Firebase...
+</header>
+
+
+<div
+id="loadingBox"
+class="loading"
+>
+
+Checking admin access...
+
 </div>
 
-<div id="emailBox" class="info">
-Checking login...
+
+<div
+id="deniedBox"
+class="container hidden"
+>
+
+<div class="card">
+
+<h2>❌ Access Denied</h2>
+
+<p id="deniedText">
+You are not logged in.
+</p>
+
 </div>
 
-<div id="adminBox" class="info">
-Checking admin permission...
+</div>
+
+
+<div
+id="adminPanel"
+class="container hidden"
+>
+
+
+<!-- ACCOUNT -->
+
+<div class="card">
+
+<h2>✅ Admin Access Granted</h2>
+
+<div
+id="userInfo"
+class="status"
+>
+Checking account...
 </div>
 
 <button
-id="loginButton"
-style="display:none;"
+id="logoutBtn"
+class="danger"
 >
-Go to Login
+Logout
 </button>
 
 </div>
+
+
+<!-- FF UPDATES -->
+
+<div class="card">
+
+<h2>📰 FF Updates</h2>
+
+<p style="color:#aaa;">
+Add and manage Free Fire updates.
+</p>
+
+
+<form id="updateForm">
+
+<label>
+Update Title
+</label>
+
+<input
+id="title"
+type="text"
+placeholder="Example: New Free Fire Update"
+required
+>
+
+
+<label>
+Update Content
+</label>
+
+<textarea
+id="content"
+placeholder="Write your update..."
+required
+></textarea>
+
+
+<label>
+Image URL
+</label>
+
+<input
+id="imageUrl"
+type="url"
+placeholder="https://example.com/image.jpg"
+>
+
+
+<label>
+
+<input
+id="published"
+type="checkbox"
+checked
+style="width:auto;"
+>
+
+Publish this update
+
+</label>
+
+
+<br>
+
+
+<button
+id="saveBtn"
+class="primary"
+type="submit"
+>
+Add Update
+</button>
+
+
+<button
+id="cancelBtn"
+class="secondary hidden"
+type="button"
+>
+Cancel Edit
+</button>
+
+
+</form>
+
+
+<div id="message"></div>
+
+</div>
+
+
+<!-- SAVED UPDATES -->
+
+<div class="card">
+
+<h2>📋 Saved Updates</h2>
+
+<div id="updatesList">
+Loading...
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>🎯 Sensitivity</h2>
+
+<p style="color:#aaa;">
+Sensitivity management will be added later.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>🎮 HUD Settings</h2>
+
+<p style="color:#aaa;">
+HUD management will be added later.
+</p>
+
+</div>
+
 
 </div>
 
@@ -117,7 +370,7 @@ Go to Login
 
 
 /* =========================
-   FIREBASE
+   FIREBASE IMPORT
 ========================= */
 
 import {
@@ -128,9 +381,27 @@ from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
 import {
     getAuth,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut,
+    setPersistence,
+    browserLocalPersistence
 }
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    updateDoc,
+    deleteDoc,
+    serverTimestamp,
+    query,
+    orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
 /* =========================
@@ -178,139 +449,737 @@ const ADMIN_EMAIL =
 const app =
     initializeApp(firebaseConfig);
 
-
 const auth =
     getAuth(app);
 
-
-/* =========================
-   HTML
-========================= */
-
-const statusBox =
-    document.getElementById("status");
-
-const emailBox =
-    document.getElementById("emailBox");
-
-const adminBox =
-    document.getElementById("adminBox");
-
-const loginButton =
-    document.getElementById("loginButton");
+const db =
+    getFirestore(app);
 
 
 /* =========================
-   FIREBASE AUTH TEST
+   KEEP LOGIN SESSION
 ========================= */
 
-statusBox.innerHTML =
-    '<span class="success">✓ Firebase connected</span>';
+setPersistence(
+    auth,
+    browserLocalPersistence
+)
+.catch(
+    error =>
+    console.error(
+        "Persistence error:",
+        error
+    )
+);
 
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const loadingBox =
+    document.getElementById(
+        "loadingBox"
+    );
+
+const deniedBox =
+    document.getElementById(
+        "deniedBox"
+    );
+
+const deniedText =
+    document.getElementById(
+        "deniedText"
+    );
+
+const adminPanel =
+    document.getElementById(
+        "adminPanel"
+    );
+
+const userInfo =
+    document.getElementById(
+        "userInfo"
+    );
+
+const logoutBtn =
+    document.getElementById(
+        "logoutBtn"
+    );
+
+const updateForm =
+    document.getElementById(
+        "updateForm"
+    );
+
+const titleInput =
+    document.getElementById(
+        "title"
+    );
+
+const contentInput =
+    document.getElementById(
+        "content"
+    );
+
+const imageInput =
+    document.getElementById(
+        "imageUrl"
+    );
+
+const publishedInput =
+    document.getElementById(
+        "published"
+    );
+
+const saveBtn =
+    document.getElementById(
+        "saveBtn"
+    );
+
+const cancelBtn =
+    document.getElementById(
+        "cancelBtn"
+    );
+
+const updatesList =
+    document.getElementById(
+        "updatesList"
+    );
+
+const messageBox =
+    document.getElementById(
+        "message"
+    );
+
+
+let editingId = null;
+
+
+/* =========================
+   AUTH CHECK
+========================= */
 
 onAuthStateChanged(
     auth,
-    (user) => {
+    async (user) => {
+
+        loadingBox.classList.add(
+            "hidden"
+        );
+
 
         if(!user){
 
-            emailBox.innerHTML =
-                '<span class="error">✕ No user is logged in.</span>';
+            deniedBox.classList.remove(
+                "hidden"
+            );
 
-            adminBox.innerHTML =
-                '<span class="warning">Please login first.</span>';
-
-            loginButton.style.display =
-                "block";
-
-            loginButton.onclick =
-                () => {
-
-                    window.location.href =
-                    "/ariyan-zone/";
-
-                };
+            deniedText.textContent =
+                "No user is logged in. Please login from the Ariyan Zone homepage first.";
 
             return;
 
         }
 
 
-        /* USER FOUND */
-
-        emailBox.innerHTML =
-
-            "<b>Logged-in Email:</b><br>" +
-            user.email;
-
-
-        /* ADMIN CHECK */
-
         if(
-            user.email &&
-            user.email.toLowerCase() ===
+            !user.email ||
+            user.email.toLowerCase() !==
             ADMIN_EMAIL.toLowerCase()
         ){
 
-            adminBox.innerHTML =
+            deniedBox.classList.remove(
+                "hidden"
+            );
 
-                '<span class="success">' +
-                '✓ ADMIN EMAIL MATCHED' +
-                '</span>' +
+            deniedText.innerHTML =
+                "Logged in as: <b>" +
+                escapeHtml(user.email) +
+                "</b><br><br>" +
+                "This account is not the admin account.";
 
-                "<br><br>" +
-
-                "<b>Admin Email:</b><br>" +
-                ADMIN_EMAIL;
-
-        }
-
-        else{
-
-            adminBox.innerHTML =
-
-                '<span class="error">' +
-                '✕ ADMIN EMAIL DOES NOT MATCH' +
-                '</span>' +
-
-                "<br><br>" +
-
-                "<b>Expected:</b><br>" +
-                ADMIN_EMAIL +
-
-                "<br><br>" +
-
-                "<b>Currently logged in:</b><br>" +
-                user.email;
+            return;
 
         }
+
+
+        /* ADMIN */
+
+        adminPanel.classList.remove(
+            "hidden"
+        );
+
+
+        userInfo.innerHTML =
+            "Logged in as: <b>" +
+            escapeHtml(user.email) +
+            "</b>";
+
+
+        await loadUpdates();
 
     }
-
 );
 
 
 /* =========================
-   ERROR HANDLING
+   LOGOUT
 ========================= */
 
-window.addEventListener(
-    "error",
-    (event) => {
+logoutBtn.addEventListener(
+    "click",
+    async () => {
 
-        statusBox.innerHTML =
+        try{
 
-            '<span class="error">' +
-            'Firebase/JavaScript Error:<br>' +
-            event.message +
-            '</span>';
+            await signOut(auth);
+
+            window.location.reload();
+
+        }
+        catch(error){
+
+            showMessage(
+                error.message,
+                true
+            );
+
+        }
 
     }
 );
 
 
+/* =========================
+   ADD / EDIT
+========================= */
+
+updateForm.addEventListener(
+    "submit",
+    async (event) => {
+
+        event.preventDefault();
+
+
+        const title =
+            titleInput.value.trim();
+
+        const content =
+            contentInput.value.trim();
+
+        const imageUrl =
+            imageInput.value.trim();
+
+        const published =
+            publishedInput.checked;
+
+
+        if(!title || !content){
+
+            showMessage(
+                "Title and content are required.",
+                true
+            );
+
+            return;
+
+        }
+
+
+        saveBtn.disabled = true;
+
+
+        try{
+
+            if(editingId){
+
+                await updateDoc(
+                    doc(
+                        db,
+                        "updates",
+                        editingId
+                    ),
+                    {
+                        title,
+                        content,
+                        imageUrl,
+                        published,
+                        updatedAt:
+                            serverTimestamp()
+                    }
+                );
+
+
+                showMessage(
+                    "Update edited successfully!"
+                );
+
+            }
+
+            else{
+
+                await addDoc(
+                    collection(
+                        db,
+                        "updates"
+                    ),
+                    {
+                        title,
+                        content,
+                        imageUrl,
+                        published,
+                        createdAt:
+                            serverTimestamp(),
+                        updatedAt:
+                            serverTimestamp()
+                    }
+                );
+
+
+                showMessage(
+                    "Update added successfully!"
+                );
+
+            }
+
+
+            resetForm();
+
+            await loadUpdates();
+
+        }
+        catch(error){
+
+            console.error(error);
+
+            showMessage(
+                "Firestore Error: " +
+                error.message,
+                true
+            );
+
+        }
+        finally{
+
+            saveBtn.disabled = false;
+
+        }
+
+    }
+);
+
+
+/* =========================
+   LOAD UPDATES
+========================= */
+
+async function loadUpdates(){
+
+    updatesList.innerHTML =
+        "Loading updates...";
+
+
+    try{
+
+        const updatesQuery =
+            query(
+                collection(
+                    db,
+                    "updates"
+                ),
+                orderBy(
+                    "createdAt",
+                    "desc"
+                )
+            );
+
+
+        const snapshot =
+            await getDocs(
+                updatesQuery
+            );
+
+
+        if(snapshot.empty){
+
+            updatesList.innerHTML =
+                "<p style='color:#aaa;'>No updates yet.</p>";
+
+            return;
+
+        }
+
+
+        updatesList.innerHTML =
+            "";
+
+
+        snapshot.forEach(
+            snapshotItem => {
+
+                const data =
+                    snapshotItem.data();
+
+                const id =
+                    snapshotItem.id;
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "update";
+
+
+                let imageHTML =
+                    "";
+
+
+                if(data.imageUrl){
+
+                    imageHTML =
+                        `
+                        <img
+                        src="${escapeHtml(data.imageUrl)}"
+                        alt="Update image"
+                        onerror="this.style.display='none'"
+                        >
+                        `;
+
+                }
+
+
+                item.innerHTML = `
+
+                    <span class="badge">
+                    ${data.published ? "Published" : "Draft"}
+                    </span>
+
+                    <h3>
+                    ${escapeHtml(data.title || "")}
+                    </h3>
+
+                    ${imageHTML}
+
+                    <p>
+                    ${escapeHtml(data.content || "")}
+                    </p>
+
+                    <p style="color:#777;font-size:12px;">
+                    ${formatDate(data.createdAt)}
+                    </p>
+
+                    <button
+                    class="primary"
+                    data-edit="${id}"
+                    >
+                    Edit
+                    </button>
+
+                    <button
+                    class="danger"
+                    data-delete="${id}"
+                    >
+                    Delete
+                    </button>
+
+                `;
+
+
+                updatesList.appendChild(
+                    item
+                );
+
+            }
+        );
+
+
+        document
+        .querySelectorAll(
+            "[data-edit]"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        editUpdate(
+                            button.dataset.edit,
+                            snapshot
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        document
+        .querySelectorAll(
+            "[data-delete]"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        deleteUpdate(
+                            button.dataset.delete
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        updatesList.innerHTML =
+            `
+            <div class="message error-box">
+            ${escapeHtml(error.message)}
+            </div>
+            `;
+
+    }
+
+}
+
+
+/* =========================
+   EDIT
+========================= */
+
+function editUpdate(
+    id,
+    snapshot
+){
+
+    const selected =
+        snapshot.docs.find(
+            item =>
+            item.id === id
+        );
+
+
+    if(!selected){
+
+        return;
+
+    }
+
+
+    const data =
+        selected.data();
+
+
+    editingId = id;
+
+
+    titleInput.value =
+        data.title || "";
+
+    contentInput.value =
+        data.content || "";
+
+    imageInput.value =
+        data.imageUrl || "";
+
+    publishedInput.checked =
+        data.published !== false;
+
+
+    saveBtn.textContent =
+        "Save Changes";
+
+
+    cancelBtn.classList.remove(
+        "hidden"
+    );
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   DELETE
+========================= */
+
+async function deleteUpdate(id){
+
+    if(
+        !confirm(
+            "Delete this update?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    try{
+
+        await deleteDoc(
+            doc(
+                db,
+                "updates",
+                id
+            )
+        );
+
+
+        showMessage(
+            "Update deleted successfully!"
+        );
+
+
+        await loadUpdates();
+
+    }
+    catch(error){
+
+        showMessage(
+            error.message,
+            true
+        );
+
+    }
+
+}
+
+
+/* =========================
+   CANCEL EDIT
+========================= */
+
+cancelBtn.addEventListener(
+    "click",
+    () => {
+
+        resetForm();
+
+    }
+);
+
+
+/* =========================
+   RESET
+========================= */
+
+function resetForm(){
+
+    editingId = null;
+
+    updateForm.reset();
+
+    publishedInput.checked =
+        true;
+
+    saveBtn.textContent =
+        "Add Update";
+
+    cancelBtn.classList.add(
+        "hidden"
+    );
+
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(
+    text,
+    error = false
+){
+
+    messageBox.className =
+        error
+        ? "message error-box"
+        : "message success-box";
+
+    messageBox.textContent =
+        text;
+
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+function formatDate(
+    timestamp
+){
+
+    if(!timestamp){
+
+        return "";
+
+    }
+
+
+    try{
+
+        const date =
+            timestamp.toDate
+            ? timestamp.toDate()
+            : new Date(timestamp);
+
+
+        return date.toLocaleString();
+
+    }
+    catch(error){
+
+        return "";
+
+    }
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(
+    value
+){
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+    div.textContent =
+        value;
+
+    return div.innerHTML;
+
+}
+
 </script>
 
 </body>
-
 </html>
