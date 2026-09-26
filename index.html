@@ -1109,18 +1109,9 @@ footer strong{
 </div>
 
 
-<!--
-================================================
-IMPORTANT:
-The UI functions are in a normal script.
-Therefore Firebase loading errors cannot stop
-the Login / Sign Up modal from opening.
-================================================
--->
+<!-- UI AUTH SCRIPT -->
 
 <script>
-
-/* AUTH MODE */
 
 let signupMode = false;
 
@@ -1186,7 +1177,7 @@ function closeAuth(){
 }
 
 
-/* BUTTON CONNECTION */
+/* BUTTONS */
 
 document.getElementById("loginBtn")
     .addEventListener("click", openLogin);
@@ -1198,21 +1189,17 @@ document.getElementById("closeButton")
     .addEventListener("click", closeAuth);
 
 
-/* CLOSE BY CLICKING OUTSIDE */
+/* CLICK OUTSIDE */
 
 document.getElementById("authModal")
     .addEventListener("click", function(event){
 
         if(event.target === this){
-
             closeAuth();
-
         }
 
     });
 
-
-/* MAKE FUNCTIONS GLOBAL */
 
 window.openLogin = openLogin;
 window.openSignup = openSignup;
@@ -1229,7 +1216,6 @@ import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
-
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -1240,14 +1226,12 @@ import {
     signOut
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
-
 import {
     getFirestore,
     collection,
     query,
     where,
     orderBy,
-    limit,
     getDocs
 } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
@@ -1293,6 +1277,106 @@ const db =
 
 const provider =
     new GoogleAuthProvider();
+
+
+/* GOOGLE LOGIN */
+
+document.getElementById("googleButton")
+    .addEventListener("click", async function(){
+
+        const message =
+            document.getElementById("authMessage");
+
+        message.textContent =
+            "⏳ Google login হচ্ছে...";
+
+        try{
+
+            provider.setCustomParameters({
+                prompt: "select_account"
+            });
+
+            await signInWithPopup(
+                auth,
+                provider
+            );
+
+            message.textContent =
+                "✅ Google login successful!";
+
+            setTimeout(
+                closeAuth,
+                700
+            );
+
+        }catch(error){
+
+            console.error(
+                "Google Login Error:",
+                error
+            );
+
+            if(
+                error.code ===
+                "auth/popup-closed-by-user"
+            ){
+
+                message.textContent =
+                    "❌ Google login window বন্ধ করা হয়েছে.";
+
+            }
+
+            else if(
+                error.code ===
+                "auth/popup-blocked"
+            ){
+
+                message.textContent =
+                    "❌ Browser popup block করেছে. Popup allow করো.";
+
+            }
+
+            else if(
+                error.code ===
+                "auth/unauthorized-domain"
+            ){
+
+                message.textContent =
+                    "❌ This website domain is not authorized in Firebase.";
+
+            }
+
+            else if(
+                error.code ===
+                "auth/account-exists-with-different-credential"
+            ){
+
+                message.textContent =
+                    "❌ এই email অন্য login method দিয়ে registered.";
+
+            }
+
+            else if(
+                error.code ===
+                "auth/network-request-failed"
+            ){
+
+                message.textContent =
+                    "❌ Internet connection check করো.";
+
+            }
+
+            else{
+
+                message.textContent =
+                    "❌ Google login failed: " +
+                    error.code;
+
+            }
+
+        }
+
+    });
 
 
 /* EMAIL LOGIN / SIGN UP */
@@ -1342,89 +1426,4 @@ document.getElementById("emailButton")
                 await createUserWithEmailAndPassword(
                     auth,
                     email,
-                    password
-                );
-
-                message.textContent =
-                    "✅ Account created successfully!";
-
-                setTimeout(
-                    closeAuth,
-                    900
-                );
-
-            }else{
-
-                await signInWithEmailAndPassword(
-                    auth,
-                    email,
-                    password
-                );
-
-                message.textContent =
-                    "✅ Login successful!";
-
-                setTimeout(
-                    closeAuth,
-                    700
-                );
-
-            }
-
-
-        }catch(error){
-
-            console.log(
-                "Firebase Auth Error:",
-                error
-            );
-
-
-            if(
-                error.code ===
-                "auth/email-already-in-use"
-            ){
-
-                message.textContent =
-                    "❌ This email is already registered.";
-
-            }
-
-            else if(
-                error.code ===
-                "auth/invalid-credential" ||
-                error.code ===
-                "auth/wrong-password" ||
-                error.code ===
-                "auth/user-not-found"
-            ){
-
-                message.textContent =
-                    "❌ Email or password is incorrect.";
-
-            }
-
-            else if(
-                error.code ===
-                "auth/weak-password"
-            ){
-
-                message.textContent =
-                    "❌ Password must be at least 6 characters.";
-
-            }
-
-            else if(
-                error.code ===
-                "auth/invalid-email"
-            ){
-
-                message.textContent =
-                    "❌ Please enter a valid email.";
-
-            }
-
-            else{
-
-                message.textContent =
- 
+                  
