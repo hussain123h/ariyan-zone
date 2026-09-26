@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ariyan Zone | Admin Panel</title>
+<title>Ariyan Zone - Admin Panel</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
@@ -20,60 +18,45 @@ body{
     color:white;
 }
 
-header{
-    text-align:center;
-    padding:30px 15px;
-    background:linear-gradient(135deg,#15152e,#32105c);
-}
-
-header h1{
-    margin:0 0 8px;
-}
-
-header p{
-    margin:0;
-    color:#bbb;
-}
-
 .container{
     max-width:900px;
     margin:auto;
     padding:20px;
 }
 
-.card{
-    background:#171720;
-    border:1px solid #292936;
+.header{
+    text-align:center;
+    padding:25px 10px;
+    background:linear-gradient(135deg,#15152e,#32105c);
     border-radius:15px;
-    padding:20px;
     margin-bottom:20px;
 }
 
-.status{
-    padding:15px;
-    border-radius:10px;
-    background:#101018;
-    margin:12px 0;
+.header h1{
+    margin:0;
+    font-size:28px;
 }
 
-.success{
-    color:#4ade80;
+.header p{
+    color:#ccc;
 }
 
-.error{
-    color:#f87171;
+.card{
+    background:#171720;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
 }
 
-input,
-textarea{
+input,textarea{
     width:100%;
     padding:13px;
-    margin:7px 0 12px;
+    margin:8px 0;
     border:1px solid #333;
-    border-radius:9px;
-    background:#252532;
+    border-radius:8px;
+    background:#0e0e14;
     color:white;
-    outline:none;
+    font-size:15px;
 }
 
 textarea{
@@ -82,326 +65,218 @@ textarea{
 }
 
 button{
-    padding:12px 18px;
     border:0;
-    border-radius:9px;
-    cursor:pointer;
-    font-weight:bold;
+    border-radius:8px;
+    padding:12px 18px;
     margin:5px;
-}
-
-.primary{
     background:#7c3aed;
     color:white;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.danger{
+button:hover{
+    opacity:.85;
+}
+
+.logout{
     background:#dc2626;
-    color:white;
 }
 
-.secondary{
-    background:#33333f;
-    color:white;
+.edit{
+    background:#2563eb;
+}
+
+.delete{
+    background:#dc2626;
 }
 
 .update{
-    background:#101018;
-    border:1px solid #292936;
-    border-radius:12px;
+    background:#11111a;
+    border:1px solid #29293a;
     padding:15px;
-    margin-top:15px;
+    border-radius:10px;
+    margin-top:12px;
 }
 
 .update h3{
-    color:#c084fc;
+    margin-top:0;
 }
 
-.update p{
-    color:#ccc;
-    line-height:1.6;
-    white-space:pre-wrap;
-}
-
-.update img{
-    width:100%;
-    max-height:300px;
-    object-fit:cover;
-    border-radius:10px;
-    margin:10px 0;
-}
-
-.badge{
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:20px;
-    background:#22c55e;
-    font-size:12px;
+.small{
+    color:#aaa;
+    font-size:13px;
 }
 
 .hidden{
     display:none;
 }
 
-.message{
-    padding:12px;
-    border-radius:9px;
-    margin-top:12px;
+.success{
+    color:#22c55e;
 }
 
-.success-box{
-    background:#102f1b;
-    border:1px solid #22c55e;
+.error{
+    color:#ef4444;
 }
 
-.error-box{
-    background:#3f1111;
-    border:1px solid #ef4444;
+.login-box{
+    max-width:450px;
+    margin:50px auto;
 }
-
-.loading{
-    text-align:center;
-    padding:50px 20px;
-    color:#bbb;
-}
-
 </style>
-
 </head>
 
 <body>
 
+<div class="container">
 
-<header>
+    <div class="header">
+        <h1>🔥 ARIYAN ZONE</h1>
+        <p>Admin Control Panel</p>
+    </div>
 
-<h1>🔥 ARIYAN ZONE</h1>
+    <!-- LOGIN -->
+    <div id="loginSection" class="card login-box">
 
-<p>Admin Control Panel</p>
+        <h2>Admin Login</h2>
 
-</header>
+        <input
+            type="email"
+            id="email"
+            placeholder="Admin Email"
+        >
 
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
 
-<div
-id="loadingBox"
-class="loading"
->
+        <button onclick="login()">
+            Login
+        </button>
 
-Checking admin access...
+        <p id="loginMessage"></p>
 
-</div>
+    </div>
 
 
-<div
-id="deniedBox"
-class="container hidden"
->
+    <!-- ADMIN -->
+    <div id="adminSection" class="hidden">
 
-<div class="card">
+        <div class="card">
 
-<h2>❌ Access Denied</h2>
+            <h2>✅ Admin Access Granted</h2>
 
-<p id="deniedText">
-You are not logged in.
-</p>
+            <p>
+                Logged in as:
+                <strong id="adminEmail"></strong>
+            </p>
 
-</div>
+            <button class="logout" onclick="logout()">
+                Logout
+            </button>
 
-</div>
+        </div>
 
 
-<div
-id="adminPanel"
-class="container hidden"
->
+        <!-- ADD UPDATE -->
 
+        <div class="card">
 
-<!-- ACCOUNT -->
+            <h2>📰 FF Updates</h2>
 
-<div class="card">
+            <input
+                type="text"
+                id="title"
+                placeholder="Update Title"
+            >
 
-<h2>✅ Admin Access Granted</h2>
+            <textarea
+                id="content"
+                placeholder="Update Content"
+            ></textarea>
 
-<div
-id="userInfo"
-class="status"
->
-Checking account...
-</div>
+            <input
+                type="text"
+                id="image"
+                placeholder="Image URL (optional)"
+            >
 
-<button
-id="logoutBtn"
-class="danger"
->
-Logout
-</button>
+            <label>
+                <input
+                    type="checkbox"
+                    id="published"
+                    checked
+                    style="width:auto"
+                >
+                Published
+            </label>
 
-</div>
+            <br><br>
 
+            <button onclick="saveUpdate()">
+                Add Update
+            </button>
 
-<!-- FF UPDATES -->
+            <button
+                onclick="cancelEdit()"
+                id="cancelButton"
+                class="hidden"
+            >
+                Cancel Edit
+            </button>
 
-<div class="card">
+            <p id="saveMessage"></p>
 
-<h2>📰 FF Updates</h2>
+        </div>
 
-<p style="color:#aaa;">
-Add and manage Free Fire updates.
-</p>
 
+        <!-- UPDATE LIST -->
 
-<form id="updateForm">
+        <div class="card">
 
-<label>
-Update Title
-</label>
+            <h2>📋 Existing Updates</h2>
 
-<input
-id="title"
-type="text"
-placeholder="Example: New Free Fire Update"
-required
->
+            <div id="updatesList">
+                Loading...
+            </div>
 
+        </div>
 
-<label>
-Update Content
-</label>
-
-<textarea
-id="content"
-placeholder="Write your update..."
-required
-></textarea>
-
-
-<label>
-Image URL
-</label>
-
-<input
-id="imageUrl"
-type="url"
-placeholder="https://example.com/image.jpg"
->
-
-
-<label>
-
-<input
-id="published"
-type="checkbox"
-checked
-style="width:auto;"
->
-
-Publish this update
-
-</label>
-
-
-<br>
-
-
-<button
-id="saveBtn"
-class="primary"
-type="submit"
->
-Add Update
-</button>
-
-
-<button
-id="cancelBtn"
-class="secondary hidden"
-type="button"
->
-Cancel Edit
-</button>
-
-
-</form>
-
-
-<div id="message"></div>
-
-</div>
-
-
-<!-- SAVED UPDATES -->
-
-<div class="card">
-
-<h2>📋 Saved Updates</h2>
-
-<div id="updatesList">
-Loading...
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h2>🎯 Sensitivity</h2>
-
-<p style="color:#aaa;">
-Sensitivity management will be added later.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h2>🎮 HUD Settings</h2>
-
-<p style="color:#aaa;">
-HUD management will be added later.
-</p>
-
-</div>
-
+    </div>
 
 </div>
 
 
 <script type="module">
 
-
-/* =========================
-   FIREBASE IMPORT
-========================= */
-
 import {
     initializeApp
-}
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
 
 import {
     getAuth,
+    signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
     setPersistence,
     browserLocalPersistence
-}
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
-
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 
 import {
     getFirestore,
     collection,
     addDoc,
     getDocs,
-    doc,
     updateDoc,
     deleteDoc,
+    doc,
     serverTimestamp,
     query,
     orderBy
-}
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
 /* =========================
@@ -410,28 +285,31 @@ from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 const firebaseConfig = {
 
-    apiKey:
-    "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj-fT0",
+    apiKey: "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj-fT0",
 
-    authDomain:
-    "ariyan-zone.firebaseapp.com",
+    authDomain: "ariyan-zone.firebaseapp.com",
 
-    projectId:
-    "ariyan-zone",
+    projectId: "ariyan-zone",
 
-    storageBucket:
-    "ariyan-zone.firebasestorage.app",
+    storageBucket: "ariyan-zone.firebasestorage.app",
 
-    messagingSenderId:
-    "546027217878",
+    messagingSenderId: "546027217878",
 
-    appId:
-    "1:546027217878:web:20715e9f32fc074fe5ba77",
+    appId: "1:546027217878:web:20715e9f32fc074fe5ba77",
 
-    measurementId:
-    "G-LHZQQTYG88"
-
+    measurementId: "G-LHZQQTYG88"
 };
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
 
 
 /* =========================
@@ -442,34 +320,16 @@ const ADMIN_EMAIL =
     "mdhussainpk01799@gmail.com";
 
 
-/* =========================
-   START FIREBASE
-========================= */
-
-const app =
-    initializeApp(firebaseConfig);
-
-const auth =
-    getAuth(app);
-
-const db =
-    getFirestore(app);
+let editingId = null;
 
 
 /* =========================
-   KEEP LOGIN SESSION
+   PERSISTENCE
 ========================= */
 
-setPersistence(
+await setPersistence(
     auth,
     browserLocalPersistence
-)
-.catch(
-    error =>
-    console.error(
-        "Persistence error:",
-        error
-    )
 );
 
 
@@ -477,297 +337,266 @@ setPersistence(
    ELEMENTS
 ========================= */
 
-const loadingBox =
-    document.getElementById(
-        "loadingBox"
-    );
+const loginSection =
+    document.getElementById("loginSection");
 
-const deniedBox =
-    document.getElementById(
-        "deniedBox"
-    );
+const adminSection =
+    document.getElementById("adminSection");
 
-const deniedText =
-    document.getElementById(
-        "deniedText"
-    );
+const adminEmail =
+    document.getElementById("adminEmail");
 
-const adminPanel =
-    document.getElementById(
-        "adminPanel"
-    );
+const loginMessage =
+    document.getElementById("loginMessage");
 
-const userInfo =
-    document.getElementById(
-        "userInfo"
-    );
-
-const logoutBtn =
-    document.getElementById(
-        "logoutBtn"
-    );
-
-const updateForm =
-    document.getElementById(
-        "updateForm"
-    );
-
-const titleInput =
-    document.getElementById(
-        "title"
-    );
-
-const contentInput =
-    document.getElementById(
-        "content"
-    );
-
-const imageInput =
-    document.getElementById(
-        "imageUrl"
-    );
-
-const publishedInput =
-    document.getElementById(
-        "published"
-    );
-
-const saveBtn =
-    document.getElementById(
-        "saveBtn"
-    );
-
-const cancelBtn =
-    document.getElementById(
-        "cancelBtn"
-    );
+const saveMessage =
+    document.getElementById("saveMessage");
 
 const updatesList =
-    document.getElementById(
-        "updatesList"
-    );
-
-const messageBox =
-    document.getElementById(
-        "message"
-    );
-
-
-let editingId = null;
+    document.getElementById("updatesList");
 
 
 /* =========================
-   AUTH CHECK
+   LOGIN
 ========================= */
 
-onAuthStateChanged(
-    auth,
-    async (user) => {
+window.login = async function(){
 
-        loadingBox.classList.add(
-            "hidden"
+    const email =
+        document.getElementById("email")
+        .value
+        .trim();
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+    loginMessage.textContent =
+        "Logging in...";
+
+    loginMessage.className = "";
+
+
+    if(!email || !password){
+
+        loginMessage.textContent =
+            "Email and password required.";
+
+        loginMessage.className =
+            "error";
+
+        return;
+    }
+
+
+    try{
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
         );
 
+    }catch(error){
 
-        if(!user){
+        console.error(error);
 
-            deniedBox.classList.remove(
-                "hidden"
-            );
+        loginMessage.textContent =
+            "Login failed: " + error.message;
 
-            deniedText.textContent =
-                "No user is logged in. Please login from the Ariyan Zone homepage first.";
+        loginMessage.className =
+            "error";
+    }
 
-            return;
+};
 
-        }
+
+/* =========================
+   AUTH STATE
+========================= */
+
+onAuthStateChanged(auth, async (user)=>{
+
+    if(user){
+
+        console.log(
+            "Firebase user:",
+            user.email
+        );
 
 
         if(
-            !user.email ||
-            user.email.toLowerCase() !==
-            ADMIN_EMAIL.toLowerCase()
+            user.email.toLowerCase()
+            === ADMIN_EMAIL.toLowerCase()
         ){
 
-            deniedBox.classList.remove(
+            loginSection.classList.add(
                 "hidden"
             );
 
-            deniedText.innerHTML =
-                "Logged in as: <b>" +
-                escapeHtml(user.email) +
-                "</b><br><br>" +
-                "This account is not the admin account.";
+            adminSection.classList.remove(
+                "hidden"
+            );
 
-            return;
+            adminEmail.textContent =
+                user.email;
 
+            await loadUpdates();
+
+        }else{
+
+            await signOut(auth);
+
+            loginSection.classList.remove(
+                "hidden"
+            );
+
+            adminSection.classList.add(
+                "hidden"
+            );
+
+            loginMessage.textContent =
+                "Access denied. Admin account only.";
+
+            loginMessage.className =
+                "error";
         }
 
+    }else{
 
-        /* ADMIN */
-
-        adminPanel.classList.remove(
+        loginSection.classList.remove(
             "hidden"
         );
 
-
-        userInfo.innerHTML =
-            "Logged in as: <b>" +
-            escapeHtml(user.email) +
-            "</b>";
-
-
-        await loadUpdates();
-
+        adminSection.classList.add(
+            "hidden"
+        );
     }
-);
+
+});
 
 
 /* =========================
    LOGOUT
 ========================= */
 
-logoutBtn.addEventListener(
-    "click",
-    async () => {
+window.logout = async function(){
 
-        try{
+    await signOut(auth);
 
-            await signOut(auth);
+    location.reload();
 
-            window.location.reload();
-
-        }
-        catch(error){
-
-            showMessage(
-                error.message,
-                true
-            );
-
-        }
-
-    }
-);
+};
 
 
 /* =========================
-   ADD / EDIT
+   SAVE UPDATE
 ========================= */
 
-updateForm.addEventListener(
-    "submit",
-    async (event) => {
+window.saveUpdate = async function(){
 
-        event.preventDefault();
+    const title =
+        document.getElementById("title")
+        .value
+        .trim();
 
+    const content =
+        document.getElementById("content")
+        .value
+        .trim();
 
-        const title =
-            titleInput.value.trim();
+    const image =
+        document.getElementById("image")
+        .value
+        .trim();
 
-        const content =
-            contentInput.value.trim();
-
-        const imageUrl =
-            imageInput.value.trim();
-
-        const published =
-            publishedInput.checked;
-
-
-        if(!title || !content){
-
-            showMessage(
-                "Title and content are required.",
-                true
-            );
-
-            return;
-
-        }
+    const published =
+        document.getElementById("published")
+        .checked;
 
 
-        saveBtn.disabled = true;
+    if(!title || !content){
 
+        saveMessage.textContent =
+            "Title and content are required.";
 
-        try{
+        saveMessage.className =
+            "error";
 
-            if(editingId){
-
-                await updateDoc(
-                    doc(
-                        db,
-                        "updates",
-                        editingId
-                    ),
-                    {
-                        title,
-                        content,
-                        imageUrl,
-                        published,
-                        updatedAt:
-                            serverTimestamp()
-                    }
-                );
-
-
-                showMessage(
-                    "Update edited successfully!"
-                );
-
-            }
-
-            else{
-
-                await addDoc(
-                    collection(
-                        db,
-                        "updates"
-                    ),
-                    {
-                        title,
-                        content,
-                        imageUrl,
-                        published,
-                        createdAt:
-                            serverTimestamp(),
-                        updatedAt:
-                            serverTimestamp()
-                    }
-                );
-
-
-                showMessage(
-                    "Update added successfully!"
-                );
-
-            }
-
-
-            resetForm();
-
-            await loadUpdates();
-
-        }
-        catch(error){
-
-            console.error(error);
-
-            showMessage(
-                "Firestore Error: " +
-                error.message,
-                true
-            );
-
-        }
-        finally{
-
-            saveBtn.disabled = false;
-
-        }
-
+        return;
     }
-);
+
+
+    saveMessage.textContent =
+        "Saving...";
+
+    saveMessage.className = "";
+
+
+    try{
+
+        if(editingId){
+
+            const updateRef =
+                doc(
+                    db,
+                    "updates",
+                    editingId
+                );
+
+            await updateDoc(
+                updateRef,
+                {
+                    title:title,
+                    content:content,
+                    image:image,
+                    published:published,
+                    updatedAt:serverTimestamp()
+                }
+            );
+
+            saveMessage.textContent =
+                "Update edited successfully.";
+
+        }else{
+
+            await addDoc(
+                collection(db,"updates"),
+                {
+                    title:title,
+                    content:content,
+                    image:image,
+                    published:published,
+                    createdAt:serverTimestamp()
+                }
+            );
+
+            saveMessage.textContent =
+                "Update added successfully.";
+        }
+
+
+        saveMessage.className =
+            "success";
+
+        clearForm();
+
+        await loadUpdates();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        saveMessage.textContent =
+            "Firestore error: " +
+            error.message;
+
+        saveMessage.className =
+            "error";
+    }
+
+};
 
 
 /* =========================
@@ -782,12 +611,9 @@ async function loadUpdates(){
 
     try{
 
-        const updatesQuery =
+        const q =
             query(
-                collection(
-                    db,
-                    "updates"
-                ),
+                collection(db,"updates"),
                 orderBy(
                     "createdAt",
                     "desc"
@@ -796,164 +622,89 @@ async function loadUpdates(){
 
 
         const snapshot =
-            await getDocs(
-                updatesQuery
-            );
+            await getDocs(q);
 
 
         if(snapshot.empty){
 
             updatesList.innerHTML =
-                "<p style='color:#aaa;'>No updates yet.</p>";
+                "<p>No updates yet.</p>";
 
             return;
-
         }
 
 
-        updatesList.innerHTML =
-            "";
+        updatesList.innerHTML = "";
 
 
-        snapshot.forEach(
-            snapshotItem => {
+        snapshot.forEach((item)=>{
 
-                const data =
-                    snapshotItem.data();
-
-                const id =
-                    snapshotItem.id;
+            const data =
+                item.data();
 
 
-                const item =
-                    document.createElement(
-                        "div"
-                    );
+            const div =
+                document.createElement("div");
+
+            div.className =
+                "update";
 
 
-                item.className =
-                    "update";
+            div.innerHTML = `
 
+                <h3>
+                    ${escapeHTML(data.title || "")}
+                </h3>
 
-                let imageHTML =
-                    "";
+                <p>
+                    ${escapeHTML(data.content || "")}
+                </p>
 
-
-                if(data.imageUrl){
-
-                    imageHTML =
-                        `
-                        <img
-                        src="${escapeHtml(data.imageUrl)}"
-                        alt="Update image"
-                        onerror="this.style.display='none'"
-                        >
-                        `;
-
+                ${
+                    data.image
+                    ?
+                    `<p class="small">
+                        Image: ${escapeHTML(data.image)}
+                    </p>`
+                    :
+                    ""
                 }
 
+                <p class="small">
+                    Published:
+                    ${data.published ? "Yes" : "No"}
+                </p>
 
-                item.innerHTML = `
-
-                    <span class="badge">
-                    ${data.published ? "Published" : "Draft"}
-                    </span>
-
-                    <h3>
-                    ${escapeHtml(data.title || "")}
-                    </h3>
-
-                    ${imageHTML}
-
-                    <p>
-                    ${escapeHtml(data.content || "")}
-                    </p>
-
-                    <p style="color:#777;font-size:12px;">
-                    ${formatDate(data.createdAt)}
-                    </p>
-
-                    <button
-                    class="primary"
-                    data-edit="${id}"
-                    >
+                <button
+                    class="edit"
+                    onclick="editUpdate('${item.id}')"
+                >
                     Edit
-                    </button>
+                </button>
 
-                    <button
-                    class="danger"
-                    data-delete="${id}"
-                    >
+                <button
+                    class="delete"
+                    onclick="deleteUpdate('${item.id}')"
+                >
                     Delete
-                    </button>
-
-                `;
-
-
-                updatesList.appendChild(
-                    item
-                );
-
-            }
-        );
+                </button>
+            `;
 
 
-        document
-        .querySelectorAll(
-            "[data-edit]"
-        )
-        .forEach(
-            button => {
+            updatesList.appendChild(div);
 
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        editUpdate(
-                            button.dataset.edit,
-                            snapshot
-                        );
-
-                    }
-                );
-
-            }
-        );
+        });
 
 
-        document
-        .querySelectorAll(
-            "[data-delete]"
-        )
-        .forEach(
-            button => {
-
-                button.addEventListener(
-                    "click",
-                    () => {
-
-                        deleteUpdate(
-                            button.dataset.delete
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-    }
-    catch(error){
+    }catch(error){
 
         console.error(error);
 
         updatesList.innerHTML =
-            `
-            <div class="message error-box">
-            ${escapeHtml(error.message)}
-            </div>
-            `;
-
+            `<p class="error">
+                Could not load updates.<br>
+                ${escapeHTML(error.message)}
+            </p>`;
     }
 
 }
@@ -963,76 +714,102 @@ async function loadUpdates(){
    EDIT
 ========================= */
 
-function editUpdate(
-    id,
-    snapshot
-){
+window.editUpdate = async function(id){
 
-    const selected =
-        snapshot.docs.find(
-            item =>
-            item.id === id
+    try{
+
+        const snapshot =
+            await getDocs(
+                collection(db,"updates")
+            );
+
+
+        let found = null;
+
+
+        snapshot.forEach((item)=>{
+
+            if(item.id === id){
+
+                found = {
+                    id:item.id,
+                    ...item.data()
+                };
+
+            }
+
+        });
+
+
+        if(!found){
+
+            alert("Update not found.");
+
+            return;
+        }
+
+
+        document.getElementById("title")
+            .value =
+            found.title || "";
+
+
+        document.getElementById("content")
+            .value =
+            found.content || "";
+
+
+        document.getElementById("image")
+            .value =
+            found.image || "";
+
+
+        document.getElementById("published")
+            .checked =
+            found.published === true;
+
+
+        editingId = id;
+
+
+        document.getElementById(
+            "cancelButton"
+        ).classList.remove("hidden");
+
+
+        document.getElementById(
+            "title"
+        ).scrollIntoView({
+            behavior:"smooth"
+        });
+
+
+    }catch(error){
+
+        alert(
+            "Error: " +
+            error.message
         );
-
-
-    if(!selected){
-
-        return;
-
     }
 
-
-    const data =
-        selected.data();
-
-
-    editingId = id;
-
-
-    titleInput.value =
-        data.title || "";
-
-    contentInput.value =
-        data.content || "";
-
-    imageInput.value =
-        data.imageUrl || "";
-
-    publishedInput.checked =
-        data.published !== false;
-
-
-    saveBtn.textContent =
-        "Save Changes";
-
-
-    cancelBtn.classList.remove(
-        "hidden"
-    );
-
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
+};
 
 
 /* =========================
    DELETE
 ========================= */
 
-async function deleteUpdate(id){
+window.deleteUpdate = async function(id){
 
-    if(
-        !confirm(
+    const confirmDelete =
+        confirm(
             "Delete this update?"
-        )
-    ){
+        );
+
+
+    if(!confirmDelete){
 
         return;
-
     }
 
 
@@ -1047,136 +824,87 @@ async function deleteUpdate(id){
         );
 
 
-        showMessage(
-            "Update deleted successfully!"
-        );
-
-
         await loadUpdates();
 
-    }
-    catch(error){
 
-        showMessage(
-            error.message,
-            true
+    }catch(error){
+
+        alert(
+            "Delete error: " +
+            error.message
         );
-
     }
 
-}
+};
 
 
 /* =========================
    CANCEL EDIT
 ========================= */
 
-cancelBtn.addEventListener(
-    "click",
-    () => {
-
-        resetForm();
-
-    }
-);
-
-
-/* =========================
-   RESET
-========================= */
-
-function resetForm(){
+window.cancelEdit = function(){
 
     editingId = null;
 
-    updateForm.reset();
+    clearForm();
 
-    publishedInput.checked =
-        true;
+    document.getElementById(
+        "cancelButton"
+    ).classList.add("hidden");
 
-    saveBtn.textContent =
-        "Add Update";
+    saveMessage.textContent = "";
 
-    cancelBtn.classList.add(
-        "hidden"
-    );
+};
+
+
+/* =========================
+   CLEAR FORM
+========================= */
+
+function clearForm(){
+
+    document.getElementById(
+        "title"
+    ).value = "";
+
+    document.getElementById(
+        "content"
+    ).value = "";
+
+    document.getElementById(
+        "image"
+    ).value = "";
+
+    document.getElementById(
+        "published"
+    ).checked = true;
+
+    editingId = null;
+
+    document.getElementById(
+        "cancelButton"
+    ).classList.add("hidden");
 
 }
 
 
 /* =========================
-   MESSAGE
+   HTML SECURITY
 ========================= */
 
-function showMessage(
-    text,
-    error = false
-){
+function escapeHTML(value){
 
-    messageBox.className =
-        error
-        ? "message error-box"
-        : "message success-box";
+    return String(value)
 
-    messageBox.textContent =
-        text;
+        .replaceAll("&","&amp;")
 
-}
+        .replaceAll("<","&lt;")
 
+        .replaceAll(">","&gt;")
 
-/* =========================
-   DATE
-========================= */
+        .replaceAll('"',"&quot;")
 
-function formatDate(
-    timestamp
-){
-
-    if(!timestamp){
-
-        return "";
-
-    }
-
-
-    try{
-
-        const date =
-            timestamp.toDate
-            ? timestamp.toDate()
-            : new Date(timestamp);
-
-
-        return date.toLocaleString();
-
-    }
-    catch(error){
-
-        return "";
-
-    }
-
-}
-
-
-/* =========================
-   ESCAPE HTML
-========================= */
-
-function escapeHtml(
-    value
-){
-
-    const div =
-        document.createElement(
-            "div"
-        );
-
-    div.textContent =
-        value;
-
-    return div.innerHTML;
-
+        .replaceAll("'","&#039;");
 }
 
 </script>
