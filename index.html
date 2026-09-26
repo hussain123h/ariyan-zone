@@ -783,12 +783,20 @@ footer strong{
 
 <div class="account" id="accountButtons">
 
-    <button onclick="openLogin()">
+    <button
+        id="loginBtn"
+        type="button">
+
         🔐 Login
+
     </button>
 
-    <button onclick="openSignup()">
+    <button
+        id="signupBtn"
+        type="button">
+
         ✨ Sign Up
+
     </button>
 
 </div>
@@ -802,7 +810,8 @@ footer strong{
 
     <button
         class="logout-btn"
-        onclick="logout()">
+        id="logoutBtn"
+        type="button">
 
         Logout
 
@@ -1066,7 +1075,7 @@ footer strong{
 
     <button
         id="emailButton"
-        onclick="emailAuth()">
+        type="button">
 
         Login
 
@@ -1074,7 +1083,8 @@ footer strong{
 
     <button
         class="google-btn"
-        onclick="googleLogin()">
+        id="googleButton"
+        type="button">
 
         🔵 Continue with Google
 
@@ -1082,7 +1092,8 @@ footer strong{
 
     <button
         class="close-btn"
-        onclick="closeAuth()">
+        id="closeButton"
+        type="button">
 
         Close
 
@@ -1098,12 +1109,126 @@ footer strong{
 </div>
 
 
+<!--
+================================================
+IMPORTANT:
+The UI functions are in a normal script.
+Therefore Firebase loading errors cannot stop
+the Login / Sign Up modal from opening.
+================================================
+-->
+
+<script>
+
+/* AUTH MODE */
+
+let signupMode = false;
+
+
+/* OPEN LOGIN */
+
+function openLogin(){
+
+    signupMode = false;
+
+    document.getElementById("authTitle")
+        .textContent = "🔐 Login";
+
+    document.getElementById("emailButton")
+        .textContent = "Login";
+
+    document.getElementById("authMessage")
+        .textContent = "";
+
+    document.getElementById("email")
+        .value = "";
+
+    document.getElementById("password")
+        .value = "";
+
+    document.getElementById("authModal")
+        .style.display = "flex";
+}
+
+
+/* OPEN SIGN UP */
+
+function openSignup(){
+
+    signupMode = true;
+
+    document.getElementById("authTitle")
+        .textContent = "✨ Sign Up";
+
+    document.getElementById("emailButton")
+        .textContent = "Create Account";
+
+    document.getElementById("authMessage")
+        .textContent = "";
+
+    document.getElementById("email")
+        .value = "";
+
+    document.getElementById("password")
+        .value = "";
+
+    document.getElementById("authModal")
+        .style.display = "flex";
+}
+
+
+/* CLOSE */
+
+function closeAuth(){
+
+    document.getElementById("authModal")
+        .style.display = "none";
+}
+
+
+/* BUTTON CONNECTION */
+
+document.getElementById("loginBtn")
+    .addEventListener("click", openLogin);
+
+document.getElementById("signupBtn")
+    .addEventListener("click", openSignup);
+
+document.getElementById("closeButton")
+    .addEventListener("click", closeAuth);
+
+
+/* CLOSE BY CLICKING OUTSIDE */
+
+document.getElementById("authModal")
+    .addEventListener("click", function(event){
+
+        if(event.target === this){
+
+            closeAuth();
+
+        }
+
+    });
+
+
+/* MAKE FUNCTIONS GLOBAL */
+
+window.openLogin = openLogin;
+window.openSignup = openSignup;
+window.closeAuth = closeAuth;
+
+</script>
+
+
 <!-- FIREBASE -->
 
 <script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
 
 import {
     getAuth,
@@ -1113,8 +1238,8 @@ import {
     signInWithPopup,
     onAuthStateChanged,
     signOut
-}
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
 
 import {
     getFirestore,
@@ -1124,8 +1249,7 @@ import {
     orderBy,
     limit,
     getDocs
-}
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
 
 /* FIREBASE CONFIG */
@@ -1152,6 +1276,7 @@ const firebaseConfig = {
 
     measurementId:
     "G-LHZQQTYG88"
+
 };
 
 
@@ -1169,293 +1294,137 @@ const db =
 const provider =
     new GoogleAuthProvider();
 
-let signupMode = false;
+
+/* EMAIL LOGIN / SIGN UP */
+
+document.getElementById("emailButton")
+    .addEventListener("click", async function(){
+
+        const email =
+            document.getElementById("email")
+            .value
+            .trim();
+
+        const password =
+            document.getElementById("password")
+            .value;
+
+        const message =
+            document.getElementById("authMessage");
 
 
-/* LOGIN */
-
-window.openLogin = function(){
-
-    signupMode = false;
-
-    document.getElementById("authTitle")
-        .textContent = "🔐 Login";
-
-    document.getElementById("emailButton")
-        .textContent = "Login";
-
-    document.getElementById("authMessage")
-        .textContent = "";
-
-    document.getElementById("email")
-        .value = "";
-
-    document.getElementById("password")
-        .value = "";
-
-    document.getElementById("authModal")
-        .style.display = "flex";
-};
-
-
-/* SIGN UP */
-
-window.openSignup = function(){
-
-    signupMode = true;
-
-    document.getElementById("authTitle")
-        .textContent = "✨ Sign Up";
-
-    document.getElementById("emailButton")
-        .textContent = "Create Account";
-
-    document.getElementById("authMessage")
-        .textContent = "";
-
-    document.getElementById("email")
-        .value = "";
-
-    document.getElementById("password")
-        .value = "";
-
-    document.getElementById("authModal")
-        .style.display = "flex";
-};
-
-
-/* CLOSE */
-
-window.closeAuth = function(){
-
-    document.getElementById("authModal")
-        .style.display = "none";
-};
-
-
-/* EMAIL AUTH */
-
-window.emailAuth = async function(){
-
-    const email =
-        document.getElementById("email")
-        .value.trim();
-
-    const password =
-        document.getElementById("password")
-        .value;
-
-    const message =
-        document.getElementById("authMessage");
-
-
-    if(!email || !password){
-
-        message.textContent =
-            "Please enter email and password.";
-
-        return;
-    }
-
-
-    message.textContent =
-        "Please wait...";
-
-
-    try{
-
-        if(signupMode){
-
-            await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
+        if(!email || !password){
 
             message.textContent =
-                "✅ Account created successfully!";
+                "❌ Please enter email and password.";
 
-        }else{
-
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-            message.textContent =
-                "✅ Login successful!";
-
-            setTimeout(
-                closeAuth,
-                800
-            );
+            return;
         }
 
 
-    }catch(error){
-
-        console.log(
-            "Firebase Auth Error:",
-            error
-        );
-
-
-        if(
-            error.code ===
-            "auth/email-already-in-use"
-        ){
-
-            message.textContent =
-                "❌ This email is already registered.";
-
-        }
-
-        else if(
-            error.code ===
-            "auth/invalid-credential" ||
-            error.code ===
-            "auth/wrong-password" ||
-            error.code ===
-            "auth/user-not-found"
-        ){
-
-            message.textContent =
-                "❌ Email or password is incorrect.";
-
-        }
-
-        else if(
-            error.code ===
-            "auth/weak-password"
-        ){
+        if(password.length < 6){
 
             message.textContent =
                 "❌ Password must be at least 6 characters.";
 
+            return;
         }
 
-        else if(
-            error.code ===
-            "auth/invalid-email"
-        ){
-
-            message.textContent =
-                "❌ Please enter a valid email.";
-
-        }
-
-        else{
-
-            message.textContent =
-                "❌ " + error.message;
-
-        }
-
-    }
-
-};
-
-
-/* GOOGLE LOGIN */
-
-window.googleLogin = async function(){
-
-    const message =
-        document.getElementById(
-            "authMessage"
-        );
-
-    message.textContent =
-        "Opening Google Login...";
-
-
-    try{
-
-        await signInWithPopup(
-            auth,
-            provider
-        );
 
         message.textContent =
-            "✅ Google login successful!";
-
-        setTimeout(
-            closeAuth,
-            800
-        );
+            "⏳ Please wait...";
 
 
-    }catch(error){
+        try{
 
-        console.log(
-            "Google Login Error:",
-            error
-        );
+            if(signupMode){
 
-        message.textContent =
-            "❌ " + error.message;
-
-    }
-
-};
-
-
-/* LOGOUT */
-
-window.logout = async function(){
-
-    try{
-
-        await signOut(auth);
-
-    }catch(error){
-
-        console.log(
-            "Logout Error:",
-            error
-        );
-
-    }
-
-};
-
-
-/* AUTH STATE */
-
-onAuthStateChanged(
-    auth,
-    function(user){
-
-        const buttons =
-            document.getElementById(
-                "accountButtons"
-            );
-
-        const userArea =
-            document.getElementById(
-                "userArea"
-            );
-
-        const userText =
-            document.getElementById(
-                "userText"
-            );
-
-
-        if(user){
-
-            buttons.style.display =
-                "none";
-
-            userArea.style.display =
-                "block";
-
-            userText.textContent =
-                "👤 Logged in: " +
-                (
-                    user.displayName ||
-                    user.email
+                await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
                 );
 
-    
+                message.textContent =
+                    "✅ Account created successfully!";
+
+                setTimeout(
+                    closeAuth,
+                    900
+                );
+
+            }else{
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+                message.textContent =
+                    "✅ Login successful!";
+
+                setTimeout(
+                    closeAuth,
+                    700
+                );
+
+            }
+
+
+        }catch(error){
+
+            console.log(
+                "Firebase Auth Error:",
+                error
+            );
+
+
+            if(
+                error.code ===
+                "auth/email-already-in-use"
+            ){
+
+                message.textContent =
+                    "❌ This email is already registered.";
+
+            }
+
+            else if(
+                error.code ===
+                "auth/invalid-credential" ||
+                error.code ===
+                "auth/wrong-password" ||
+                error.code ===
+                "auth/user-not-found"
+            ){
+
+                message.textContent =
+                    "❌ Email or password is incorrect.";
+
+            }
+
+            else if(
+                error.code ===
+                "auth/weak-password"
+            ){
+
+                message.textContent =
+                    "❌ Password must be at least 6 characters.";
+
+            }
+
+            else if(
+                error.code ===
+                "auth/invalid-email"
+            ){
+
+                message.textContent =
+                    "❌ Please enter a valid email.";
+
+            }
+
+            else{
+
+                message.textContent =
+ 
