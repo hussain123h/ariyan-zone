@@ -1439,9 +1439,12 @@ auth,
 email,
 password
 );
-
 message.textContent = "✅ Login successful!";
-setTimeout(closeAuth, 700);}catch(error){
+setTimeout(closeAuth, 700);
+}
+}
+catch(error){
+
 
 console.error("Email Auth Error:", error);
 
