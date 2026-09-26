@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ariyan Zone | Admin Panel</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Arial,sans-serif;
+    color:white;
+    background:
+        linear-gradient(rgba(2,5,12,.75),rgba(2,5,12,.90)),
+        url("background.png") center/cover fixed no-repeat;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:25px 18px 50px;
+}
+
+.header{
+    text-align:center;
+    padding:25px 15px;
+}
+
+.header h1{
+    margin:0;
+    font-size:32px;
+    color:#00ffe1;
+    text-shadow:0 0 15px #00ffe1;
+}
+
+.header p{
+    color:#b8cccc;
+}
+
+.admin-box{
+    background:rgba(5,15,20,.82);
+    border:1px solid rgba(0,255,225,.30);
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.65);
+    backdrop-filter:blur(10px);
+}
+
+.status{
+    text-align:center;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(0,255,225,.08);
+    border:1px solid rgba(0,255,225,.20);
+    margin-bottom:20px;
+}
+
+.status strong{
+    color:#00ffe1;
+}
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.card{
+    padding:20px;
+    border-radius:17px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(0,255,225,.15);
+}
+
+.card h3{
+    margin-top:0;
+}
+
+.card p{
+    color:#b9c7c8;
+    font-size:13px;
+    line-height:1.5;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:0;
+    border-radius:11px;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    background:linear-gradient(135deg,#00bfae,#6637d9);
+}
+
+.logout{
+    background:linear-gradient(135deg,#b82e4b,#612c86);
+}
+
+.home{
+    background:rgba(255,255,255,.08);
+}
+
+.message{
+    text-align:center;
+    padding:30px 15px;
+}
+
+.hidden{
+    display:none;
+}
+
+@media(max-width:600px){
+
+    .card-grid{
+        grid-template-columns:1fr;
+    }
+
+    .header h1{
+        font-size:26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🔥 ARIYAN ZONE</h1>
+        <p>Admin Control Panel</p>
+    </div>
+
+
+    <!-- ACCESS CHECK -->
+
+    <div class="admin-box" id="loadingBox">
+
+        <div class="message">
+            Checking admin access...
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN PANEL -->
+
+    <div class="admin-box hidden" id="adminPanel">
+
+        <div class="status">
+
+            <div>✅ Admin Access Granted</div>
+
+            <p id="adminEmail"></p>
+
+        </div>
+
+
+        <div class="card-grid">
+
+            <div class="card">
+
+                <h3>📰 FF Updates</h3>
+
+                <p>
+                    Manage Free Fire updates and news.
+                </p>
+
+                <button onclick="comingSoon()">
+                    Manage Updates
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🎯 Sensitivity</h3>
+
+                <p>
+                    Manage device-wise sensitivity settings.
+                </p>
+
+                <button onclick="comingSoon()">
+                    Manage Sensitivity
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🎮 HUD Settings</h3>
+
+                <p>
+                    Manage HUD settings and gameplay guides.
+                </p>
+
+                <button onclick="comingSoon()">
+                    Manage HUD
+                </button>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>👥 Users</h3>
+
+                <p>
+                    User management will be added later.
+                </p>
+
+                <button onclick="comingSoon()">
+                    Manage Users
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <button class="home" onclick="goHome()">
+            🏠 Back to Home
+        </button>
+
+
+        <button class="logout" onclick="logout()">
+            🚪 Logout
+        </button>
+
+    </div>
+
+
+    <!-- ACCESS DENIED -->
+
+    <div class="admin-box hidden" id="deniedBox">
+
+        <div class="message">
+
+            <h2>🚫 Access Denied</h2>
+
+            <p>
+                This account is not authorized to access the Admin Panel.
+            </p>
+
+            <button onclick="goHome()">
+                🏠 Back to Home
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj0-fT0",
+
+    authDomain: "ariyan-zone.firebaseapp.com",
+
+    projectId: "ariyan-zone",
+
+    storageBucket: "ariyan-zone.firebasestorage.app",
+
+    messagingSenderId: "546027217878",
+
+    appId: "1:546027217878:web:20715e9f32fc074fe5ba77",
+
+    measurementId: "G-LHZQQTYG88"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+/*
+    ADMIN EMAIL
+    Only this email will be allowed
+    to see the dashboard UI.
+*/
+
+const ADMIN_EMAIL =
+    "mdhussainpk01799@gmail.com";
+
+
+onAuthStateChanged(
+    auth,
+    (user) => {
+
+        const loading =
+            document.getElementById("loadingBox");
+
+        const panel =
+            document.getElementById("adminPanel");
+
+        const denied =
+            document.getElementById("deniedBox");
+
+        const emailText =
+            document.getElementById("adminEmail");
+
+
+        loading.classList.add("hidden");
+
+
+        if(!user){
+
+            denied.classList.remove("hidden");
+
+            return;
+        }
+
+
+        if(
+            user.email &&
+            user.email.toLowerCase() ===
+            ADMIN_EMAIL.toLowerCase()
+        ){
+
+            panel.classList.remove("hidden");
+
+            emailText.textContent =
+                "Logged in as: " + user.email;
+
+        }else{
+
+            denied.classList.remove("hidden");
+
+        }
+
+    }
+);
+
+
+/* LOGOUT */
+
+window.logout = async function(){
+
+    await signOut(auth);
+
+    window.location.href =
+        "index.html";
+
+};
+
+
+/* HOME */
+
+window.goHome = function(){
+
+    window.location.href =
+        "index.html";
+
+};
+
+
+/* TEMPORARY */
+
+window.comingSoon = function(){
+
+    alert(
+        "This Admin feature will be connected to Firestore next."
+    );
+
+};
+
+</script>
+
+</body>
+  </html>
