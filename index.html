@@ -181,6 +181,8 @@ header{
     font-weight:bold;
 
     cursor:pointer;
+
+    transition:.25s;
 }
 
 .account button:hover{
@@ -1053,12 +1055,14 @@ footer strong{
     <input
         type="email"
         id="email"
-        placeholder="Email address">
+        placeholder="Email address"
+        autocomplete="email">
 
     <input
         type="password"
         id="password"
-        placeholder="Password">
+        placeholder="Password"
+        autocomplete="current-password">
 
     <button
         id="emailButton"
@@ -1098,17 +1102,8 @@ footer strong{
 
 <script type="module">
 
-import {
-    initializeApp
-}
+import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-
-
-import {
-    getAnalytics
-}
-from "https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js";
-
 
 import {
     getAuth,
@@ -1120,7 +1115,6 @@ import {
     signOut
 }
 from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
-
 
 import {
     getFirestore,
@@ -1139,7 +1133,7 @@ from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 const firebaseConfig = {
 
     apiKey:
-    "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj0-fT0",
+    "AIzaSyAp3MuF_kH85o8_hb61n4igZ3-ruj-fT0",
 
     authDomain:
     "ariyan-zone.firebaseapp.com",
@@ -1166,40 +1160,14 @@ const firebaseConfig = {
 const app =
     initializeApp(firebaseConfig);
 
-
-/* ANALYTICS */
-
-try{
-
-    getAnalytics(app);
-
-}catch(error){
-
-    console.log(
-        "Analytics:",
-        error
-    );
-
-}
-
-
-/* AUTH */
-
 const auth =
     getAuth(app);
-
-
-/* FIRESTORE */
 
 const db =
     getFirestore(app);
 
-
-/* GOOGLE */
-
 const provider =
     new GoogleAuthProvider();
-
 
 let signupMode = false;
 
@@ -1210,24 +1178,23 @@ window.openLogin = function(){
 
     signupMode = false;
 
-    document.getElementById(
-        "authTitle"
-    ).textContent =
-        "🔐 Login";
+    document.getElementById("authTitle")
+        .textContent = "🔐 Login";
 
-    document.getElementById(
-        "emailButton"
-    ).textContent =
-        "Login";
+    document.getElementById("emailButton")
+        .textContent = "Login";
 
-    document.getElementById(
-        "authMessage"
-    ).textContent = "";
+    document.getElementById("authMessage")
+        .textContent = "";
 
-    document.getElementById(
-        "authModal"
-    ).style.display =
-        "flex";
+    document.getElementById("email")
+        .value = "";
+
+    document.getElementById("password")
+        .value = "";
+
+    document.getElementById("authModal")
+        .style.display = "flex";
 };
 
 
@@ -1237,24 +1204,23 @@ window.openSignup = function(){
 
     signupMode = true;
 
-    document.getElementById(
-        "authTitle"
-    ).textContent =
-        "✨ Sign Up";
+    document.getElementById("authTitle")
+        .textContent = "✨ Sign Up";
 
-    document.getElementById(
-        "emailButton"
-    ).textContent =
-        "Create Account";
+    document.getElementById("emailButton")
+        .textContent = "Create Account";
 
-    document.getElementById(
-        "authMessage"
-    ).textContent = "";
+    document.getElementById("authMessage")
+        .textContent = "";
 
-    document.getElementById(
-        "authModal"
-    ).style.display =
-        "flex";
+    document.getElementById("email")
+        .value = "";
+
+    document.getElementById("password")
+        .value = "";
+
+    document.getElementById("authModal")
+        .style.display = "flex";
 };
 
 
@@ -1262,31 +1228,25 @@ window.openSignup = function(){
 
 window.closeAuth = function(){
 
-    document.getElementById(
-        "authModal"
-    ).style.display =
-        "none";
+    document.getElementById("authModal")
+        .style.display = "none";
 };
 
 
-/* EMAIL LOGIN / SIGN UP */
+/* EMAIL AUTH */
 
 window.emailAuth = async function(){
 
     const email =
-        document.getElementById(
-            "email"
-        ).value.trim();
+        document.getElementById("email")
+        .value.trim();
 
     const password =
-        document.getElementById(
-            "password"
-        ).value;
+        document.getElementById("password")
+        .value;
 
     const message =
-        document.getElementById(
-            "authMessage"
-        );
+        document.getElementById("authMessage");
 
 
     if(!email || !password){
@@ -1296,6 +1256,10 @@ window.emailAuth = async function(){
 
         return;
     }
+
+
+    message.textContent =
+        "Please wait...";
 
 
     try{
@@ -1309,11 +1273,9 @@ window.emailAuth = async function(){
             );
 
             message.textContent =
-                "Account created successfully!";
+                "✅ Account created successfully!";
 
-        }
-
-        else{
+        }else{
 
             await signInWithEmailAndPassword(
                 auth,
@@ -1322,15 +1284,22 @@ window.emailAuth = async function(){
             );
 
             message.textContent =
-                "Login successful!";
+                "✅ Login successful!";
 
+            setTimeout(
+                closeAuth,
+                800
+            );
         }
 
-    }
 
-    catch(error){
+    }catch(error){
 
-        console.log(error);
+        console.log(
+            "Firebase Auth Error:",
+            error
+        );
+
 
         if(
             error.code ===
@@ -1338,17 +1307,21 @@ window.emailAuth = async function(){
         ){
 
             message.textContent =
-                "This email is already registered.";
+                "❌ This email is already registered.";
 
         }
 
         else if(
             error.code ===
-            "auth/invalid-credential"
+            "auth/invalid-credential" ||
+            error.code ===
+            "auth/wrong-password" ||
+            error.code ===
+            "auth/user-not-found"
         ){
 
             message.textContent =
-                "Email or password is incorrect.";
+                "❌ Email or password is incorrect.";
 
         }
 
@@ -1358,14 +1331,24 @@ window.emailAuth = async function(){
         ){
 
             message.textContent =
-                "Password must be at least 6 characters.";
+                "❌ Password must be at least 6 characters.";
+
+        }
+
+        else if(
+            error.code ===
+            "auth/invalid-email"
+        ){
+
+            message.textContent =
+                "❌ Please enter a valid email.";
 
         }
 
         else{
 
             message.textContent =
-                error.message;
+                "❌ " + error.message;
 
         }
 
@@ -1383,6 +1366,9 @@ window.googleLogin = async function(){
             "authMessage"
         );
 
+    message.textContent =
+        "Opening Google Login...";
+
 
     try{
 
@@ -1392,16 +1378,23 @@ window.googleLogin = async function(){
         );
 
         message.textContent =
-            "Google login successful!";
+            "✅ Google login successful!";
 
-    }
+        setTimeout(
+            closeAuth,
+            800
+        );
 
-    catch(error){
 
-        console.log(error);
+    }catch(error){
+
+        console.log(
+            "Google Login Error:",
+            error
+        );
 
         message.textContent =
-            error.message;
+            "❌ " + error.message;
 
     }
 
@@ -1412,12 +1405,23 @@ window.googleLogin = async function(){
 
 window.logout = async function(){
 
-    await signOut(auth);
+    try{
+
+        await signOut(auth);
+
+    }catch(error){
+
+        console.log(
+            "Logout Error:",
+            error
+        );
+
+    }
 
 };
 
 
-/* CHECK LOGIN */
+/* AUTH STATE */
 
 onAuthStateChanged(
     auth,
@@ -1447,7 +1451,6 @@ onAuthStateChanged(
             userArea.style.display =
                 "block";
 
-
             userText.textContent =
                 "👤 Logged in: " +
                 (
@@ -1455,48 +1458,4 @@ onAuthStateChanged(
                     user.email
                 );
 
-        }
-
-        else{
-
-            buttons.style.display =
-                "flex";
-
-            userArea.style.display =
-                "none";
-
-        }
-
-    }
-);
-
-
-/* =========================
-   LOAD PUBLISHED UPDATES
-========================= */
-
-async function loadPublishedUpdates(){
-
-    const updateList =
-        document.getElementById(
-            "updateList"
-        );
-
-
-    try{
-
-        const updatesRef =
-            collection(
-                db,
-                "updates"
-            );
-
-
-        const updatesQuery =
-            query(
-                updatesRef,
-                where(
-                    "published",
-                    "==",
-                    true
-                ),
+    
